@@ -54,6 +54,8 @@ plugins:
   - jekyll-feed
   - jemoji
   - jekyll-include-cache
+  - jekyll-avatar
+  - jekyll-mentions
 
 author:
   name   : "British Geological Survey"
