@@ -30,7 +30,7 @@ $calisto: 'Calisto MT', serif !default;
 $garamond: Garamond, serif !default;
 
 $global-font-family: $sans-serif !default;
-$header-font-family: $sans-serif !default;
+$header-font-family: $serif !default;
 $caption-font-family: $serif !default;
 
 /* type scale */
@@ -47,7 +47,7 @@ $type-size-8: 0.625em !default; // ~10px
    Colors
    ========================================================================== */
 
-$gray: #7a8288 !default;
+$gray: #5b5f63 !default;
 $dark-gray: mix(#000, $gray, 40%) !default;
 $darker-gray: mix(#000, $gray, 60%) !default;
 $light-gray: mix(#fff, $gray, 50%) !default;
@@ -102,7 +102,7 @@ $youtube-color: #bb0000 !default;
 $xing-color: #006567 !default;
 
 /* links */
-$link-color: mix(#000, $info-color, 15%) !default;
+$link-color: mix(#000, $primary-color, 15%) !default;
 $link-color-hover: mix(#000, $link-color, 25%) !default;
 $link-color-visited: mix(#fff, $link-color, 15%) !default;
 $masthead-link-color: $primary-color !default;
