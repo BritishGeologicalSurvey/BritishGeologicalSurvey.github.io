@@ -196,6 +196,7 @@
 
     &.site-title {
       margin-left: 0;
+      color: #013171;
     }
   }
 
@@ -231,7 +232,7 @@
       position: relative;
 
       &:before {
-        content: "";
+        content: '';
         position: absolute;
         left: 0;
         bottom: 0;
@@ -281,7 +282,7 @@
     }
 
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       top: -11px;
       right: 10px;
@@ -294,7 +295,7 @@
     }
 
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       top: -10px;
       right: 10px;
@@ -334,7 +335,7 @@
 .nav__list {
   margin-bottom: 1.5em;
 
-  input[type="checkbox"],
+  input[type='checkbox'],
   label {
     display: none;
   }
@@ -356,7 +357,7 @@
 
       &:before,
       &:after {
-        content: "";
+        content: '';
         position: absolute;
         right: 1em;
         top: 1.25em;
@@ -561,6 +562,6 @@
   }
 
   li ul li ul li ul li ul li ul > li a {
-    padding-left: 3.25rem
+    padding-left: 3.25rem;
   }
 }
