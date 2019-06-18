@@ -19,12 +19,12 @@
   @include breakpoint($large) {
     float: left;
     width: calc(#{$right-sidebar-width-narrow} - 1em);
-    opacity: 0.75;
-    -webkit-transition: opacity 0.2s ease-in-out;
-    transition: opacity 0.2s ease-in-out;
+    // opacity: 0.75;
+    // -webkit-transition: opacity 0.2s ease-in-out;
+    // transition: opacity 0.2s ease-in-out;
 
     &:hover {
-      opacity: 1;
+      // opacity: 1;
     }
 
     &.sticky {
@@ -63,7 +63,7 @@
 
   img {
     width: 100%;
-    
+
     &.emoji {
       width: 20px;
       height: 20px;
@@ -237,7 +237,7 @@
 
   &:before {
     display: block;
-    content: "";
+    content: '';
     position: absolute;
     top: -11px;
     left: calc(50% - 10px);
@@ -254,7 +254,7 @@
 
   &:after {
     display: block;
-    content: "";
+    content: '';
     position: absolute;
     top: -10px;
     left: calc(50% - 10px);
@@ -315,4 +315,3 @@
     margin-right: initial;
   }
 }
-
