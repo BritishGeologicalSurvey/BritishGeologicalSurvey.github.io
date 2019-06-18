@@ -40,8 +40,10 @@
   line-height: initial;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-decoration-line: none;
+  color: $primary-color;
 
-  a[rel="permalink"]::before {
+  a[rel='permalink']::before {
     content: '';
     position: absolute;
     left: 0;
@@ -425,7 +427,7 @@
    Wide Pages
    ========================================================================== */
 
-  .wide {
+.wide {
   .archive {
     @include breakpoint($large) {
       padding-right: 0;
