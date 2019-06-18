@@ -13,12 +13,12 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: SteveTest
+title: British Geological Survey
 email:
 description: >- # this means to ignore newlines until "baseurl:"
-  Awesme description
-twitter_username: twitname
-github_username: gitname
+  BGS is responsible for advising the UK government on geoscience and providing impartial advice to industry, academia and the public.
+twitter_username: BritGeoSurvey
+github_username: BritishGeologicalSurvey
 minimal_mistakes_skin: default
 search: false
 
@@ -56,34 +56,49 @@ plugins:
   - jekyll-include-cache
 
 author:
-  name   : "Test Testerson"
-  avatar : "/assets/images/bio-photo.jpg"
-  bio    : "Test bio"
+  name   : "British Geological Survey"
+  avatar : "/assets/images/BGS_purple_icon_logo.svg"
+  bio    : "BGS is responsible for advising the UK government on geoscience and providing impartial advice to industry, academia and the public."
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
-      url: "https://"
+      url: "https://www.bgs.ac.uk"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
+      url: "https://twitter.com/BritGeoSurvey"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
+      url: "https://github.com/BritishGeologicalSurvey"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
+      url: "https://instagram.com/britgeosurvey/"
+    - label: "Facebook"
+      icon: "fab fa-fw fa-facebook"
+      url: "https://www.facebook.com/pages/British-Geological-Survey"
+    - label: "Linkedin"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/company/british-geological-survey"
 
 footer:
   links:
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://www.bgs.ac.uk"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
+      url: "https://twitter.com/BritGeoSurvey"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
+      url: "https://github.com/BritishGeologicalSurvey"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
+      url: "https://instagram.com/britgeosurvey/"
+    - label: "Facebook"
+      icon: "fab fa-fw fa-facebook"
+      url: "https://www.facebook.com/pages/British-Geological-Survey"
+    - label: "Linkedin"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/company/british-geological-survey"
 
 defaults:
   # _posts
@@ -105,9 +120,9 @@ defaults:
       layout: single
       author_profile: true
 
-#category_archive:
-#  type: liquid
-#  path: /categories/
-#tag_archive:
-#  type: liquid
-#  path: /tags/
+category_archive:
+ type: liquid
+ path: /categories/
+tag_archive:
+ type: liquid
+ path: /tags/
