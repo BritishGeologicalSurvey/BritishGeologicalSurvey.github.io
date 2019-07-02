@@ -129,7 +129,7 @@ tag_archive:
  type: liquid
  path: /tags/
 
-repository: "BGSSteve/test-pages"
+repository: "Fuhji/test-pages"
 
 comments:
   provider: "utterances"
