@@ -1,2 +1,2 @@
-# Demonstration of BGS Development Blog
+# BGS Development Blog
 
