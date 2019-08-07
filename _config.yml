@@ -58,54 +58,54 @@ plugins:
   - jekyll-mentions
 
 author:
-  name   : "British Geological Survey"
-  avatar : "/assets/images/BGS_purple_icon_logo.svg"
-  bio    : "BGS is responsible for advising the UK government on geoscience and providing impartial advice to industry, academia and the public."
+  name: 'British Geological Survey'
+  avatar: '/assets/images/BGS_purple_icon_logo.svg'
+  bio: 'BGS is responsible for advising the UK government on geoscience and providing impartial advice to industry, academia and the public.'
   links:
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      url: "https://www.bgs.ac.uk"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/BritGeoSurvey"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/BritishGeologicalSurvey"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/britgeosurvey/"
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook"
-      url: "https://www.facebook.com/pages/British-Geological-Survey"
-    - label: "Linkedin"
-      icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/company/british-geological-survey"
+    - label: 'Website'
+      icon: 'fas fa-fw fa-link'
+      url: 'https://www.bgs.ac.uk'
+    - label: 'Twitter'
+      icon: 'fab fa-fw fa-twitter-square'
+      url: 'https://twitter.com/BritGeoSurvey'
+    - label: 'GitHub'
+      icon: 'fab fa-fw fa-github'
+      url: 'https://github.com/BritishGeologicalSurvey'
+    - label: 'Instagram'
+      icon: 'fab fa-fw fa-instagram'
+      url: 'https://instagram.com/britgeosurvey/'
+    - label: 'Facebook'
+      icon: 'fab fa-fw fa-facebook'
+      url: 'https://www.facebook.com/pages/British-Geological-Survey'
+    - label: 'Linkedin'
+      icon: 'fab fa-fw fa-linkedin'
+      url: 'https://www.linkedin.com/company/british-geological-survey'
 
 footer:
   links:
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      url: "https://www.bgs.ac.uk"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/BritGeoSurvey"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/BritishGeologicalSurvey"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/britgeosurvey/"
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook"
-      url: "https://www.facebook.com/pages/British-Geological-Survey"
-    - label: "Linkedin"
-      icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/company/british-geological-survey"
+    - label: 'Website'
+      icon: 'fas fa-fw fa-link'
+      url: 'https://www.bgs.ac.uk'
+    - label: 'Twitter'
+      icon: 'fab fa-fw fa-twitter-square'
+      url: 'https://twitter.com/BritGeoSurvey'
+    - label: 'GitHub'
+      icon: 'fab fa-fw fa-github'
+      url: 'https://github.com/BritishGeologicalSurvey'
+    - label: 'Instagram'
+      icon: 'fab fa-fw fa-instagram'
+      url: 'https://instagram.com/britgeosurvey/'
+    - label: 'Facebook'
+      icon: 'fab fa-fw fa-facebook'
+      url: 'https://www.facebook.com/pages/British-Geological-Survey'
+    - label: 'Linkedin'
+      icon: 'fab fa-fw fa-linkedin'
+      url: 'https://www.linkedin.com/company/british-geological-survey'
 
 defaults:
   # _posts
   - scope:
-      path: ""
+      path: ''
       type: posts
     values:
       layout: single
@@ -116,24 +116,24 @@ defaults:
       related: true
   # _pages
   - scope:
-      path: "_pages"
+      path: '_pages'
       type: pages
     values:
       layout: single
       author_profile: true
 
 category_archive:
- type: liquid
- path: /categories/
+  type: liquid
+  path: /categories/
 tag_archive:
- type: liquid
- path: /tags/
+  type: liquid
+  path: /tags/
 
-repository: "Fuhji/test-pages"
+repository: 'BritishGeologicalSurvey/BritishGeologicalSurvey.github.io'
 
 comments:
-  provider: "utterances"
+  provider: 'utterances'
   utterances:
-    theme: "github-light" # "github-dark"
-    issue_term: "pathname"
-    label: "comments"
+    theme: 'github-light' # "github-dark"
+    issue_term: 'pathname'
+    label: 'comments'
