@@ -14,10 +14,10 @@ tags:
 
 Single page applications (SPAs), are a modern way to write full web based experiences for audiences. Dev ops, frontend and backend teams can all work in unison to deliver a common vision without compromising design or function. This is because JavaScript (JS) fills in many of the gaps common to desktop applications that are not supported by standard HTML and CSS alone.
 
-## Whats the meta?
+### Whats the meta?
 The bells and whistles that JS libraries can provide are often not without compromise. Search engine optimisation is an area that can be particularly challenging. Since search engines exclusively look at HTML, content buried within a JS application is not visible. Ultimately, this affects users who can’t rely on search engines to find the information of interest. One solution to this problem is to parse our JS application server-side and deliver the resulting HTML to the client. Rendertron is a tool to do this very thing!
 
-## The game has changed
+### The game has changed
 Rendertron, developed by Google, works by running a headless instance of chrome on the server. After a request is made for a webpage, we use NGINX to identify each client through thier client ID. Any search bot or crawler traffic is then diverted to our rendertron server. The rendertron server will parse our JS application and return information as static HTML, complete with it's content.
 
 ![Rendertron process](https://developers.google.com/search/docs/guides/images/how-dynamic-rendering-works.png)
@@ -144,4 +144,3 @@ services:
 And that’s it! No tweaks to our actual website are needed, it’s all derived through configuration files.
 
 With our NGINX and rendertron servers configured it becomes easy for us to bolt on our rendertron instance on to any project. An important step in making our data more discoverable to our users.
-
