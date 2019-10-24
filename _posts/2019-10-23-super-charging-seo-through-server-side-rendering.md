@@ -21,7 +21,7 @@ The bells and whistles that JS libraries can provide are often not without compr
 ### The game has changed
 Rendertron, developed by Google, works by running a headless instance of chrome on the server. After a request is made for a webpage, we use NGINX to identify each client through thier client ID. Any search bot or crawler traffic is then diverted to our rendertron server. The rendertron server will parse our JS application and return information as static HTML, complete with it's content.
 
-![Rendertron process](/assets/blogs/how-dynamic-rendering-works.png)
+![Rendertron process](https://developers.google.com/search/docs/guides/images/how-dynamic-rendering-works.png)
 [Source: Dynamic Rendering with Rendertron](https://webmasters.googleblog.com/2019/01/dynamic-rendering-with-rendertron.html)
 
 Our NGINX config file looks like this:
