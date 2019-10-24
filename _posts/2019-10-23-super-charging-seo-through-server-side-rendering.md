@@ -1,5 +1,6 @@
 ---
 title:  "Super-charging SEO through server side rendering"
+comments: true
 categories: 
   - DevOps
   - SEO
