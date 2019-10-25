@@ -13,7 +13,7 @@ tags:
   - middleware
 ---
 
-Single page applications (SPAs), are a modern way to write full web based experiences for audiences. Dev ops, frontend and backend teams can all work in unison to deliver a common vision without compromising design or function. This is because JavaScript (JS) fills in many of the gaps common to desktop applications that are not supported by standard HTML and CSS alone.
+Single page applications (SPAs), are a modern way to write full web based experiences for audiences. Dev ops, frontend and backend teams can all work in unison to deliver a common vision without compromising design or function. This is because JavaScript (JS) fills in many of the gaps common to desktop applications that are not supported by standard HTML and CSS alone. The <a href="https://ukgeos.ac.uk">UK Geoenergy Observatories</a> website is the first website from BGS to use SSR as a means for making data more discoverable.  
 
 ### Whats the meta?
 The bells and whistles that JS libraries can provide are often not without compromise. Search engine optimisation is an area that can be particularly challenging. Since search engines exclusively look at HTML, content buried within a JS application is not visible. Ultimately, this affects users who can’t rely on search engines to find the information of interest. One solution to this problem is to parse our JS application server-side and deliver the resulting HTML to the client. Rendertron is a tool to do this very thing!
