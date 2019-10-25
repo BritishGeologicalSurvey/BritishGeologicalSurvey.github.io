@@ -3,7 +3,6 @@ title:  "Super-charging SEO through server side rendering (SSR)"
 comments: true
 categories: 
   - DevOps
-  - SEO
 tags:
   - Server side rendering
   - SSR
