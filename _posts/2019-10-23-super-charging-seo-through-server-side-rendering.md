@@ -4,6 +4,7 @@ comments: true
 categories: 
   - DevOps
 tags:
+  - SEO
   - Server side rendering
   - SSR
   - Rendertron
