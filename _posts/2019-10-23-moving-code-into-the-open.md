@@ -119,6 +119,5 @@ It was a shame to lose the commit history when we transferred the repository.
 It wouldn't have happened if we had been developing on GitHub from the beginning.
 This is a lesson for future projects that are likely to be open-sourced.
 
-Maintaining two CI pipelines adds effort to the project.
-It is unavoidable in this case due to the need to test against proprietary databases.
+Maintaining two CI pipelines adds effort to the project but is unavoidable in this case due to the need to test against proprietary databases.
 More generally, it demonstrates that developing software in the open is easier if the surrounding ecosystem is also open source.
