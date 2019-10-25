@@ -1,50 +1,46 @@
-# Moving code into the open
+---
+title:  "Moving code into the open"
+categories:
+  - open-source
+tags:
+  - Python
+  - Oracle
+  - database
+  - GitLab
+  - GitHub
+  - continuous-integration
+---
 
 We recently released our internally-developed [etlhelper](https://github.com/BritishGeologicalSurvey/etlhelper) tool under an open source licence.
-This post is a reflection on the experience, explaining what we did and why and
-with advice for future projects.
+This post is a reflection on the experience, explaining what we did and why and with advice for future projects.
 The take-home messages are:
 
-+ If the software is intended to be released under an open-source licence, it
-  is simpler to develop it in the open from the start
-+ Developing software in the open is easiest when the surrounding ecosystem is
-  also open source
++ If the software is intended to be released under an open-source licence, it is simpler to develop it in the open from the start.
++ Developing software in the open is easiest when the surrounding ecosystem is also open source.
 
 
 ## About `etlhelper`
 
-[etlhelper](https://github.com/BritishGeologicalSurvey/etlhelper) is a Python
-library to simplify data transfer between databases.
+[etlhelper](https://github.com/BritishGeologicalSurvey/etlhelper) is a Python library to simplify data transfer between databases.
 We use it where Python programs need to access data in BGS' Oracle (and other) databases.
-It is an open source version of software developed internally under the name of
-`bgs_etl`.
+It is an open source version of software developed internally under the name of `bgs_etl`.
 
-
-`bgs_etl` began life as a script to automate installation of Oracle Instant
-Client software onto Linux servers and containers.
-Later we added functions to simplify connecting to databases and running
-queries.
+`bgs_etl` began life over a year ago as a script to automate installation of Oracle Instant Client software onto Linux servers and containers.
+Later we added functions to simplify connecting to databases and running queries.
 Pre-defined connection parameters for internal database servers were also added.
-Over the past year it has been incorporated into data transfer pipelines and
-web-service APIs.
+We now use `bgs_etl` in data transfer pipelines and web-service APIs.
 
 
 ## Why release the code?
 
-The UK Government's Digital Services have an excellent blog post describing
-[The Benefits of Coding in the Open](https://gds.blog.gov.uk/2017/09/04/the-benefits-of-coding-in-the-open/).
-These include encouraging the use of best practices and receiving contributions
-and bug fixes from external users.
+The UK Government's Digital Services have an excellent blog post describing [The Benefits of Coding in the Open](https://gds.blog.gov.uk/2017/09/04/the-benefits-of-coding-in-the-open/).
+These include encouraging the use of best practices and receiving contributions and bug fixes from external users.
 
-For me, the most important reasons were that the work was tax-payer funded so I
-wanted as many people as possible to benefit from it, and because open-sourcing
-the code makes it easy to reuse in projects with external collaborators.
-The core functions of `bgs_etl` simplified generic tasks around running SQL
-commands via Python so they are useful more widely than just within BGS.
+`bgs_etl` simplifies generic tasks around running SQL commands via Python so it is useful more widely than just within BGS.
+For me, the most important reasons were that the work was tax-payer funded (so I wanted as many people as possible to benefit from it), and because open-sourcing the code makes it easy to reuse in projects with external collaborators.
 
 
 ## Steps toward open-sourcing the project
-
 
 We aimed to publish the source code on the [BGS GitHub repository](https://github.com/BritishGeologicalSurvey) and to upload the Python package to the [PyPI package repository](https://pypi.org/project/etlhelper/) so it can be installed via Python's `pip` command.
 There were a number of steps along the way.
@@ -52,87 +48,55 @@ There were a number of steps along the way.
 
 ### Remove sensitive content
 
-The `bgs_etl` library contained sensitive content such as connection details
-for BGS databases that we didn't want to publish.
-Integration tests depended on our internal Oracle database, too.
-We decided that the cleanest solution was to split the database tools and setup scripts were moved into a new `etlhelper` package.
-Things like BGS database details remained in our internal `bgs_etl`
-package, which now imports `etlhelper` as a dependency.
+The `bgs_etl` library contained sensitive content such as connection details for BGS databases required for automated tests.
+We didn't want to make these public.
+Git commands exist to [remove all traces of files](https://help.github.com/en/github/authenticating-to-github/removing-sensitive-data-from-a-repository) from a repository history but we only wanted to remove isolated lines and would still need a new home for the sensitive data.
+We decided that the cleanest way to publish the database tools and setup scripts was to move them into a new package, `etlhelper`.
+BGS database details remained in our internal `bgs_etl` package, which now imports `etlhelper` as a dependency.
 
-There are Git commands that can modify your repository to remove files that
-only existed in past commits but in this case it was cleaner to start with a
-fresh repository.
-The big disadvantage here is that the commit that added 4,800 lines of code
-from `bgs_etl` got all the credit for work by multiple authors over the
-previous year.
-This is acknowledged in the [commit
-message](https://github.com/BritishGeologicalSurvey/etlhelper/commit/8337b9b94bc8c190c28c29077e333a7f320eafe0)
-but it is small consolation.
+The downside of this approach is that the commit that added 4,800 lines of code from `bgs_etl` took credit for work by multiple authors over the previous year.
+This is acknowledged in the [commit message](https://github.com/BritishGeologicalSurvey/etlhelper/commit/8337b9b94bc8c190c28c29077e333a7f320eafe0) but it is small consolation.
 
 
 ### Choose a licence
 
 There a many Open Source licences to choose from - [choosealicence.com](https://choosealicense.com/) has a good summary.
-These were new to BGS and so we discussed the various types with the legal
-department.
-In the end, we settled on [GNU
-LGPLv3](https://choosealicense.com/licenses/lgpl-3.0/).
-This makes the code available for commercial and non-commercial use and with no
-liability on the BGS.
-End users are free to modify the code or include it in closed-source packages
-with the condition that any modified versions must be distributed under the
-same licence.
+These were new to BGS and so we discussed the various types with the legal department.
+In the end, we settled on [GNU LGPLv3](https://choosealicense.com/licenses/lgpl-3.0/).
+This makes the code available for commercial and non-commercial use and with no liability on the BGS.
+End users are free to modify the code or include it in closed-source packages with the conditions that our contribution must be acknowledged and that any modified versions must be distributed under the same licence.
 
 
 ### Configure repository
 
-BGS has an self-hosted GitLab instance to manage code for internal use, but we
-chose to publish the public `etlhelper` to GitHub as it has a higher profile
-and we already had a presence there.
+_GitLab_ and _GitHub_ are software repository hosting platforms.
+BGS runs _GitLab_ instance on our own server to manage code for internal use.
+Even so, we chose to publish `etlhelper` to _GitHub_ as it has a higher profile and we already had a presence there.
 
-Creating a public repository on _GitHub_ for `etlhelper` was straightforward,
-however we also needed to maintain a version on _GitLab_ server.
-This was required for the Continuous Integration (CI) system that automatically runs
-tests on the code when changes are made (see below).
-We used GitLab's [repository mirroring
-capability](https://docs.gitlab.com/ee/workflow/repository_mirroring.html#overview)
-that pulls in changes from GitHub automatically.
-This way we could use the public GitHub repository as the definitive source of
-truth and all tools such as bug tracking would be fully visible to the public.
+Creating a public repository on _GitHub_ for `etlhelper` was straightforward.
+However, we also need a version on our internal _GitLab_ server for running our automated tests (see below).
+_GitLab_ has a [repository mirroring capability](https://docs.gitlab.com/ee/workflow/repository_mirroring.html#overview) so we configured it to pull in changes from _GitHub_ automatically.
+The public-facing _GitHub_ repository now acts as as the definitive source of truth and so project-related tasks, e.g. bug tracking, take place in the open.
 
 
 ### Update Continuous Integration (CI) pipelines
 
-`bgs_etl` had unit and integration tests to ensure that changes to the code
-didn't break it.
-Unit tests check the logic of individual functions, while integration tests
-check the software as it would be used.
-The integration tests connected to our internal Oracle and MS SQL
-Server databases as the whole point of the software was to make it easier to
-work with these databases.
-They also connect to an (open-source) PostgreSQL database that is created in a
-Docker container specifically for the tests and destroyed again afterwards.
-Internally, these were run by GitLab's CI tools.
+`bgs_etl` had unit and integration tests to ensure that changes to the code didn't break it.
+There are run by the Continuous Integration (CI) pipelines.
+Unit tests check the logic of individual functions, while integration tests check the software as it would be used.
+The integration tests must confirm that `etlhelper` works with Oracle, PostgreSQL, SQLite and MS SQL Server databases.
+PostgreSQL and SQLite are open source and test databases can be created at will.
+Oracle and MS SQL Server are proprietary and tests must connect to internal BGS servers; they cannot be run from GitHub.
 
-Moving to GitHub presented problems because those database connections are not
-available outside BGS.
-Nevertheless, we still wanted automatic tests to run there.
-Our initial solution is to use [Travis CI](https://travis-ci.com) to run the
-just the unit tests for merge requests made in GitHub as an initial filter.
-The full test-suite is automatically run by GitLab once code has been merged
-and synchronised by the mirroring service.
-This doesn't stop bad code being merged, but we will not make a 'release' and
-upload it to PyPI unless all the tests have passed in GitLab.
+Running at least some tests in GitHub can act as an initial filter and give contributors rapid feedback.
+Our current solution uses [Travis CI](https://travis-ci.com) to run just the unit tests whenever new code is uploaded.
+Once code has been merged it is mirrored down to GitLab where the full test suite is run.
+Bad code can still be merged, but we will not make a 'release' and upload it to PyPI unless all the tests have passed in GitLab.
 
-The integration tests were refactored to cleanly separate the different
-database types.
-This will allow integration tests for PostgreSQL and SQLite only to run in Travis CI
-as well.
-These are open source databases so we can create and destroy instances as
-required.
-Once this is configured, all the connection and data transfer logic will be
-covered in public-facing tests leaving just database-specific issues to be
-caught by the internal GitLab test runs.
+Soon we will add PostgreSQL and SQLite integration tests to Travis.
+This is possible because the test suite was refactored to cleanly separate the different database types.
+Test database parameters are defined by environment variables (and therefore not stored in the code) and tests for a given database type are automatically skipped if the database is unreachable.
+As a result, the main application logic will be covered by tests that run in GitHub and only tests specific to different proprietary database types will depend on GitLab.
 
 
 ## Thoughts on how things went
@@ -144,23 +108,20 @@ Getting initial sign-off for the release took longer than expected as there was
 no clear 'category' for this kind of output.
 Was it a product?  A publication?  A dataset?  Should it have a DOI?
 
-The code has only been out for a month and the flood of pull requests from
-external contributors racing to make improvements to our code has yet to arrive.
+It is hard to tell how `etlhelper` has been received in the month since it was released.
+There have been no pull requests with amazing new features (😞) or bug reports (☺️) so far.
 By making the code open we can track we can track [Stars](https://github.com/BritishGeologicalSurvey/etlhelper/stargazers), [Forks](https://github.com/BritishGeologicalSurvey/etlhelper/network/members) and
 [downstream dependents](https://github.com/BritishGeologicalSurvey/etlhelper/network/dependents) on GitHub, and [PyPI
 stats](https://pypistats.org/packages/etlhelper) records monthly downloads.
-These provide cold, hard metrics that can be used to quantify the 'impact' of
-releasing `etlhelper` into the wild, and will reveal if others find it useful.
+These are quantitative measures that can be used to track "impact".
 
+Splitting `etlhelper` out of `bgs_etl` was a major refactor of the code.
+This would have been torture without a suite of tests to confirm that it all still worked.
 It was a shame to lose the commit history when we transferred the repository.
 If we had been developing on GitHub from the beginning, this wouldn't have
 happened.
 This is a lesson for future projects that are likely to be open-sourced.
 
-Similarly, disentangling the CI pipeline turned out to be lots of work.
-If a project is developed in the open from the beginning then the pipeline
-wouldn't need to be changed.
-In our case, we would still need duplicate pipelines in order to connect to our
-Oracle and MS SQL Server databases.
-We have a satisfactory solution now, but these types of automated, Infrastructure-as-Code workflows are much easier when the whole ecosystem is based on open source tools.
-
+Maintaining two CI pipelines adds effort to the project.
+It is unavoidable in this case due to the need to test against proprietary databases.
+More generally, it demonstrates that developing software in the open is easier if the surrounding ecosystem is also open source.
