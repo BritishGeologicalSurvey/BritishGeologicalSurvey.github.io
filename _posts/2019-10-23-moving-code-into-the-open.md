@@ -60,7 +60,7 @@ This is acknowledged in the [commit message](https://github.com/BritishGeologica
 
 ### Choose a licence
 
-There a many Open Source licences to choose from - [choosealicence.com](https://choosealicense.com/) has a good summary.
+There a many Open Source licences to choose from; [choosealicence.com](https://choosealicense.com/) has a good summary.
 These were new to BGS and so we discussed the various types with the legal department.
 In the end, we settled on [GNU LGPLv3](https://choosealicense.com/licenses/lgpl-3.0/).
 This makes the code available for commercial and non-commercial use and with no liability on the BGS.
@@ -70,7 +70,7 @@ End users are free to modify the code or include it in closed-source packages wi
 ### Configure repository
 
 _GitLab_ and _GitHub_ are software repository hosting platforms.
-BGS runs _GitLab_ instance on our own server to manage code for internal use.
+BGS runs a _GitLab_ instance on our own server to manage code for internal use.
 Even so, we chose to publish `etlhelper` to _GitHub_ as it has a higher profile and we already had a presence there.
 
 Creating a public repository on _GitHub_ for `etlhelper` was straightforward.
@@ -109,17 +109,14 @@ no clear 'category' for this kind of output.
 Was it a product?  A publication?  A dataset?  Should it have a DOI?
 
 It is hard to tell how `etlhelper` has been received in the month since it was released.
-There have been no pull requests with amazing new features (😞) or bug reports (☺️) so far.
-By making the code open we can track we can track [Stars](https://github.com/BritishGeologicalSurvey/etlhelper/stargazers), [Forks](https://github.com/BritishGeologicalSurvey/etlhelper/network/members) and
-[downstream dependents](https://github.com/BritishGeologicalSurvey/etlhelper/network/dependents) on GitHub, and [PyPI
-stats](https://pypistats.org/packages/etlhelper) records monthly downloads.
+We have received neither pull requests with amazing new features (😞) nor bug reports (☺️) so far.
+By making the code open we can track [Stars](https://github.com/BritishGeologicalSurvey/etlhelper/stargazers), [Forks](https://github.com/BritishGeologicalSurvey/etlhelper/network/members) and [downstream dependents](https://github.com/BritishGeologicalSurvey/etlhelper/network/dependents) on GitHub, and [PyPI stats](https://pypistats.org/packages/etlhelper) records monthly downloads.
 These are quantitative measures that can be used to track "impact".
 
 Splitting `etlhelper` out of `bgs_etl` was a major refactor of the code.
 This would have been torture without a suite of tests to confirm that it all still worked.
 It was a shame to lose the commit history when we transferred the repository.
-If we had been developing on GitHub from the beginning, this wouldn't have
-happened.
+It wouldn't have happened if we had been developing on GitHub from the beginning.
 This is a lesson for future projects that are likely to be open-sourced.
 
 Maintaining two CI pipelines adds effort to the project.
