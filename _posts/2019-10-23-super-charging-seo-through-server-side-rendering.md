@@ -5,7 +5,7 @@ categories:
   - DevOps
 tags:
   - SEO
-  - Server-side-rendering
+  - server-side-rendering
   - SSR
   - Rendertron
   - Docker
