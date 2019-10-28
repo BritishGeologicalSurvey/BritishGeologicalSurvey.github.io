@@ -23,3 +23,50 @@ Rendertron, developed by Google, works by running a headless instance of chrome 
 
 ![Rendertron process](https://developers.google.com/search/docs/guides/images/how-dynamic-rendering-works.png)
 [Source: Dynamic Rendering with Rendertron](https://webmasters.googleblog.com/2019/01/dynamic-rendering-with-rendertron.html)
+
+Our NGINX config file looks like this:
+
+```bash
+# Site-specific configuration for UKGEOS
+
+# Configuration for IP addresses to skip logging f5 healthcheck pings
+geo $log_ip {
+    default 1;
+}
+
+upstream rendertron {
+    server rendertron:3000;
+}
+
+# Server configuration
+server {
+    listen       80;
+    server_name  localhost ukgeos.ac.uk *.ukgeos.ac.uk;
+    access_log /var/log/nginx/access.log main if=$log_ip;
+    charset utf-8;
+
+    # Detect user agent of client
+    set $prerender 0;
+    # if user agent is a bot - set flag to 1
+    if ($http_user_agent ~* "googlebot|yahoo|bingbot|baiduspider|yandex|yeti|yodaobot|gigabot|ia_archiver|facebookexternalhit|twitterbot|developers\.google\.com|slack|wget|WhatsApp") {
+        set $prerender 1;
+    }
+    # otherwise set flag to 0
+    if ($uri ~* "\.(js|css|xml|less|png|jpg|jpeg|gif|pdf|doc|txt|ico|rss|zip|mp3|rar|exe|wmv|doc|avi|ppt|mpg|mpeg|tif|wav|mov|psd|ai|xls|mp4|m4a|swf|dat|dmg|iso|flv|m4v|torrent|ttf|woff|svg|eot)") {
+        set $prerender 0;
+    }
+    location / {
+        root   /usr/share/nginx/html/;
+        # send request to prerender service if user agent is detected
+        if ($prerender = 1) {
+            # SSR renderer server
+            proxy_pass http://rendertron/render/https://ukgeos.ac.uk$request_uri;
+        }
+
+
+        # Angular is a single file app; there is no e.g. /data-details file, so
+        # requests are redirected to /index.html for Angular to handle
+        try_files $uri $uri/ /index.html;
+    }
+}
+```
