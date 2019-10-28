@@ -114,7 +114,6 @@ EXPOSE 3000
 ENTRYPOINT [ "npm" ]
 CMD ["run", "start"]
 ```
-
 The last step to get this working is to call up our registered rendertron server as a service for NGINX to point to:
 
 ```bash
@@ -139,6 +138,3 @@ services:
     restart: unless-stopped
 ```
 
-And that’s it! No tweaks to our actual website are needed, it’s all derived through configuration files.
-
-With our NGINX and rendertron servers configured it becomes easy for us to bolt our rendertron instance on to any project. An important step in making our data more discoverable to our users.
