@@ -26,7 +26,7 @@ Rendertron, developed by Google, works by running a headless instance of chrome 
 
 Our NGINX config file looks like this:
 
-```shell
+```bash
 # Site-specific configuration for UKGEOS
 
 # Configuration for IP addresses to skip logging f5 healthcheck pings
@@ -73,7 +73,7 @@ server {
 
 Setting up Rendertron was a straight forward process. We simply registered rendertron to our internal Docker registries:
 
-```shell
+```bash
 FROM node:10-slim
 
 # Install latest chrome dev package
@@ -116,7 +116,7 @@ CMD ["run", "start"]
 ```
 The last step to get this working is to call up our registered rendertron server as a service for NGINX to point to:
 
-```shell
+```bash
 version: '3'
 services:
   ukgeos-website:
