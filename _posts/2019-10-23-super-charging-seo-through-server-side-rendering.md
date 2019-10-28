@@ -1,7 +1,6 @@
 ---
 title:  "Super-charging search engine optimisation (SEO) for JavaScript through server side rendering (SSR)"
 author: Rehan Kaleem
-comments: true
 categories:
   - DevOps
 tags:
