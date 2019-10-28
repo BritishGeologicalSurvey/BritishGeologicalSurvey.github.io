@@ -137,3 +137,5 @@ comments:
     theme: 'github-light' # "github-dark"
     issue_term: 'pathname'
     label: 'comments'
+
+theme: jekyll-theme-minimal
