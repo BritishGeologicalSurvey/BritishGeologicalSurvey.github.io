@@ -9,3 +9,18 @@ Rehan Kaleem:
     - label: 'Email'
       icon: 'fas fa-fw fa-envelope-square'
       url: 'https://www.bgs.ac.uk/staff/sendMail.cfm?id=52011'
+
+Dr John A Stevenson:
+  name: 'Dr John A Stevenson'
+  bio: 'Geologist turned software developer'
+  avatar: 'https://avatars0.githubusercontent.com/u/12040043?s=460&v=4'
+  links:
+    - label: 'Email'
+      icon: 'fas fa-fw fa-envelope-square'
+      url: 'https://www.bgs.ac.uk/staff/sendMail.cfm?id=52011'
+    - label: 'Website'
+      icon: 'fas fa-fw fa-link'
+      url: 'https://github.com/volcan01010'
+    - label: 'Twitter'
+      icon: 'fab fa-fw fa-twitter-square'
+      url: 'https://twitter.com/volcan01010'
