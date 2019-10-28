@@ -1,7 +1,7 @@
 ---
 title:  "Super-charging search engine optimisation (SEO) for JavaScript through server side rendering (SSR)"
-comments: true
-categories: 
+author: Rehan Kaleem
+categories:
   - DevOps
 tags:
   - SEO
@@ -77,7 +77,7 @@ Setting up Rendertron was a straight forward process. We simply registered rende
 ```bash
 FROM node:10-slim
 
-# Install latest chrome dev package 
+# Install latest chrome dev package
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
   && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
   && apt-get update \
@@ -117,7 +117,7 @@ CMD ["run", "start"]
 
 ```
 
-The last step to get this working is to call up our registered rendertron server as a service for NGINX to point to: 
+The last step to get this working is to call up our registered rendertron server as a service for NGINX to point to:
 
 ```bash
 version: '3'
@@ -133,7 +133,7 @@ services:
     restart: unless-stopped
     volumes:
       - ${PWD}/logs:/var/log/nginx
-  
+
   rendertron:
     image: SERVER:PORT/path/to/rendertron:master
     ports:
