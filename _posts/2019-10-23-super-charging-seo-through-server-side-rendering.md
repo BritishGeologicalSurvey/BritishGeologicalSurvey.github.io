@@ -137,4 +137,6 @@ services:
       - ${PORT:-3000}:3000
     restart: unless-stopped
 ```
+And that’s it! No tweaks to our actual website are needed, it’s all derived through configuration files.
 
+With our NGINX and rendertron servers configured it becomes easy for us to bolt our rendertron instance on to any project. An important step in making our data more discoverable to our users.
