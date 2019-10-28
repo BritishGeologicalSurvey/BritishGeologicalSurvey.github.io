@@ -4,7 +4,6 @@ author: Rehan Kaleem
 categories:
   - DevOps
 tags:
-  - SEO
   - server-side-rendering
   - SSR
   - Rendertron
