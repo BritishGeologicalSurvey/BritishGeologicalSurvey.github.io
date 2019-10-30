@@ -38,7 +38,8 @@ The UK Government's Digital Services have an excellent blog post describing [The
 These include encouraging the use of best practices and receiving contributions and bug fixes from external users.
 
 `bgs_etl` simplifies generic tasks around running SQL commands via Python so it is useful more widely than just within BGS.
-For me, the most important reasons were that the work was tax-payer funded (so I wanted as many people as possible to benefit from it), and because open-sourcing the code makes it easy to reuse in projects with external collaborators.
+As a developer, it is satisfying to know that your work is helping as many people as possible.
+Open-sourcing the code also makes it easy to reuse in projects with external collaborators.
 
 
 ## Steps toward open-sourcing the project
@@ -61,7 +62,7 @@ This is acknowledged in the [commit message](https://github.com/BritishGeologica
 
 ### Choose a licence
 
-There a many Open Source licences to choose from; [choosealicence.com](https://choosealicense.com/) has a good summary.
+There are many Open Source licences to choose from; [choosealicence.com](https://choosealicense.com/) has a good summary.
 These were new to BGS and so we discussed the various types with the legal department.
 In the end, we settled on [GNU LGPLv3](https://choosealicense.com/licenses/lgpl-3.0/).
 This makes the code available for commercial and non-commercial use and with no liability on the BGS.
@@ -83,16 +84,17 @@ The public-facing _GitHub_ repository now acts as as the definitive source of tr
 ### Update Continuous Integration (CI) pipelines
 
 `bgs_etl` had unit and integration tests to ensure that changes to the code didn't break it.
-There are run by the Continuous Integration (CI) pipelines.
+These are run by the Continuous Integration (CI) pipelines.
 Unit tests check the logic of individual functions, while integration tests check the software as it would be used.
 The integration tests must confirm that `etlhelper` works with Oracle, PostgreSQL, SQLite and MS SQL Server databases.
 PostgreSQL and SQLite are open source and test databases can be created at will.
 Oracle and MS SQL Server are proprietary and tests must connect to internal BGS servers; they cannot be run from GitHub.
 
-Running at least some tests in GitHub can act as an initial filter and give contributors rapid feedback.
+Running at least some tests in GitHub can act as an initial filter and give contributors rapid feedback in the form of a green tick or red cross against their merge request.
 Our current solution uses [Travis CI](https://travis-ci.com) to run just the unit tests whenever new code is uploaded.
 Once code has been merged it is mirrored down to GitLab where the full test suite is run.
 Bad code can still be merged, but we will not make a 'release' and upload it to PyPI unless all the tests have passed in GitLab.
+External contributers can be notified via a comment on their merge request.
 
 Soon we will add PostgreSQL and SQLite integration tests to Travis.
 This is possible because the test suite was refactored to cleanly separate the different database types.
@@ -110,7 +112,7 @@ no clear 'category' for this kind of output.
 Was it a product?  A publication?  A dataset?  Should it have a DOI?
 
 It is hard to tell how `etlhelper` has been received in the month since it was released.
-We have received neither pull requests with amazing new features (😞) nor bug reports (☺️) so far.
+We have received neither pull requests with amazing new features (😞) nor bug reports (😊) so far.
 By making the code open we can track [Stars](https://github.com/BritishGeologicalSurvey/etlhelper/stargazers), [Forks](https://github.com/BritishGeologicalSurvey/etlhelper/network/members) and [downstream dependents](https://github.com/BritishGeologicalSurvey/etlhelper/network/dependents) on GitHub, and [PyPI stats](https://pypistats.org/packages/etlhelper) records monthly downloads.
 These are quantitative measures that can be used to track "impact".
 
@@ -121,4 +123,6 @@ It wouldn't have happened if we had been developing on GitHub from the beginning
 This is a lesson for future projects that are likely to be open-sourced.
 
 Maintaining two CI pipelines adds effort to the project but is unavoidable in this case because we need to test against proprietary databases.
+On the other hand, it is good to know that we can trigger internal CI jobs from
+code hosted externally.
 More generally, it demonstrates that developing software in the open is easier if the surrounding ecosystem is also open source.
