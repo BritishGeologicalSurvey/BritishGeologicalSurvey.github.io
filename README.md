@@ -1,2 +1,2 @@
-# BGS Development Blog
+# BGS Technical Innovations and Discussions 
 
