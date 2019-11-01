@@ -17,7 +17,7 @@ The number of organizations and projects using design systems [is increasing](ht
 
 Design systems are collections of reusable components. In web and software development those components are usually color schemes, fonts, buttons, icons,  page layouts, etc. Below is an example of how a styleguide might look like.
 
-![An example from Duolingo design system](../assets/images/2019-11-01-myhaz-design-system/duolingo-design-system.png.png)
+![An example from Duolingo design system](../assets/images/2019-11-01-myhaz-design-system/duolingo-design-system.png)
 *Some elements from Duolingo design system. [Source](https://dribbble.com/shots/3836227-Duolingo-Design-System-DDS-Elements)* 
 
 **Styleguides** usually answer the question 'what' (what are the main components - the building blocks of an app or a website). **Design systems** go a bit further and provide more details on when and how to use the component and possibly the related research that explains why the component  is designed this way. For the sake of simplicity I'll refer to them as design systems.
