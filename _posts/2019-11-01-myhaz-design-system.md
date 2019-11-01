@@ -17,10 +17,10 @@ The number of organizations and projects using design systems [is increasing](ht
 
 Design systems are collections of reusable components. In web and software development those components are usually color schemes, fonts, buttons, icons,  page layouts, etc. Below is an example of how a styleguide might look like.
 
-![Envato.com styleguide](../assets/images/2019-11-01-myhaz-design-system/envato-styleguide.png)
-*Envato.com styleguide* 
+![An example from Duolingo design system](../assets/images/2019-11-01-myhaz-design-system/duolingo-design-system.png.png)
+*Some elements from Duolingo design system. [Source](https://dribbble.com/shots/3836227-Duolingo-Design-System-DDS-Elements)* 
 
-**Styleguides** usually answer the question 'what' (what are the main componens - the building blocks of an app or a website). **Design systems** go a bit further and provide more details on when and how to use the component and possibly the related research that explains why the component  is designed this way. For the sake of simplicity I'll refer to them as design systems.
+**Styleguides** usually answer the question 'what' (what are the main components - the building blocks of an app or a website). **Design systems** go a bit further and provide more details on when and how to use the component and possibly the related research that explains why the component  is designed this way. For the sake of simplicity I'll refer to them as design systems.
 
 Design systems are used by organizations such as [Government Digital Services](https://design-system.service.gov.uk/), [TED](https://medium.com/made-by-ted/design-systems-c9de81da0b75), [Airbnb](https://airbnb.design/building-a-visual-language/), [BBC](https://www.bbc.co.uk/gel/guidelines/category/design-patterns), [Atlassian](https://www.atlassian.design/), [Yelp](https://www.yelp.co.uk/styleguide), etc. 
 
@@ -47,7 +47,7 @@ Here are a few of the reasons why we decided to jump on the band wagon of design
 - efficiency - remove duplicate work (even though the three applications are different, they share many elements)
 - customization - to be able to adapt the application in new contexts in the future (create new themes more easily
 
-## One of many ways to create design system
+## Many ways to create a design system
 
 Once we had a good understanding of user goals, the common tasks they perform and pain points that might arise in their journey, we created a rough prototype to visualize the various task flows for all three application. 
 
@@ -86,14 +86,14 @@ First thing we did was create a UI inventory of the elements required for the th
 One thing we learned is that it's better to keep the components modular - that way they can be used in more contexts than one. Instead of creating a specific card component with other components nested within it, it's better to divide larger components into smaller bits and have them separately in the design system. However, we haven't always stuck to this principle and some components were created just for a single use case.
 
 ![Status card from the myHaz design system](../assets/images/2019-11-01-myhaz-design-system/status-card-example.png)
-*Status card from the myHaz design system*
+*This component could be split up into smaller components - the card component with a left border, text with an icon and a badge. It would make it more modular and more usable in other contexts.*
 
 This is what Brad Frost calls 'Atomic Design'. Start with the smallest bits - the atoms (typography, colors), combine them into bigger bits - the molecules (cards, list elements), then, collections of molecules can become -  organisms (collections of cards, lists, etc.) and so on. Maybe it's not the most biologically accurate metaphor, but the principle is similar - order on the smaller scale, creates order on the larger scale.
 
 ![Atomic design principles by http://atomicdesign.bradfrost.com](../assets/images/2019-11-01-myhaz-design-system/atomic-design-principles.png)
 *Atomic design principles by http://atomicdesign.bradfrost.com*
 
-## Tools for design systems
+## Tools for creating and maintaining design systems
 
 There are many tools to help you with design system creation. They range from design centric to code centric and everything in between. Some examples of these tools: [Storybook](https://storybook.js.org/), [InVision Design System Manager](https://www.invisionapp.com/design-system-manager), [Pattern Lab](https://patternlab.io/), [UXPin](https://www.uxpin.com/), [Fractal](https://fractal.build/), [KSS](https://warpspire.com/kss/), [Sketch](https://www.sketch.com/), [Figma](https://www.figma.com/), etc.
 
@@ -107,7 +107,7 @@ Basically, it's a static site generator that converts scss files and correspondi
 ![Comments and related scss code are compiled into a static website](../assets/images/2019-11-01-myhaz-design-system/static-website-for-design-system.png)
 *Comments and related scss code are compiled into a static website*
 
-There is a useful guide on [csstricks.com](http://csstricks.com) on how to set it up. [https://css-tricks.com/build-style-guide-straight-sass/](https://css-tricks.com/build-style-guide-straight-sass/)
+There is a useful guide on [csstricks.com](https://css-tricks.com/build-style-guide-straight-sass/) on how to set it up.
 
 ## Design system integration into multiple projects
 
@@ -171,7 +171,7 @@ If we were to do it again, we might use [Storybook](https://storybook.js.org/). 
 ![Oprah sharing design systems with everyone](../assets/images/2019-11-01-myhaz-design-system/design-systems-for-everyone.jpg)
 *See more design systems examples at [Design Systems Repo](https://designsystemsrepo.com/design-systems/)*
 
-However, for these benefits that design systems provide to become true you have to invest time in them, use them in more projects, make them more visible and more easily accessible.
+However, for the benefits that design systems provide to become real you have to invest time in them, use them in more projects, make them more visible and make them more easily accessible.
 
 Creating a new designs system for each project is not useful. Since you want to eliminate duplicate work it might be easier to rely on external libraries.
 
