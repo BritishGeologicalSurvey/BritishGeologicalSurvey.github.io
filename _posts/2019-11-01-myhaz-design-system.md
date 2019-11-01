@@ -126,7 +126,7 @@ But in general both of these apps work with SCSS files, so we set up an automate
 
 Once we had the workflow setup the creation of new components looked something like this:
 
-![The process for creating new components](../assets/images/2019-11-01-myhaz-design-system/ceating-new-components.png)
+![The process for creating new components](../assets/images/2019-11-01-myhaz-design-system/creating-new-components.png)
 *The process for creating new components*
 
 **Step 1:** Sketch out the elements or use the existing ones from the prototype in Balsamiq.
@@ -137,7 +137,7 @@ Once we had the workflow setup the creation of new components looked something l
 
 **Step 4:** Refactor the scss code to be more readable (we used BEM model for writing css code - it makes it easier to see how different parts of a component are related to each other). 
 
-![An example of scss code structured using BEM methodology](../assets/images/2019-11-01-myhaz-design-system/ceating-new-components.png)
+![An example of scss code structured using BEM methodology](../assets/images/2019-11-01-myhaz-design-system/bem-example.png)
 *An example of scss code structured using BEM methodology*
 
 **Step 5:** Write the comments for the component which would be used to generate the components and related documentation on the static website
