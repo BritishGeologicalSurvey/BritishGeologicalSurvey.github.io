@@ -1,5 +1,5 @@
 ---
-title:  "myHaz design system"
+title:  "Does every project need a design system? "
 author: Paulius Tvaranavicius
 categories:
   - open-source
@@ -144,7 +144,7 @@ Once we had the workflow setup the creation of new components looked something l
 
 **Step 6:** Then project would listen to file changes and recompile. It was stored on gitlab, and we used gitlab pages to make it accessible to everyone without the need to run it locally. And from that gitlab repository the other projects could fetch the necessary stylesheets.
 
-## Reflection. Does everyone project need a design system?
+## Reflection. Does every project need a design system?
 
 Overall, it wasn't a smooth ride, but it helped us achieve our goals - the three applications had a consistent and unified look, and we could focus more on the interactions and user experience more instead of thinking what shadows or border radius to use on each element. However, we haven't tried to apply a different theme for this platform. It might be a challenge for the future.
 
