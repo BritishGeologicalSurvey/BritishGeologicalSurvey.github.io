@@ -168,7 +168,7 @@ And a few things we learned in this process:
 
 If we were to do it again, we might use [Storybook](https://storybook.js.org/). It seems like a promising way to create and maintain component libraries, that is being adopted by many big name projects and organizations.
 
-![Oprah sharing design systems with everyone](../assets/images/2019-11-01-myhaz-design-system/design-systems-for-everyone.png)
+![Oprah sharing design systems with everyone](../assets/images/2019-11-01-myhaz-design-system/design-systems-for-everyone.jpg)
 *See more design systems examples at [Design Systems Repo](https://designsystemsrepo.com/design-systems/)*
 
 However, for these benefits that design systems provide to become true you have to invest time in them, use them in more projects, make them more visible and more easily accessible.
