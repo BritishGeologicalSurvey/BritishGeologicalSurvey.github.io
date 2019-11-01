@@ -109,11 +109,11 @@ Basically, it's a static site generator that converts scss files and correspondi
 
 There is a useful guide on [csstricks.com](http://csstricks.com) on how to set it up. [https://css-tricks.com/build-style-guide-straight-sass/](https://css-tricks.com/build-style-guide-straight-sass/)
 
-## Integration
+## Design system integration into multiple projects
 
 The main purpose of this styleguide was to provide a single stylesheet and the building blocks for three different applications.  If people switched from using the app, to using the web portal - it should feel like it's part of the same experience.
 
-![Three different applications relying on a shared design system](../assets/images/2019-11-01-myhaz-design-system/documenting-kss.png)
+![Three different applications relying on a shared design system](../assets/images/2019-11-01-myhaz-design-system/shared-design-system.png)
 *Design systems are more useful when they support multiple products*
 
 Two of the apps shared a similar tech stack: portal and manager were built using Angular - so it was slightly easier to integrate it. But the mobile app was built using a slightly different technology - Ionic which, however uses Angular as well, but has its own quirks. 
@@ -172,4 +172,4 @@ However, for these benefits that design systems provide to become true you have 
 
 Creating a new designs system for each project is not useful. Since you want to eliminate duplicate work it might be easier to rely on external libraries.
 
-Brad Frost, in his book '[Atomic Design](http://atomicdesign.bradfrost.com/)', says that 'A design system should be a long-term commitment with the ambitious goal of revolutionizing how your organization creates digital work.'
+Brad Frost, in his book '[Atomic Design](http://atomicdesign.bradfrost.com/)', says that *'A design system should be a long-term commitment with the ambitious goal of revolutionizing how your organization creates digital work.'*
