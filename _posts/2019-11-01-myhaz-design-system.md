@@ -144,13 +144,13 @@ Once we had the workflow setup the creation of new components looked something l
 
 **Step 6:** Then project would listen to file changes and recompile. It was stored on gitlab, and we used gitlab pages to make it accessible to everyone without the need to run it locally. And from that gitlab repository the other projects could fetch the necessary stylesheets.
 
-## Reflection
+## Reflection. Does everyone project need a design system?
 
 Overall, it wasn't a smooth ride, but it helped us achieve our goals - the three applications had a consistent and unified look, and we could focus more on the interactions and user experience more instead of thinking what shadows or border radius to use on each element. However, we haven't tried to apply a different theme for this platform. It might be a challenge for the future.
 
 Creating a design system for one, even though large project can be a challenging task. For a design system to stay relevant it has to be managed and updated. Otherwise, it can go out of sync with the projects that rely on it quickly.
 
-It's often easier, especially on smaller projects, to rely on other libraries like [Angular material](https://material.angular.io/), [bulma](https://bulma.io/), [Sematinc UI](https://semantic-ui.com/), etc. You might loose the brand unity, but you save time
+It's often easier, especially on smaller projects, to rely on other libraries like [Angular material](https://material.angular.io/), [bulma](https://bulma.io/), [Sematinc UI](https://semantic-ui.com/), etc. You might loose the brand unity, but you save time.
 
 I saved the drawbacks of design systems for the end:
 
@@ -167,6 +167,9 @@ And a few things we learned in this process:
 - Add a prefix to your class names so they don't conflict with other libraries that might use the same name (.-mh-table, instead of just .table). We learned it the hard way when we found out another library was using the same class name.
 
 If we were to do it again, we might use [Storybook](https://storybook.js.org/). It seems like a promising way to create and maintain component libraries, that is being adopted by many big name projects and organizations.
+
+![Oprah sharing design systems with everyone](../assets/images/2019-11-01-myhaz-design-system/design-systems-for-everyone.png)
+*See more design systems examples at [Design Systems Repo](https://designsystemsrepo.com/design-systems/)*
 
 However, for these benefits that design systems provide to become true you have to invest time in them, use them in more projects, make them more visible and more easily accessible.
 
