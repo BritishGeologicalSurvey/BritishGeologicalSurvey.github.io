@@ -2,7 +2,7 @@
 title:  "Does every project need a design system? "
 author: Paulius Tvaranavicius
 categories:
-  - open-source
+  - design systems
 tags:
   - design system
   - css
