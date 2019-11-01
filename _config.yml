@@ -1,36 +1,21 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
 title: British Geological Survey
 email:
 description: >- # this means to ignore newlines until "baseurl:"
-  BGS is responsible for advising the UK government on geoscience and providing impartial advice to industry, academia and the public.
+  The British Geological Survey is responsible for advising the UK government on geoscience and providing impartial advice to industry, academia and the public.
 twitter_username: BritGeoSurvey
 github_username: BritishGeologicalSurvey
 minimal_mistakes_skin: default
-search: false
-
-# Build settings
+search: true
+breadcrumbs: false
+words_per_minute: 200
 markdown: kramdown
+highlighter: rouge
 remote_theme: mmistakes/minimal-mistakes
-# Outputting
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-
+timezone: 'Europe/London'
+remote_theme: "mmistakes/minimal-mistakes@4.17.2"
 include:
   - _pages
 
@@ -56,11 +41,12 @@ plugins:
   - jekyll-include-cache
   - jekyll-avatar
   - jekyll-mentions
+  - jekyll-remote-theme
 
 author:
   name: 'British Geological Survey'
   avatar: '/assets/images/BGS_purple_icon_logo.svg'
-  bio: 'BGS is responsible for advising the UK government on geoscience and providing impartial advice to industry, academia and the public.'
+  bio: 'The British Geological Survey is responsible for advising the UK government on geoscience and providing impartial advice to industry, academia and the public.'
   links:
     - label: 'Website'
       icon: 'fas fa-fw fa-link'
@@ -134,7 +120,7 @@ repository: 'BritishGeologicalSurvey/BritishGeologicalSurvey.github.io'
 comments:
   provider: 'utterances'
   utterances:
-    theme: 'github-light' # "github-dark"
+    theme: 'github-light'
     issue_term: 'pathname'
     label: 'comments'
 
