@@ -7,7 +7,7 @@ github_username: BritishGeologicalSurvey
 minimal_mistakes_skin: default
 search: true
 breadcrumbs: false
-words_per_minute: 200
+words_per_minute: 180
 markdown: kramdown
 highlighter: rouge
 remote_theme: mmistakes/minimal-mistakes
