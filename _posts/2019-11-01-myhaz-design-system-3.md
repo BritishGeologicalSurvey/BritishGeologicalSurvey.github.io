@@ -2,13 +2,12 @@
 title:  "Does every project need a design system? (Part 3)"
 author: Paulius Tvaranavicius
 categories:
-  - design systems
+  - UI-UX
 tags:
   - design system
   - css
   - scss
-  - ux
-  - ui
+  - sass
 ---
 
 This is **part 3** in a blog series about our approach to creating a shared design system for [myHAZ-VCT PLATFORM](https://oda.bgs.ac.uk/).

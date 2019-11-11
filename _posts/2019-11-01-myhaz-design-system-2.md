@@ -2,13 +2,12 @@
 title:  "Many ways to create a design system (Part 2)"
 author: Paulius Tvaranavicius
 categories:
-  - design systems
+  - UI-UX
 tags:
   - design system
   - css
   - scss
-  - ux
-  - ui
+  - sass
 ---
 
 This is **part 2** in a blog series about our approach to creating a shared design system for [myHAZ-VCT PLATFORM](https://oda.bgs.ac.uk/).
