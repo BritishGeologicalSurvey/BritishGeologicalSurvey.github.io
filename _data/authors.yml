@@ -24,3 +24,27 @@ Dr John A Stevenson:
     - label: 'Twitter'
       icon: 'fab fa-fw fa-twitter-square'
       url: 'https://twitter.com/volcan01010'
+
+Paulius Tvaranavicius:
+  name: 'Paulius Tvaranavicius'
+  bio: 'User interface and experience developer at the British Geological Survey.'
+  avatar: '/assets/images/BGS_purple_icon_logo.svg'
+  links:
+    - label: 'Website'
+      icon: 'fas fa-fw fa-link'
+      url: 'https://www.bgs.ac.uk'
+    - label: 'Email'
+      icon: 'fas fa-fw fa-envelope-square'
+      url: 'https://www.bgs.ac.uk/staff/sendMail.cfm?id=49389'
+      
+Mengyi Gong:
+  name: 'Mengyi Gong'
+  bio: 'A statistician who loves spatial data.'
+  avatar: '/assets/images/BGS_purple_icon_logo.svg'
+  links:
+    - label: 'Website'
+      icon: 'fas fa-fw fa-link'
+      url: 'https://www.bgs.ac.uk'
+    - label: 'Email'
+      icon: 'fas fa-fw fa-envelope-square'
+      url: 'https://www.bgs.ac.uk/staff/sendMail.cfm?id=51569'

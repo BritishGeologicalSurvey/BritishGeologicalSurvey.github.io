@@ -117,7 +117,7 @@ blockquote {
     font-style: italic;
 
     &:before {
-      content: "\2014";
+      content: '\2014';
       padding-right: 5px;
     }
   }
@@ -170,11 +170,12 @@ td > code {
   font-size: 0.8em;
   background: $code-background-color;
   border-radius: $border-radius;
+  color: $code-font-color;
 
   &:before,
   &:after {
     letter-spacing: -0.2em;
-    content: "\00a0"; /* non-breaking space*/
+    content: '\00a0'; /* non-breaking space*/
   }
 }
 
@@ -348,7 +349,7 @@ a,
 tr,
 td,
 form button,
-input[type="submit"],
+input[type='submit'],
 .btn,
 .highlight,
 .archive__item-teaser {
