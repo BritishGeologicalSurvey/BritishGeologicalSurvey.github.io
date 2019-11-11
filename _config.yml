@@ -4,6 +4,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   The British Geological Survey is responsible for advising the UK government on geoscience and providing impartial advice to industry, academia and the public.
 twitter_username: BritGeoSurvey
 github_username: BritishGeologicalSurvey
+og_image: "assets/images/BGS_purple_icon_logo.svg"
 minimal_mistakes_skin: default
 search: true
 breadcrumbs: false
