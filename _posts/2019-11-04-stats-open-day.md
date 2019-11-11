@@ -10,7 +10,6 @@ tags:
   - Statistics
 ---
 
-
 Sometimes people wonder what is behind the tables, graphs and models statisticians made. Are we playing tricks? Well, we cannot deny that we use some mathematical magic occasionally, but for most the time, it is about the data. To shed some light, we made a [Shiny app](https://shiny.rstudio.com/) in [R](https://www.r-project.org/), where we collect travel data from visitors to the [BGS 2019 Open Day](https://www.bgs.ac.uk/openday/) and produced some popular graphs using the data we collected live on the day. We also give a rough estimation of the carbon footprint of the journey!
 
 ## Collecting Data
