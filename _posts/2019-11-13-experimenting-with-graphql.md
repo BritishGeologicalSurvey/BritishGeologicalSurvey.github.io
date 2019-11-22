@@ -350,7 +350,7 @@ During development, in the absence of a true client application, the GraphQL Pla
 
 *GraphQL Playground*
 
-![](images/playground.PNG)
+![](../../assets/images/2019-11-13-experimenting-with-graphql/playground.PNG)
 
 *Left: query string.                         Middle: response payload.                             Right: schema through introspection.*
 
