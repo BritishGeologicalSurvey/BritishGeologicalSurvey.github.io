@@ -10,7 +10,7 @@ tags:
   - sass
 ---
 
-This is **part 2** in a blog series about our approach to creating a shared design system for [myHAZ-VCT PLATFORM](https://oda.bgs.ac.uk/).
+This is **part 3** in a blog series about our approach to creating a shared design system for [myHAZ-VCT PLATFORM](https://oda.bgs.ac.uk/).
 
 - [Part 1 - What are design systems?](../myhaz-design-system-1)
 - [Part 2 - Tools for creating sharing and managing design systems](../myhaz-design-system-2)
@@ -19,9 +19,9 @@ This is **part 2** in a blog series about our approach to creating a shared desi
 
 ## Many ways to create a design system
 
-Once we had a good understanding of user goals, the common tasks they perform and pain points that might arise in their journey, we created a rough prototype to visualize the various task flows for all three application. 
+Once we had a good understanding of user goals, the common tasks they perform and pain points that might arise in their journey, we created a rough prototype to visualize the various task flows for all three applications. 
 
-After a few iterations and user testing we were pretty certain how the three platforms are going to work. So it was time to start building. 
+After a few iterations and user testing we were pretty certain how the three platforms were going to work. So it was time to start building. 
 
 Some design systems are created in advance of product development, some - only after the product is released and a need to make it more consistent arises. In our case, it was built simultaneously with the three apps it was supposed to support.
 
@@ -51,7 +51,7 @@ We settled on a pallet was that was filled with warm and light tones. But we als
 
 First thing we did was create a UI inventory of the elements required for the three different applications. Most design systems have a lot in common - they need buttons, check-boxes, toggles, form elements, tables, etc.
 
-One thing we learned is that it's better to keep the components modular - that way they can be used in more contexts than one. Instead of creating a specific card component with other components nested within it, it's better to break up larger components into multiple components. However, we haven't always stuck to this principle and some components were created just for a single use case.
+One thing we learned is that it's better to keep the components modular - that way they can be used in more contexts than one. For example, instead of creating a very specific card component (a container that groups related pieces of information) with other components nested within it, it's better to break up larger components into smaller ones. Then, those smaller components can be used in more contexts. However, we haven't always stuck to this principle and some components were created just for a single use case.
 
 ![Status card from the myHaz design system](../../assets/images/2019-11-01-myhaz-design-system/status-card-example.png)
 *This component could be split up into smaller components - the card component with a left border, text with an icon and a badge. It would make it more modular and more usable in other contexts.*
@@ -70,7 +70,7 @@ The main purpose of this styleguide was to provide a single stylesheet and the b
 
 Two of the apps shared a similar tech stack: portal and manager were built using Angular - so it was slightly easier to integrate it. But the mobile app was built using a slightly different technology - Ionic (it relies on Angular as well, but has its own quirks). Ionic has its own design library and its own way to create new themes for its apps, so incorporating the styleguide from KSS wasn't as straightforward.
 
-But in general, all three applications work with SCSS files. So, we set up an automated process on GitLab to fetch the relevant files from the design system repository and load them into the appropriate locations on other projects. This process wasn't 100% automated (mobile stylesheets were slimmed down manually to remove unnecessary styles for mobile platform), but it made thing slightly simpler.
+But in general, all three applications work with SCSS files. So, we set up an automated process on GitLab to fetch the relevant files from the design system repository and load them into the appropriate locations on other projects. This process wasn't 100% automated (mobile stylesheets were slimmed down manually to remove unnecessary styles for mobile platform), but it made things slightly simpler.
 
 ## Workflow
 

@@ -19,7 +19,7 @@ This is **part 1** in a blog series about our approach to creating a shared desi
 
 ## What are design systems?
 
-Design systems are collections of reusable components. In web and software development those components are usually color schemes, fonts, buttons, icons, page layouts, etc. Below is an example of how a design system/stylguide might look like.
+Design systems are collections of reusable components. In web and software development those components are usually color schemes, fonts, buttons, icons, page layouts, etc. Below is an example of how a design system/styleguide might look like.
 
 ![An example from Duolingo design system](../../assets/images/2019-11-01-myhaz-design-system/duolingo-design-system.png)
 *Some elements from Duolingo design system. [Source](https://dribbble.com/shots/3836227-Duolingo-Design-System-DDS-Elements)* 

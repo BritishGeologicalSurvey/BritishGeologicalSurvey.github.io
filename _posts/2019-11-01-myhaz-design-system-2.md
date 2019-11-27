@@ -42,7 +42,7 @@ Here are some examples of these tools:
 - [Sketch](https://www.sketch.com/)
 - [Figma](https://www.figma.com/), etc.
 
-Our main requirements for the design system tool was for it be easily accessible by all developers, quick to update and easy to document. So we settled on the [KSS node](https://github.com/kss-node/kss-node). It's a node.js implementation of [KSS](https://warpspire.com/kss/): a methodology for documenting and sharing stylesheets.
+Our main requirements for the design system tool was for it to be easily accessible by all developers, quick to update and easy to document. So we settled on the [KSS node](https://github.com/kss-node/kss-node). It's a node.js implementation of [KSS](https://warpspire.com/kss/): a methodology for documenting and sharing stylesheets.
 
 ![An example of a documented KSS component](../../assets/images/2019-11-01-myhaz-design-system/documenting-kss.png)
 *An example of a documented component*
