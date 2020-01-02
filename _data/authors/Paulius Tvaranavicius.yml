@@ -1,0 +1,10 @@
+name: 'Paulius Tvaranavicius'
+bio: 'User interface and experience developer at the British Geological Survey.'
+avatar: '/assets/images/BGS_purple_icon_logo.svg'
+links:
+  - label: 'Website'
+    icon: 'fas fa-fw fa-link'
+    url: 'https://www.bgs.ac.uk'
+  - label: 'Email'
+    icon: 'fas fa-fw fa-envelope-square'
+    url: 'https://www.bgs.ac.uk/staff/sendMail.cfm?id=49389'
