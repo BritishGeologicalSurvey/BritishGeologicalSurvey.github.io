@@ -1,0 +1,52 @@
+backend:
+  name: github
+  repo: bgsandan/BritishGeologicalSurvey.github.io # Path to your GitHub repository
+media_folder: assets/images
+logo_url: 'https://www.bgs.ac.uk/images/bgs-colour-logo.svg'
+collections:
+  -
+    name: blog
+    label: 'Blog Post'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    folder: _posts/
+    fields:
+      -
+        label: Title
+        name: title
+      -
+        label: Author
+        name: author
+        widget: relation
+        collection: authors
+        displayFields:
+          - display_name
+        searchFields:
+          - display_name
+        valueField: name
+      -
+        label: Body
+        name: body
+        widget: markdown
+      -
+        label: Categories
+        name: categories
+        widget: list
+      -
+        label: Tags
+        name: tags
+        widget: list
+  -
+    label: Authors
+    name: authors
+    folder: '_data/authors'
+    identifier_field: name
+    create: true
+    editor:
+      preview: false
+    fields:
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'author' }
+      - { label: 'Short Name', name: 'name', widget: 'string' }
+      - { label: 'Diplay Name', name: 'display_name', widget: 'string' }
+      - { label: 'Avatar', name: 'avatar', widget: 'image' }
+      - { label: 'Bio', name: 'Bio', widget: 'markdown' }
