@@ -1,6 +1,6 @@
 ---
 title:  "BGS 2019 Open Day activity: a taste of statistics from collecting data to making graphs"
-author: Mengyi Gong
+author: mengyigong
 classes: wide
 categories:
   - Data Science

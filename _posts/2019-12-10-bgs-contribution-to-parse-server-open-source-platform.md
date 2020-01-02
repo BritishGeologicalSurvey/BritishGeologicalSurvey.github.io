@@ -1,6 +1,6 @@
 ---
 title:  "BGS contribution to Parse Server open-source platform"
-author: Andy Bean
+author: andybean
 categories:
   - open-source
 tags:
