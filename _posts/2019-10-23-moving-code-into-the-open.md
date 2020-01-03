@@ -1,6 +1,6 @@
 ---
 title:  "Moving code into the open"
-author: johnstevenson
+author: Dr John A Stevenson
 categories:
   - open-source
 tags:

@@ -1,6 +1,6 @@
 ---
 title:  "Experimenting with GraphQL"
-author: chriscard
+author: Chris Card
 classes: wide
 categories:
   - API Development
