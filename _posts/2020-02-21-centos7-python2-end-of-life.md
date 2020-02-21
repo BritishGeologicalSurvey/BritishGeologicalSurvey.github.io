@@ -10,7 +10,7 @@ tags:
   - continuous-integration
 ---
 
-The [sunsetting of Python 2](https://www.python.org/doc/sunset-python-2/) on 1 January 2020 has started to cause problems our CentOS 7 server administration.
+The [sunsetting of Python 2](https://www.python.org/doc/sunset-python-2/) on 1 January 2020 has been causing problems our CentOS 7 server administration.
 We use [Ansible](https://www.ansible.com/) for automatic configuration and
 a few of our long-used jobs recently began to fail as a result Python 2 / Python 3 mismatches.
 Officially, CentOS 7 is [supported until
