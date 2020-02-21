@@ -103,3 +103,6 @@ task and Python 2 is used elsewhere.  We find this preferable to setting for
 an entire host or play as the intention is most
 explicit and some other modules, notably `yum`, will only work with Python
 2.
+
+Trivia: `yum` ("Yellowdog updater, modified") is the package manager in CentOS
+7.  It requires Python 2.  CentOS 8 uses `dnf` package manager ("Dandified Yum"), which can use Python 3.
