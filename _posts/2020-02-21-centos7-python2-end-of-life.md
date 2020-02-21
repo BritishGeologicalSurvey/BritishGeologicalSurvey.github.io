@@ -10,12 +10,16 @@ tags:
   - continuous-integration
 ---
 
-The [sunsetting of Python 2](https://www.python.org/doc/sunset-python-2/) on 1 January 2020 has been causing problems our CentOS 7 server administration.
+Python 2 vs 3 mismatches have been causing problems in our
+CentOS 7 server adminstration.
 We use [Ansible](https://www.ansible.com/) for automatic configuration and
-a few of our long-used jobs recently began to fail as a result Python 2 / Python 3 mismatches.
-Officially, CentOS 7 is [supported until
-June 2024](https://wiki.centos.org/About/Product), but I think the end of
-Python 2 will hasten its demise.
+continuous integration deployments.
+A few of our long-used jobs recently broke because Python 2 dependencies were out-of-date.
+CentOS 7 itself depends on Python 2.
+It is officially [supported until
+June 2024](https://wiki.centos.org/About/Product), but I think that the [sunsetting
+of Python 2](https://www.python.org/doc/sunset-python-2/) will hasten its
+demise.
 
 The notes below explain how we solved our issues with CentOS 7 and Ansible.
 Hopefully they will be helpful to others.
@@ -102,7 +106,7 @@ hierarchy](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variable
 In the example above, the variable only applies for a single
 task and Python 2 is used elsewhere.  We find this preferable to setting for
 an entire host or play as the intention is most
-explicit and some other modules, notably `yum`, will only work with Python
+explicit and some modules, notably `yum`, will only work with Python
 2.
 
 Trivia: `yum` ("Yellowdog updater, modified") is the package manager in CentOS 7.  It requires Python 2.  CentOS 8 uses `dnf` package manager ("Dandified Yum"), which can use Python 3.
