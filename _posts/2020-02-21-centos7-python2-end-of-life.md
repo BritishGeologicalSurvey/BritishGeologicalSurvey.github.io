@@ -28,7 +28,7 @@ Hopefully they will be helpful to others.
 ## Background
 
 Ansible configures servers by connecting via SSH and running
-shell scripts and/or Python scripts to apply the settings that you requested.
+shell scripts and/or Python scripts to apply the requested settings.
 In CentOS 7, these scripts are run by Python 2.7.
 This causes two main problems with Python tools installed using the `pip`
 package manager:
@@ -100,6 +100,9 @@ use.  This must be specified wherever a module uses a Python 3 dependency e.g.
   vars:
     ansible_python_interpreter: /usr/bin/python3
 ```
+
+Without this setting, the task will fail with an `ImportError` as the Python
+2 interpreter fails to find the library installed via `pip3`.
 
 Ansible reads variable definitions according to a [defined
 hierarchy](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable).
