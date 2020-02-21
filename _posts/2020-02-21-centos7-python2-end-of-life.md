@@ -67,7 +67,8 @@ SELinux dependencies are required by some Ansible modules.
 
 ### Use pip3 to install packages
 
-The Ansible `pip` module has a flag to specify `pip3`.  Use this to install
+The Ansible `pip` module has a `executable` option to specify which `pip` to
+use.  Use this to install
 packages to the system's Python 3.
 
 ```yaml
