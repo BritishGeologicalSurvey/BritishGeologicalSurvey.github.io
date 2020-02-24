@@ -49,7 +49,7 @@ The following tasks ensure the server is able to use Python 3.
 
 ```yaml
 ---
-- name: Install latest python 3 and pip3
+- name: Install python 3.6 and pip3
   yum:
     name:
       - python36
@@ -66,7 +66,9 @@ The following tasks ensure the server is able to use Python 3.
     ansible_python_interpreter: /usr/bin/python3
 ```
 
-Note that `pip3` is automatically installed with Python 3.6 and that the
+Note that Python 3 is not available in the default repositories, so it is
+necessary to [enable the EPEL repo](https://fedoraproject.org/wiki/EPEL) or
+similar.  EPEL has Python 3.6, which automatically includes `pip3`.  The
 SELinux dependencies are required by some Ansible modules.
 
 ### Use pip3 to install packages
