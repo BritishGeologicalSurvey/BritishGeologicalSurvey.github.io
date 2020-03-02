@@ -76,7 +76,7 @@ Andy Bean:
 
 Edd Lewis:
   name: 'Edd Lewis'
-  bio: 'Standards Lead.'
+  bio: 'Geologist, Standards Lead and FOSS advocate.'
   avatar: '/assets/images/BGS_purple_icon_logo.svg'
   links:
     - label: 'Website'
@@ -85,3 +85,13 @@ Edd Lewis:
     - label: 'Email'
       icon: 'fas fa-fw fa-envelope-square'
       url: 'https://www.bgs.ac.uk/staff/sendmail.cfm?id=51349'
+    - label: 'Twitter'
+      icon: 'fab fa-fw fa-twitter-square'
+      url: 'https://twitter.com/Geologist_Edd'
+    - label: 'GitHub'
+      icon: 'fab fa-fw fa-github'
+      url: 'https://github.com/KoalaGeo'
+    - label: 'Linkedin'
+      icon: 'fab fa-fw fa-linkedin'
+      url: 'https://www.linkedin.com/in/edward-lewis-geologist/'
+      
