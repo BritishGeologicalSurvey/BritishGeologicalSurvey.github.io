@@ -34,7 +34,7 @@ However we also wanted to be more open in the work that we do, so chose to host 
 
 The GroundHog documentation had already been written MS Word as a .docx 
 
-![word doc](../../assets/images/2020-02-03-Technical-Documentation/groundhog_word.PNG)
+![Worddoc](/assets/images/2020-02-03-Technical-Documentation/groundhog_word.PNG)
 
 This had to be converted to HTML and the images extracted. 
 
@@ -62,7 +62,7 @@ We then copied this to a docs folder new repo on the BGS GitHub organisation
 
 To host the documentation on github we need to edit repo settings to enable GitHub pages from gh-pages branch. 
 
-![GitHub Pages](../../assets/images/2020-02-03-Technical-Documentation/github_setup.png) 
+![GitHubPages](../../assets/images/2020-02-03-Technical-Documentation/github_setup.png) 
 
 ## GitHub Actions Setup
 
@@ -119,10 +119,12 @@ To allow GitHub action to modify the repo we need to add SSH keys to repo deploy
 3. In repo settings>secrets add a secret key with same name "ghpagesdk" and copy/paste private key hash. 
 4.  make a commit to the master branch and check it's all working (https://github.com/BritishGeologicalSurvey/Groundhog/actions). 
 
-![GitHub Actions](../../assets/images/2020-02-03-Technical-Documentation/Github_Actions.png) 
+![GitHubActions](../../assets/images/2020-02-03-Technical-Documentation/Github_Actions.png) 
 
 ## Finished
 
 Then (if all's gone to plan) the documention will be available in easy to use format at the repo github pages link - https://britishgeologicalsurvey.github.io/Groundhog/index.html 
 
-![GroundHog Docs](../../assets/images/2020-02-03-Technical-Documentation/groundhog_docs.png) 
+![GroundHogDocs](../../assets/images/2020-02-03-Technical-Documentation/groundhog_docs.png) 
+
+![Screenshot1](../../assets/images/2019-11-04-stats/Screenshot1.png)
