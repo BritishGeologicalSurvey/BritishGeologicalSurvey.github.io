@@ -16,13 +16,13 @@ There are known challenges when publishing technical documentation / reports whe
 
 GOV.UK has a couple of good blog articles explaining the benefits of publishing to HTML over other formats. 
 
-https://gds.blog.gov.uk/2018/07/16/why-gov-uk-content-should-be-published-in-html-and-not-pdf/
+[https://gds.blog.gov.uk/2018/07/16/why-gov-uk-content-should-be-published-in-html-and-not-pdf/]
 
-https://phescreening.blog.gov.uk/2016/11/18/bye-bye-pdf-hello-html/
+[https://phescreening.blog.gov.uk/2016/11/18/bye-bye-pdf-hello-html/]
 
-The benefits are such that the Cabinet Office & Government Digital Services specify HTML5 in their guidance for publishing government documents (https://www.gov.uk/government/publications/open-standards-for-government/viewing-government-documents) 
+The benefits are such that the Cabinet Office & Government Digital Services specify HTML5 in their [guidance for publishing government documents](https://www.gov.uk/government/publications/open-standards-for-government/viewing-government-documents) 
 
-The BGS has been doing this for some time on a number of Projects/Services such as OneGeology & BGS Earthwise, however we hadn't yet done this for some legency documentation such as the user guide for our BGAS GroundHog software (https://www.bgs.ac.uk/research/environmentalModelling/groundhog/groundhogDesktop.html).
+The BGS has been doing this for some time on a number of Projects/Services such as OneGeology & BGS Earthwise, however we hadn't yet done this for some legency documentation such as the user guide for our [BGS GroundHog software](https://www.bgs.ac.uk/research/environmentalModelling/groundhog/groundhogDesktop.html).
 
 With the new release of GroundHog v2.0 we thought it would be a good time to look at migrating the documentation from MS Office/PDF to HTML. 
 
@@ -34,25 +34,25 @@ However we also wanted to be more open in the work that we do, so chose to host 
 
 The GroundHog documentation had already been written MS Word as a .docx 
 
-![Worddoc](/assets/images/2020-02-03-Technical-Documentation/groundhog_word.PNG)
+![Worddoc](../../assets/images/2020-02-03-Technical-Documentation/groundhog_word.PNG)
 
 This had to be converted to HTML and the images extracted. 
 
-To do this we used pandoc (https://pandoc.org/), a universal document converter. 
+To do this we used [pandoc](https://pandoc.org/), a universal document converter. 
 
 pandoc was installed as explained in it's own documentation.
 
 We than ran the following commands to 1. Convert the text and 2. extract the media/images.  
 
 ```bash
-pandoc --extract-media=media -s -t rst BGS_Groundhog_Desktop User_Guide_v2_0 -o user.rst
+pandoc --extract-media=media -s -t rst BGS_Groundhog_Desktop User_Guide_v2_0.docx -o user.rst
 ```
 
 We now have a .rst with all the documentation and a folder with all the media assets. 
 
 ## Repo setup 
 
-We used the sphinx-quickstart script (https://www.sphinx-doc.org/en/master/usage/quickstart.html) to get a base repo setup. 
+We used the [sphinx-quickstart script](https://www.sphinx-doc.org/en/master/usage/quickstart.html) to get a base repo setup. 
 
 We then copied the user.rst file and the media folder into the "quickstart" folder. 
 
@@ -114,16 +114,16 @@ make-pages:
 
 To allow GitHub action to modify the repo we need to add SSH keys to repo deploy & repo secrets. 
 
-1. Create SSH keys in Linux/Putty (See Step 1. for example https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-1604)
+1. Create SSH keys in Linux/Putty (See Step 1. for example [https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-1604])
 2.  In repo settings>deploy add a=deply key such as "ghpagesdk" and copy/paste public key hash
 3. In repo settings>secrets add a secret key with same name "ghpagesdk" and copy/paste private key hash. 
-4.  make a commit to the master branch and check it's all working (https://github.com/BritishGeologicalSurvey/Groundhog/actions). 
+4.  make a commit to the master branch and check it's all working ([https://github.com/BritishGeologicalSurvey/Groundhog/actions]). 
 
 ![GitHubActions](../../assets/images/2020-02-03-Technical-Documentation/Github_Actions.png) 
 
 ## Finished
 
-Then (if all's gone to plan) the documention will be available in easy to use format at the repo github pages link - https://britishgeologicalsurvey.github.io/Groundhog/index.html 
+Then (if all's gone to plan) the documention will be available in easy to use format at the repo github pages link - [https://britishgeologicalsurvey.github.io/Groundhog/index.html] 
 
 ![GroundHogDocs](../../assets/images/2020-02-03-Technical-Documentation/groundhog_docs.png) 
 
