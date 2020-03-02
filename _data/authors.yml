@@ -73,3 +73,15 @@ Andy Bean:
     - label: 'Email'
       icon: 'fas fa-fw fa-envelope-square'
       url: 'https://www.bgs.ac.uk/staff/sendMail.cfm?id=48149'
+
+Edd Lewis:
+  name: 'Edd Lewis'
+  bio: 'Standards Lead.'
+  avatar: '/assets/images/BGS_purple_icon_logo.svg'
+  links:
+    - label: 'Website'
+      icon: 'fas fa-fw fa-link'
+      url: 'https://www.bgs.ac.uk'
+    - label: 'Email'
+      icon: 'fas fa-fw fa-envelope-square'
+      url: 'https://www.bgs.ac.uk/staff/sendmail.cfm?id=51349'
