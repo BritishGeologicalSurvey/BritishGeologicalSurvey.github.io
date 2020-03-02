@@ -37,7 +37,7 @@ However we also wanted to be more open in the work that we do, so chose to host 
 
 The GroundHog documentation had already been written MS Word as a .docx 
 
-![word doc](groundhog_word.png "GroundHog Word Doc")
+![word doc](../../assets/images/2020-02-03-Technical-Documentation/groundhog_word.PNG "GroundHog Word Doc")
 
 This had to be converted to HTML and the images extracted. 
 
@@ -48,26 +48,34 @@ pandoc was installed as explained in it's own documentation.
 We than ran the following commands to 1. Convert the text and 2. extract the media/images.  
 
 ```bash
-pandoc --extract-media=media -s -t rst BGS Groundhog Desktop User Guide v2_0 -o user.rst
+pandoc --extract-media=media -s -t rst BGS_Groundhog_Desktop User_Guide_v2_0 -o user.rst
 ```
 
 We now have a .rst with all the documentation and a folder with all the media assets. 
 
 ## Repo setup 
 
+We used the sphinx-quickstart script (https://www.sphinx-doc.org/en/master/usage/quickstart.html) to get a base repo setup. 
 
+We then copied the user.rst file and the media folder into the "quickstart" folder. 
 
+We then copied this to a docs folder new repo on the BGS GitHub organisation 
 
+## GitHub Pages Setup
 
+To host the documentation on github we need to edit repo settings to enable GitHub pages from gh-pages branch. 
 
-To setup 
+![GitHub Pages](../../assets/images/2020-02-03-Technical-Documentation/github_setup.png "GitHub Pages") 
 
-- follow Sphinx quickstart
-- save to GitHub repo
-- edit repo settings to enable GitHub pages from gh-pages branch. 
-- Create .github/workflows/gh-pages.yml
+## GitHub Actions Setup
 
-.. code-block:: bash
+Finally to get this all to work we needed to use GitHub actions to build the HTML from the .rst file to the gh-pages branch. 
+
+This will build each time there's a commit to the master branch using sphinx and the read the docs theme. 
+
+We created .github/workflows/gh-pages.yml
+
+```bash
 		
 	name: github pages
 
@@ -103,10 +111,21 @@ To setup
 		      ACTIONS_DEPLOY_KEY: ${{ secrets.ghpagesdk }}
 		      PUBLISH_BRANCH: gh-pages
 		      PUBLISH_DIR: docs/_build/html
-			  
-- Create SSH keys in Linux/Putty
-- In repo settings>deploy add a=deply key such as "ghpagesdk" and copy/paste public key hash
-- In repo settings>secrets add a secret key with same name "ghpagesdk" and copy/paste private key hash. 
-- make a commit to the master brach and should all be working. 
+```
 
+## SSH Setup
 
+To allow GitHub action to modify the repo we need to add SSH keys to repo deploy & repo secrets. 
+
+1. Create SSH keys in Linux/Putty (See Step 1. for example https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-1604)
+2.  In repo settings>deploy add a=deply key such as "ghpagesdk" and copy/paste public key hash
+3. In repo settings>secrets add a secret key with same name "ghpagesdk" and copy/paste private key hash. 
+4.  make a commit to the master branch and check it's all working (https://github.com/BritishGeologicalSurvey/Groundhog/actions). 
+
+![GitHub Actions](../../assets/images/2020-02-03-Technical-Documentation/Github_Actions.png "GitHub Actions") 
+
+## Finished
+
+Then (if all's gone to plan) the documention will be available in easy to use format at the repo github pages link - https://britishgeologicalsurvey.github.io/Groundhog/index.html 
+
+![GroundHog Docs](../../assets/images/2020-02-03-Technical-Documentation/groundhog_docs.png "GroundHog Docs") 
