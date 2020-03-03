@@ -34,7 +34,7 @@ However we also wanted to be more open in the work that we do, so chose to host 
 
 The GroundHog documentation had already been written MS Word as a .docx 
 
-![Worddoc](../../assets/images/2020-02-03-Technical-Documentation/groundhog_word.PNG)
+![Worddoc](https://koalageo.github.io/BritishGeologicalSurvey.github.io/assets/images/2020-02-03-Technical-Documentation/groundhog_word.PNG)
 
 This had to be converted to HTML and the images extracted. 
 
@@ -94,7 +94,7 @@ We then copied this to a docs folder new repo on the BGS GitHub organisation
 
 To host the documentation on github we need to edit repo settings to enable GitHub pages from gh-pages branch. 
 
-![GitHubPages](../../assets/images/2020-02-03-Technical-Documentation/github_setup.png) 
+![GitHubPages](https://koalageo.github.io/BritishGeologicalSurvey.github.io/assets/images/2020-02-03-Technical-Documentation/github_setup.png) 
 
 ## GitHub Actions Setup
 
@@ -152,7 +152,7 @@ To allow GitHub action to modify the repo we need to add SSH keys to repo deploy
 3. In repo settings>secrets add a secret key with same name "ghpagesdk" and copy/paste private key hash. 
 4.  make a commit to the master branch and check it's all working ((https://github.com/BritishGeologicalSurvey/Groundhog/actions)). 
 
-![GitHubActions](../../assets/images/2020-02-03-Technical-Documentation/Github_Actions.png) 
+![GitHubActions](https://koalageo.github.io/BritishGeologicalSurvey.github.io/assets/images/2020-02-03-Technical-Documentation/Github_Actions.png) 
 
 ## Finished
 
@@ -160,5 +160,5 @@ Then (if all's gone to plan) the documention will be available in easy to use fo
 
 The documentation can easily be updated and managed through git in reStructuredText. We also hope users will enage with the documentation and make pull requests where they add/ammend the documentation to meet theur usage requirements.   
 
-![GroundHogDocs](../../assets/images/2020-02-03-Technical-Documentation/groundhog_docs.png) 
+![GroundHogDocs](https://koalageo.github.io/BritishGeologicalSurvey.github.io/assets/images/2020-02-03-Technical-Documentation/groundhog_docs.png) 
 
