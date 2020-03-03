@@ -16,9 +16,9 @@ There are known challenges when publishing technical documentation / reports whe
 
 GOV.UK has a couple of good blog articles explaining the benefits of publishing to HTML over other formats. 
 
-[https://gds.blog.gov.uk/2018/07/16/why-gov-uk-content-should-be-published-in-html-and-not-pdf/]
+(GSD Blog Article 1)[https://gds.blog.gov.uk/2018/07/16/why-gov-uk-content-should-be-published-in-html-and-not-pdf]
 
-[https://phescreening.blog.gov.uk/2016/11/18/bye-bye-pdf-hello-html/]
+(GDS Blog Article 2)[https://phescreening.blog.gov.uk/2016/11/18/bye-bye-pdf-hello-html]
 
 The benefits are such that the Cabinet Office & Government Digital Services specify HTML5 in their [guidance for publishing government documents](https://www.gov.uk/government/publications/open-standards-for-government/viewing-government-documents) 
 
