@@ -4,7 +4,7 @@ author: Edd Lewis
 classes: wide
 categories:
   - Documentation
-  - GitHub Pages
+  - GitHub-Pages
   - CI/CD
 tags:
   - ReStructuredText
