@@ -24,7 +24,7 @@ The benefits are such that the Cabinet Office & Government Digital Services spec
 
 The BGS has been doing this for some time on a number of Projects/Services such as OneGeology & BGS Earthwise, however we hadn't yet done this for some legency documentation such as the user guide for our [BGS GroundHog software](https://www.bgs.ac.uk/research/environmentalModelling/groundhog/groundhogDesktop.html).
 
-With the new release of GroundHog v2.0 we thought it would be a good time to look at migrating the documentation from MS Office/PDF to HTML. 
+With the new release of GroundHog v2.0 we thought it would be a good time to look at migrating the documentation from MS Office/PDF to HTML. We also hope to gain further stakeholder engagement with direct contributions to the documentation where users see a need. 
 
 The solution we came to was based on the workflow of other technical documentation we write at the BGS, namely to use [Sphinx](www.sphinx-doc.org) to generate reStructuredText into HTML. 
 
@@ -125,6 +125,8 @@ To allow GitHub action to modify the repo we need to add SSH keys to repo deploy
 ## Finished
 
 Then (if all's gone to plan) the documention will be available in easy to use format at the repo github pages link - [https://britishgeologicalsurvey.github.io/Groundhog/index.html] 
+
+The documentation can easily be updated and managed through git in reStructuredText. We also hope users will enage with the documentation and make pull requests where they add/ammend the documentation to meet theur usage requirements.   
 
 ![GroundHogDocs](../assets/images/2020-02-03-Technical-Documentation/groundhog_docs.png) 
 
