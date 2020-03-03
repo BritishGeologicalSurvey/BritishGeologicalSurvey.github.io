@@ -128,4 +128,3 @@ Then (if all's gone to plan) the documention will be available in easy to use fo
 
 ![GroundHogDocs](../assets/images/2020-02-03-Technical-Documentation/groundhog_docs.png) 
 
-![Screenshot1](../assets/images/2019-11-04-stats/Screenshot1.png)
