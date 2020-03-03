@@ -5,7 +5,7 @@ classes: wide
 categories:
   - Documentation
   - GitHub Pages
-  - CL/CD
+  - CI/CD
 tags:
   - ReStructuredText
   - GitHub Pages
