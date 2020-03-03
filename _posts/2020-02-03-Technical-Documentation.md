@@ -16,9 +16,9 @@ There are known challenges when publishing technical documentation / reports whe
 
 GOV.UK has a couple of good blog articles explaining the benefits of publishing to HTML over other formats. 
 
-(GSD Blog Article 1)[https://gds.blog.gov.uk/2018/07/16/why-gov-uk-content-should-be-published-in-html-and-not-pdf]
+[GSD Blog Article 1](https://gds.blog.gov.uk/2018/07/16/why-gov-uk-content-should-be-published-in-html-and-not-pdf/)
 
-(GDS Blog Article 2)[https://phescreening.blog.gov.uk/2016/11/18/bye-bye-pdf-hello-html]
+[GDS Blog Article 2](https://phescreening.blog.gov.uk/2016/11/18/bye-bye-pdf-hello-html/)
 
 The benefits are such that the Cabinet Office & Government Digital Services specify HTML5 in their [guidance for publishing government documents](https://www.gov.uk/government/publications/open-standards-for-government/viewing-government-documents) 
 
@@ -26,7 +26,7 @@ The BGS has been doing this for some time on a number of Projects/Services such 
 
 With the new release of GroundHog v2.0 we thought it would be a good time to look at migrating the documentation from MS Office/PDF to HTML. 
 
-The solution we came to was based on the workflow of other technical documentation we write at the BGS, namely to use Sphinx (www.sphinx-doc.org) to generate reStructuredText into HTML. 
+The solution we came to was based on the workflow of other technical documentation we write at the BGS, namely to use [Sphinx](www.sphinx-doc.org) to generate reStructuredText into HTML. 
 
 However we also wanted to be more open in the work that we do, so chose to host the code of GitHub with the documentation website built sing Sphinx via Gitub Actions CI/CD and hosted on GitHub pages 
 
@@ -34,7 +34,7 @@ However we also wanted to be more open in the work that we do, so chose to host 
 
 The GroundHog documentation had already been written MS Word as a .docx 
 
-![Worddoc](../../assets/images/2020-02-03-Technical-Documentation/groundhog_word.PNG)
+![Worddoc](../assets/images/2020-02-03-Technical-Documentation/groundhog_word.PNG)
 
 This had to be converted to HTML and the images extracted. 
 
@@ -62,7 +62,7 @@ We then copied this to a docs folder new repo on the BGS GitHub organisation
 
 To host the documentation on github we need to edit repo settings to enable GitHub pages from gh-pages branch. 
 
-![GitHubPages](../../assets/images/2020-02-03-Technical-Documentation/github_setup.png) 
+![GitHubPages](../assets/images/2020-02-03-Technical-Documentation/github_setup.png) 
 
 ## GitHub Actions Setup
 
@@ -70,61 +70,62 @@ Finally to get this all to work we needed to use GitHub actions to build the HTM
 
 This will build each time there's a commit to the master branch using sphinx and the read the docs theme. 
 
-We created .github/workflows/gh-pages.yml
+We created ".github/workflows/gh-pages.yml"
 
 ```bash
-		
 name: github pages
 
 on:
-push:
-branches:
-  - master
+  push:
+    branches:
+      - master
 
 jobs:
-make-pages:
-  runs-on: ubuntu-latest
-  steps:
-  - uses: actions/checkout@v1
+  make-pages:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
 
-  - name: select python version
-    uses: actions/setup-python@v1
-    with:
-      python-version: '3.7'
+    - name: select python version
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.7'
 
-  - name: install dependencies
-    run: |
-      python -m pip install --upgrade pip
-      python -m pip install sphinx
-      python -m pip install sphinx_rtd_theme
-  - name: build documentation
-    run: |
-      cd docs
-      make html
-      touch _build/html/.nojekyll
-  - name: deploy
-    uses: peaceiris/actions-gh-pages@v2
-    env:
-      ACTIONS_DEPLOY_KEY: ${{ secrets.ghpagesdk }}
-      PUBLISH_BRANCH: gh-pages
-      PUBLISH_DIR: docs/_build/html
+    - name: install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install sphinx
+        python -m pip install sphinx_rtd_theme
+
+    - name: build documentation
+      run: |
+        cd docs
+        make html
+        touch _build/html/.nojekyll
+
+    - name: deploy
+      uses: peaceiris/actions-gh-pages@v2
+      env:
+        ACTIONS_DEPLOY_KEY: ${{ secrets.ghpagesdk }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: docs/_build/html
 ```
 
 ## SSH Setup
 
 To allow GitHub action to modify the repo we need to add SSH keys to repo deploy & repo secrets. 
 
-1. Create SSH keys in Linux/Putty (See Step 1. for example [https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-1604])
+1. Create SSH keys in Linux/Putty (See Step 1. for example (https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-1604))
 2.  In repo settings>deploy add a=deply key such as "ghpagesdk" and copy/paste public key hash
 3. In repo settings>secrets add a secret key with same name "ghpagesdk" and copy/paste private key hash. 
-4.  make a commit to the master branch and check it's all working ([https://github.com/BritishGeologicalSurvey/Groundhog/actions]). 
+4.  make a commit to the master branch and check it's all working ((https://github.com/BritishGeologicalSurvey/Groundhog/actions)). 
 
-![GitHubActions](../../assets/images/2020-02-03-Technical-Documentation/Github_Actions.png) 
+![GitHubActions](../assets/images/2020-02-03-Technical-Documentation/Github_Actions.png) 
 
 ## Finished
 
 Then (if all's gone to plan) the documention will be available in easy to use format at the repo github pages link - [https://britishgeologicalsurvey.github.io/Groundhog/index.html] 
 
-![GroundHogDocs](../../assets/images/2020-02-03-Technical-Documentation/groundhog_docs.png) 
+![GroundHogDocs](../assets/images/2020-02-03-Technical-Documentation/groundhog_docs.png) 
 
-![Screenshot1](../../assets/images/2019-11-04-stats/Screenshot1.png)
+![Screenshot1](../assets/images/2019-11-04-stats/Screenshot1.png)
