@@ -156,7 +156,7 @@ To allow GitHub action to modify the repo we need to add SSH keys to repo deploy
 
 ## Finished
 
-Then (if all's gone to plan) the documention will be available in easy to use format at the repo github pages link - [https://britishgeologicalsurvey.github.io/Groundhog/index.html] 
+Then (if all's gone to plan) the documention will be available in easy to use format at the repo github pages link - [GroundHog Documentation](https://britishgeologicalsurvey.github.io/Groundhog/index.html)
 
 The documentation can easily be updated and managed through git in reStructuredText. We also hope users will enage with the documentation and make pull requests where they add/ammend the documentation to meet theur usage requirements.   
 
