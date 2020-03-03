@@ -50,6 +50,38 @@ pandoc --extract-media=media -s -t rst BGS_Groundhog_Desktop User_Guide_v2_0.doc
 
 We now have a .rst with all the documentation and a folder with all the media assets. 
 
+We made styling edits to `docs/conf.py` as outlined in the sphinx documentation to set titles, themes, favicons, logos
+
+```python
+# General information about the project.
+project = u'BGS Groundhog Documentation'
+copyright = u'2020, BGS'
+
+# -- Options for HTML output ----------------------------------------------
+
+import sphinx_rtd_theme
+
+extensions = [
+    'sphinx_rtd_theme'
+]
+
+# The theme to use for HTML and HTML Help pages.  See the documentation for
+# a list of builtin themes.
+html_theme = 'sphinx_rtd_theme'
+
+# The name of an image file (relative to this directory) to place at the top
+# of the sidebar.
+html_logo = 'images/groundhog.png'
+
+# The name of an image file (within the static path) to use as favicon of the
+# docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
+# pixels large.
+html_favicon = 'images/favicon.ico'
+
+```
+
+We also setup `docs/index.rst` to set TOC settings, chapter order and some text as this will be the landing page content. 
+
 ## Repo setup 
 
 We used the [sphinx-quickstart script](https://www.sphinx-doc.org/en/master/usage/quickstart.html) to get a base repo setup. 
@@ -70,7 +102,7 @@ Finally to get this all to work we needed to use GitHub actions to build the HTM
 
 This will build each time there's a commit to the master branch using sphinx and the read the docs theme. 
 
-We created ".github/workflows/gh-pages.yml"
+We created `.github/workflows/gh-pages.yml`
 
 ```bash
 name: github pages
