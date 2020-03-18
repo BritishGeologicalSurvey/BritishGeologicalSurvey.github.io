@@ -1,5 +1,5 @@
 ---
-title:  "Technical Documentation & GitHub Pages"
+title:  "Benefits of creating technical documentation using GitHub pages"
 author: Edd Lewis
 classes: wide
 categories:
@@ -20,7 +20,7 @@ GOV.UK has a couple of good blog articles explaining the benefits of publishing 
 
 [GDS Blog Article 2](https://phescreening.blog.gov.uk/2016/11/18/bye-bye-pdf-hello-html/)
 
-The benefits are such that the Cabinet Office & Government Digital Services specify HTML5 in their [guidance for publishing government documents](https://www.gov.uk/government/publications/open-standards-for-government/viewing-government-documents) 
+The benefits are such that the Cabinet Office & Government Digital Services specify HTML5 in their [guidance for publishing government documents](https://www.gov.uk/government/publications/open-standards-for-government/viewing-government-documents). 
 
 The BGS has been doing this for some time on a number of Projects/Services such as OneGeology & BGS Earthwise, however we hadn't yet done this for some legency documentation such as the user guide for our [BGS GroundHog software](https://www.bgs.ac.uk/research/environmentalModelling/groundhog/groundhogDesktop.html).
 
@@ -28,7 +28,7 @@ With the new release of GroundHog v2.0 we thought it would be a good time to loo
 
 The solution we came to was based on the workflow of other technical documentation we write at the BGS, namely to use [Sphinx](www.sphinx-doc.org) to generate reStructuredText into HTML. 
 
-However we also wanted to be more open in the work that we do, so chose to host the code of GitHub with the documentation website built sing Sphinx via Gitub Actions CI/CD and hosted on GitHub pages 
+However, we also wanted to be more open with our work, so chose to host the code on GitHub with the documentation website built using Sphinx via Gitub Actions CI/CD and hosted on GitHub pages. 
 
 ## Document Conversion  
 
@@ -40,17 +40,17 @@ This had to be converted to HTML and the images extracted.
 
 To do this we used [pandoc](https://pandoc.org/), a universal document converter. 
 
-pandoc was installed as explained in it's own documentation.
+pandoc was installed as explained in its own documentation.
 
-We than ran the following commands to 1. Convert the text and 2. extract the media/images.  
+We then ran the following commands to 1. Convert the text and 2. extract the media/images.  
 
 ```bash
 pandoc --extract-media=media -s -t rst BGS_Groundhog_Desktop User_Guide_v2_0.docx -o user.rst
 ```
 
-We now have a .rst with all the documentation and a folder with all the media assets. 
+We now have a .rst ([ReStructuredText](https://docutils.readthedocs.io/en/sphinx-docs/user/rst/quickstart.html)) file with all the documentation and a folder with all the media assets. 
 
-We made styling edits to `docs/conf.py` as outlined in the sphinx documentation to set titles, themes, favicons, logos
+We made styling edits to the config file: [`docs/conf.py`](https://github.com/BritishGeologicalSurvey/Groundhog/blob/master/docs/conf.py) as outlined in the sphinx documentation to set titles, themes, favicons, logos. There are numerius themes available, but we chose to use the popular ["Read the Docs" theme](https://sphinx-rtd-theme.readthedocs.io/en/stable/).
 
 ```python
 # General information about the project.
