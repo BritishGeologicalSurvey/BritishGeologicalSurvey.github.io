@@ -110,8 +110,7 @@ Ansible reads variable definitions according to a [defined
 hierarchy](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable).
 In the example above, the variable only applies for a single
 task and Python 2 is used elsewhere.  We find this preferable to setting for
-an entire host or play as the intention is most
-explicit and some modules, notably `yum`, will only work with Python
-2.
+an entire host or playbook because it makes the intention more explicit.
+Also, some modules (notably `yum`) will only work with Python 2, so using Python 3 for the whole playbook will break those steps.
 
 Trivia: `yum` ("Yellowdog updater, modified") is the package manager in CentOS 7.  It requires Python 2.  CentOS 8 uses `dnf` package manager ("Dandified Yum"), which can use Python 3.
