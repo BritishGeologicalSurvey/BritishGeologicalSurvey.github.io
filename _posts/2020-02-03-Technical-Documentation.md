@@ -50,7 +50,7 @@ pandoc --extract-media=media -s -t rst BGS_Groundhog_Desktop User_Guide_v2_0.doc
 
 We now have a .rst ([ReStructuredText](https://docutils.readthedocs.io/en/sphinx-docs/user/rst/quickstart.html)) file with all the documentation and a folder with all the media assets. 
 
-We made styling edits to the config file: [`docs/conf.py`](https://github.com/BritishGeologicalSurvey/Groundhog/blob/master/docs/conf.py) as outlined in the sphinx documentation to set titles, themes, favicons, logos. There are numerius themes available, but we chose to use the popular ["Read the Docs" theme](https://sphinx-rtd-theme.readthedocs.io/en/stable/).
+We made styling edits to the config file: [`docs/conf.py`](https://github.com/BritishGeologicalSurvey/Groundhog/blob/master/docs/conf.py) as outlined in the sphinx documentation to set titles, themes, favicons, logos. There are numerous themes available, but we chose to use the popular ["Read the Docs" theme](https://sphinx-rtd-theme.readthedocs.io/en/stable/).
 
 ```python
 # General information about the project.
