@@ -46,7 +46,7 @@ plugins:
 
 author:
   name: 'British Geological Survey'
-  avatar: '/assets/images/BGS_purple_icon_logo.svg'
+  avatar: '/assets/images/BGS-Icon-Compact-Pos-RGB.svg'
   bio: 'The British Geological Survey is responsible for advising the UK government on geoscience and providing impartial advice to industry, academia and the public.'
   links:
     - label: 'Website'
