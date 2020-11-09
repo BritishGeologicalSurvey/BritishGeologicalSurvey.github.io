@@ -6,6 +6,8 @@ from pathlib import Path
 from matplotlib import pyplot as plt
 import numpy as np
 
+from my_plots import my_imshow
+
 logger = logging.getLogger("demo")
 
 
@@ -31,7 +33,7 @@ def plot_single_figure(data_slice, title, output_dir):
     filename = output_dir / f"{title}.png"
     logger.info("Plotting %s with PID %s", filename, os.getpid())
 
-    plt.imshow(data_slice)
+    my_imshow(data_slice)
     plt.title(title)
     plt.savefig(filename)
     plt.close()
