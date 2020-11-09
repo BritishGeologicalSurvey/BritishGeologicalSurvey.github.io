@@ -31,10 +31,9 @@ def plot_single_figure(data_slice, title, output_dir):
     filename = output_dir / f"{title}.png"
     logger.info("Plotting %s with PID %s", filename, os.getpid())
 
-    fig, ax = plt.subplots()
-    ax.imshow(data_slice)
-    ax.set_title(title)
-    fig.savefig(filename)
+    plt.imshow(data_slice)
+    plt.title(title)
+    plt.savefig(filename)
     plt.close()
 
 
