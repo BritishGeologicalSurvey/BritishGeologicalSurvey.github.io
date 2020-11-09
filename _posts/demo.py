@@ -7,8 +7,6 @@ from pathlib import Path
 from matplotlib import pyplot as plt
 import numpy as np
 
-from myplots import my_imshow
-
 logger = logging.getLogger("demo")
 
 
@@ -31,15 +29,24 @@ def plot_figs(data, output_dir):
 
 def plot_single_figure(data_slice, title, output_dir):
     """
-    Draw figure for 2D data array and save in output_dir
+    Create figure for 2D data array and save in output_dir
     """
     filename = output_dir / f"{title}.png"
     logger.info("Plotting %s with PID %s", filename, os.getpid())
 
-    my_imshow(data_slice)
+    fig = draw_plot(data_slice)
     plt.title(title)
-    plt.savefig(filename)
-    plt.close()
+    fig.savefig(filename)
+    plt.close(fig)
+
+
+def draw_plot(data_slice):
+    """
+    Draw the main plot
+    """
+    fig = plt.figure()
+    plt.imshow(data_slice)
+    return fig
 
 
 if __name__ == '__main__':
