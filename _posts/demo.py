@@ -7,6 +7,8 @@ from pathlib import Path
 from matplotlib import pyplot as plt
 import numpy as np
 
+from myplots import my_imshow
+
 logger = logging.getLogger("demo")
 
 
@@ -16,14 +18,14 @@ def plot_figs(data, output_dir):
     """
     # Prepare args for plot function calls
     # args is a tuple of generators
-    args = (
+    args = zip(
         data,
         (f"level_{i:03d}" for i in count()),
         repeat(output_dir)
         )
 
     logger.info("Plotting %s figures", data.shape[0])
-    with multiprocessing.Pool() as pool:
+    with multiprocessing.get_context('fork').Pool() as pool:
         pool.starmap(plot_single_figure, args)
 
 
@@ -34,10 +36,10 @@ def plot_single_figure(data_slice, title, output_dir):
     filename = output_dir / f"{title}.png"
     logger.info("Plotting %s with PID %s", filename, os.getpid())
 
-    #plt.imshow(data_slice)
-    #plt.title(title)
-    #plt.savefig(filename)
-    #plt.close()
+    my_imshow(data_slice)
+    plt.title(title)
+    plt.savefig(filename)
+    plt.close()
 
 
 if __name__ == '__main__':
