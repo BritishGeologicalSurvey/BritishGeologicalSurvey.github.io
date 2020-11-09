@@ -21,6 +21,7 @@ def run_multi(context):
 
 
 def init():
+    """This function is called when new processes start."""
     print(f'Initializing process {os.getpid()}')
 
 
@@ -44,8 +45,8 @@ if __name__ == '__main__':
     # logger to std_err
     logging.basicConfig(level=logging.INFO)
 
-    runtime_var = 'hello'  # new variable
-    MUTABLE['runtime_var'] = runtime_var  # modify global var
+    RUNTIME_VAR = 'hello'  # new variable
+    MUTABLE['runtime_var'] = RUNTIME_VAR  # modify global var
 
     logger.info("Original PID: %s", os.getpid())
     logger.info("root logger id: %s", id(logging.getLogger()))
