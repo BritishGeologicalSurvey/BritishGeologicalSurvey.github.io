@@ -23,7 +23,7 @@ def plot_figs(data, output_dir):
         )
 
     logger.info("Plotting %s figures", data.shape[0])
-    with multiprocessing.get_context("spawn").Pool() as pool:
+    with multiprocessing.Pool() as pool:
         pool.starmap(plot_single_figure, args)
 
 
@@ -34,10 +34,10 @@ def plot_single_figure(data_slice, title, output_dir):
     filename = output_dir / f"{title}.png"
     logger.info("Plotting %s with PID %s", filename, os.getpid())
 
-    plt.imshow(data_slice)
-    plt.title(title)
-    plt.savefig(filename)
-    plt.close()
+    #plt.imshow(data_slice)
+    #plt.title(title)
+    #plt.savefig(filename)
+    #plt.close()
 
 
 if __name__ == '__main__':
