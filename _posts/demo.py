@@ -1,3 +1,4 @@
+from itertools import count, islice, repeat
 import logging
 import multiprocessing
 import os
@@ -14,13 +15,15 @@ def plot_figs(data, output_dir):
     Save figures in output_dir for each 2D slice through data
     """
     # Prepare args for plot function calls
-    args = []
-    for i, data_slice in enumerate(data):
-        title = f"level_{i:03d}"
-        args.append((data_slice, title, output_dir))
+    # args is a tuple of generators
+    args = (
+        data,
+        (f"level_{i:03d}" for i in count()),
+        repeat(output_dir)
+        )
 
     logger.info("Plotting %s figures", data.shape[0])
-    with multiprocessing.Pool() as pool:
+    with multiprocessing.get_context("spawn").Pool() as pool:
         pool.starmap(plot_single_figure, args)
 
 
