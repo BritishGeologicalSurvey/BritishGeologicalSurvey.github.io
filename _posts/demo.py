@@ -7,6 +7,9 @@ from pathlib import Path
 from matplotlib import pyplot as plt
 import numpy as np
 
+
+# Set up logging
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("demo")
 
 
@@ -23,7 +26,7 @@ def plot_figs(data, output_dir):
         )
 
     logger.info("Plotting %s figures", data.shape[0])
-    with multiprocessing.get_context('fork').Pool() as pool:
+    with multiprocessing.get_context('spawn').Pool() as pool:
         pool.starmap(plot_single_figure, args)
 
 
@@ -50,9 +53,6 @@ def draw_plot(data_slice):
 
 
 if __name__ == '__main__':
-    # Set up logging
-    logging.basicConfig(level=logging.INFO)
-
     # Set up plotting
     data = np.random.rand(10, 1000, 1000)
     output_dir = Path('/tmp') / 'figs'
