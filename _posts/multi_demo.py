@@ -51,12 +51,10 @@ if __name__ == '__main__':
     logger.info("Original PID: %s", os.getpid())
     logger.info("root logger id: %s", id(logging.getLogger()))
 
-    print()
+    for context in ('fork', 'spawn', 'forkserver'):
+        print(f"\n{40 * '-'}\n")
 
-    run_multi('fork')
-    logger.info("MUTABLE after tasks: %s", MUTABLE)
+        run_multi(context)
+        logger.info("MUTABLE after tasks: %s", MUTABLE)
 
-    print(f"\n{40 * '-'}\n")
-
-    run_multi('spawn')
-    logger.info("MUTABLE after tasks: %s", MUTABLE)
+        print()
