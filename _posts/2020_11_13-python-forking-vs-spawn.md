@@ -11,8 +11,8 @@ tags:
 ---
 
 I recently got stuck trying to plot multiple figures in parallel with Matplotlib.
-It took 5 hours to find a 2-line fix to make it work again.
-Afterwards I spent even more hours learning about multiprocessing to understand
+It took five hours to find a two-line fix to make it work.
+Afterwards I spent even more hours learning about multiprocessing in order to understand
 what had gone wrong and how the fix worked.
 This post is an attempt to capture what I learned.
 
@@ -62,27 +62,25 @@ I was now also very curious about `fork` and `spawn`.
 
 ### Fork vs spawn
 
-See the link above for *why* this works.
+Forking and spawning are two different [start
+methods](https://docs.python.org/3/library/multiprocessing.html#contexts-and-start-methods)
+for new processes.
+Fork is the default on Linux (and is not available on Windows), while Windows
+and MacOS use spawn by default.
 
-### Why the code was hanging
+When a process is `forked` the new process is created with all the same
+variables in the same state as they were in the parent.
+Things continue as they were and the pool loops over the `args`, allocating
+them to the different child processes.
+The processes carry on down their own independent paths from the fork point.
 
+When a process is `spawned`, it gets a new Python instance.
+It imports the module and creates new versions of all the variables before
+calling the `plot_function`.
+These processes also continue independently from there on.
 
-As explained in the linked blog post, the problem is that resources that have been locked by threads in the parent process remain locked when you _fork_ the process.
-However, the thread that holds the lock (and would eventually release the
-resource) is not transferred.
-Anything else that needs the resource is stuck waiting and the process hangs.
-Using to _spawn_ results in creation of fresh instances of the resources so
-none of them are in a locked state.
-
-
-To understand the difference between "fork" and "spawn", I wrote the script
-below.
-Fork starts each child process with the variables in the exact state that they were
-in the parent process.
-Spawn re-imports the module into the child process and thus recreates all the
-variables.
-Thus the locked state of resources is not transferred when you use "spawn".
-
+I wrote a script to explore the differences.
+You can see it and the output that it produces a the end of this post.
 The practical differences are summarised in this table.
 
 | Action | fork | spawn |
@@ -91,12 +89,44 @@ The practical differences are summarised in this table.
 | Module-level variables and functions present | yes | yes |
 | Reuse processes for multiple pool args | yes | yes |
 | Track variable state within processes | yes | yes |
-| Update parent process from child variable state | no | no |
+| Import module at start of each process | no | yes |
 | Variables have same id as in parent process | yes | no |
-| Import module in each process | no | yes |
 | Include variables defined in name equals main block | yes | no |
 | Include changes made in name equals main block | yes | no |
+| Update parent process from child variable state | no | no |
 
+
+### Why the code was hanging
+
+As explained in the linked blog post, the problem with my test runner was due to threads in the parent process.
+These are not transferred to the children.
+Resources that have been locked by threads in the parent process remain locked when you _fork_ the process.
+However, the thread that holds the lock (and would eventually release the
+resource) is not transferred.
+Anything else that needs the resource is stuck waiting and the process hangs.
+Using to _spawn_ results in creation of fresh instances of the resources so none of them are in a locked state.
+
+
+### Extra features of multiprocessing
+
+There were some other interesting aspects of multiprocessing.
+The experiments here show that processes are independent and modifications to
+mutable objects in one are not reflected in others.
+If you do need to share state between processes, you can use
+a [Manager()](https://docs.python.org/3/library/multiprocessing.html#sharing-state-between-processes)
+object.
+Also, things such as logging configuration that are normally defined in the
+`__name__ == '__main__'` block of a script are not passed to the spawned
+processes.
+You can handle this be defining an [initializer](https://docs.python.org/3/library/multiprocessing.html#module-multiprocessing.pool) function that is called at the
+beginning of each process.
+The final Ash Model Plotting
+[plotting.py](https://github.com/BritishGeologicalSurvey/ash-model-plotting/blob/6b2607ed17c07f88c5d5598ef717d72550e9abcf/ash_model_plotting/plotting.py#L121)
+code had to use both of these features.
+
+------
+
+### Script to show differences between fork and spawn
 
 ```python
 # fork_vs_spawn.py
@@ -171,7 +201,7 @@ if __name__ == '__main__':
     logger.info("MUTABLE after tasks: %s", MUTABLE)
 ```
 
-Output:
+#### Script output
 
 ```
 Importing 'multi_demo.py' at 2020-11-11 22:33:52.142051
