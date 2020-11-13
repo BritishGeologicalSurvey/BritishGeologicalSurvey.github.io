@@ -10,27 +10,33 @@ tags:
   - Matplotlib
 ---
 
-I recently got stuck trying to simultaneously plot multiple figures in Matplotlib as part of our [ash-model-plotting](https://github.com/BritishGeologicalSurvey/ash-model-plotting) library.
-It took 5 hours to find the simple fix to make it work again.
-It took even more hours to understand what was going wrong and how
-multiprocessing works.
-This post is an attempt to capture some of what I learned.
+I recently got stuck trying to plot multiple figures in parallel with Matplotlib.
+It took 5 hours to find a 2-line fix to make it work again.
+Afterwards I spent even more hours learning about multiprocessing to understand
+what had gone wrong and how the fix worked.
+This post is an attempt to capture what I learned.
 
-#### The problem
 
-Ash Model Plotting produces maps of simulated of volcanic ash clouds at many
-different times and elevations.
-There can be hundreds of independent maps per simulation so plotting them in parallel
-is an obvious way to speed them up.
-Python's [multiprocessing pool](https://docs.python.org/3/library/multiprocessing.html) was an easy way to set this up.
-`pool.map(plot_function, args)` (or `pool.starmap(plot_function, tuples_of_args)` as I needed) sets up multiple processes to call `plot_function` with different arguments in parallel.
-Unfortunately, when I tried it as part of the test suite, it caused the process to hang/freeze.
+### The problem
+
+The British Geological Survey's [Ash Model Plotting](https://github.com/BritishGeologicalSurvey/ash-model-plotting) tool makes maps of simulated of volcanic ash clouds.
+Properties are calculated on a grid of locations for many different times and elevations, resulting in hundreds of maps.
+Creating the maps is [CPU-bound](https://realpython.com/python-concurrency/#how-to-speed-up-a-cpu-bound-program) and each map is independent, so plotting with multiple processes is a logical way to speed it up.
+
+Python's [multiprocessing pool](https://docs.python.org/3/library/multiprocessing.html) makes this easy to set up.
+Using `pool.map(plot_function, args)` (or `pool.starmap(plot_function, tuples_of_args)` as I needed) will use multiple processes to call `plot_function` on the different `args` in parallel.
+
+It didn't take long to configure the code to use the pool for a simple script.
+Unfortunately, however, calling the function within the test suite caused _pytest_ to hang/freeze.
 Quitting with _\<ctrl-c\>_ said that it was stuck at `waiter.aquire()`.
+Thus began a long search through Stack Overflow, bug reports and blog posts for
+a way to make it run.
 
-#### The answer
 
-The answer was in the [Why your multiprocessing Pool is stuck (it's full of sharks!)](https://pythonspeed.com/articles/python-multiprocessing/) blog post.
-Modifying the code to "spawn" new processes in the multiprocessing pool, instead of using the default "fork" method, fixed my problem.
+### The fix
+
+I eventually found the answer in a blog post called [Why your multiprocessing Pool is stuck (it's full of sharks!)](https://pythonspeed.com/articles/python-multiprocessing/).
+It suggested modifying the code to "spawn" new processes in the multiprocessing pool, instead of using the default "fork" method.
 This is as simple as changing:
 
 ```python
@@ -49,13 +55,25 @@ with multiprocessing.get_context('spawn').Pool() as pool:
     pool.map(plot_function, args)
 ```
 
+I made the change, pytest ran to completion and all the tests turned green.
+I was very happy.
+I was now also very curious about `fork` and `spawn`.
+
+
+### Fork vs spawn
+
 See the link above for *why* this works.
-The problem is that resources that have been locked by threads in the parent process remain locked when the forked process begins.
-However the thread that holds the lock (and would eventually release the
+
+### Why the code was hanging
+
+
+As explained in the linked blog post, the problem is that resources that have been locked by threads in the parent process remain locked when you _fork_ the process.
+However, the thread that holds the lock (and would eventually release the
 resource) is not transferred.
 Anything else that needs the resource is stuck waiting and the process hangs.
+Using to _spawn_ results in creation of fresh instances of the resources so
+none of them are in a locked state.
 
-#### Fork vs spawn
 
 To understand the difference between "fork" and "spawn", I wrote the script
 below.
