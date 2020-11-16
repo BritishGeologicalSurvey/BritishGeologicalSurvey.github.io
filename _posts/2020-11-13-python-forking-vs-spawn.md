@@ -194,10 +194,10 @@ def init():
 def hold_lock(lock, hold_time=1):
     """Hold a lock item for "hold_time" seconds"""
     lock.acquire()
-    logging.info("*** Lock acquired in thread process ***")
+    logger.info("*** Lock acquired in thread process ***")
     time.sleep(hold_time)
     lock.release()
-    logging.info("*** Lock released in thread process ***")
+    logger.info("*** Lock released in thread process ***")
 
 
 def run_task(index):
@@ -206,7 +206,7 @@ def run_task(index):
     logger.info("Hello from run_task(%s) with root logger id %s",
                 index, id(logging.getLogger()))
     print(f"Index: {index}")
-    print(f"PID: {os.getpid()}")
+    print(f"process ID: {os.getpid()}")
 
     public_globals = [g for g in globals().keys() if not g.startswith('__')]
     print(f"Global vars: {', '.join(public_globals)}")
@@ -227,7 +227,7 @@ if __name__ == '__main__':
     # Configure root logger with handler to print messages from multi_demo
     # logger to std_err
     logging.basicConfig(level=logging.INFO)
-    logger.info("Original PID: %s", os.getpid())
+    logger.info("Original process ID: %s", os.getpid())
     logger.info("root logger id: %s", id(logging.getLogger()))
 
     # modify mutable global var
@@ -259,53 +259,53 @@ if __name__ == '__main__':
 
 
 ```
-Importing 'multi_demo.py' at 2020-11-16 16:26:39.146041
-INFO:multi_demo:Original PID: 438271
-INFO:multi_demo:root logger id: 139988234930688
+Importing 'multi_demo.py' at 2020-11-16 17:19:32.825109
+INFO:multi_demo:Original process ID: 439383
+INFO:multi_demo:root logger id: 140472182712832
 INFO:multi_demo:MUTABLE before tasks: {'mutated': True}
-INFO:root:*** Lock acquired in thread process ***
+INFO:multi_demo:*** Lock acquired in thread process ***
 INFO:multi_demo:Number of running threads: 2
 
 
 
-INFO:multi_demo:Running as 'fork' pool at 2020-11-16 16:26:39.147845
+INFO:multi_demo:Running as 'fork' pool at 2020-11-16 17:19:32.826051
 INFO:multi_demo:____________________ pool process begin ____________________
-Initializing process 438273
-Initializing process 438274
-INFO:root:*** Lock released in thread process ***
-INFO:multi_demo:Hello from run_task(2) with root logger id 139988234930688
-INFO:multi_demo:Hello from run_task(1) with root logger id 139988234930688
-Index: 2
-PID: 438274
-Global vars: dt, logging, get_context, os, time, Lock, Thread, enumerate, logger, CONSTANT, MUTABLE, LOCK, run_multi, init, hold_lock, run_task, lock_holder_thread, context
-CONSTANT: 3.14 (with id 139988236068080)
-MUTABLE: {'mutated': True, 2: 438274}
-Number of running threads: 1
-LOCK is locked? True
-
+Initializing process 439385
+Initializing process 439386
+INFO:multi_demo:*** Lock released in thread process ***
+INFO:multi_demo:Hello from run_task(1) with root logger id 140472182712832
 Index: 1
-PID: 438273
+process ID: 439385
 Global vars: dt, logging, get_context, os, time, Lock, Thread, enumerate, logger, CONSTANT, MUTABLE, LOCK, run_multi, init, hold_lock, run_task, lock_holder_thread, context
-CONSTANT: 3.14 (with id 139988236068080)
-MUTABLE: {'mutated': True, 1: 438273}
+CONSTANT: 3.14 (with id 140472183846128)
+MUTABLE: {'mutated': True, 1: 439385}
 Number of running threads: 1
 LOCK is locked? True
 
-INFO:multi_demo:Hello from run_task(3) with root logger id 139988234930688
+INFO:multi_demo:Hello from run_task(2) with root logger id 140472182712832
+Index: 2
+process ID: 439386
+Global vars: dt, logging, get_context, os, time, Lock, Thread, enumerate, logger, CONSTANT, MUTABLE, LOCK, run_multi, init, hold_lock, run_task, lock_holder_thread, context
+CONSTANT: 3.14 (with id 140472183846128)
+MUTABLE: {'mutated': True, 2: 439386}
+Number of running threads: 1
+LOCK is locked? True
+
+INFO:multi_demo:Hello from run_task(3) with root logger id 140472182712832
 Index: 3
-PID: 438274
+process ID: 439385
+INFO:multi_demo:Hello from run_task(4) with root logger id 140472182712832
+Index: 4
+process ID: 439386
 Global vars: dt, logging, get_context, os, time, Lock, Thread, enumerate, logger, CONSTANT, MUTABLE, LOCK, run_multi, init, hold_lock, run_task, lock_holder_thread, context
-CONSTANT: 3.14 (with id 139988236068080)
-MUTABLE: {'mutated': True, 2: 438274, 3: 438274}
+CONSTANT: 3.14 (with id 140472183846128)
+MUTABLE: {'mutated': True, 2: 439386, 4: 439386}
 Number of running threads: 1
 LOCK is locked? True
 
-INFO:multi_demo:Hello from run_task(4) with root logger id 139988234930688
-Index: 4
-PID: 438273
 Global vars: dt, logging, get_context, os, time, Lock, Thread, enumerate, logger, CONSTANT, MUTABLE, LOCK, run_multi, init, hold_lock, run_task, lock_holder_thread, context
-CONSTANT: 3.14 (with id 139988236068080)
-MUTABLE: {'mutated': True, 1: 438273, 4: 438273}
+CONSTANT: 3.14 (with id 140472183846128)
+MUTABLE: {'mutated': True, 1: 439385, 3: 439385}
 Number of running threads: 1
 LOCK is locked? True
 
@@ -313,41 +313,41 @@ INFO:multi_demo:____________________ pool process end ____________________
 
 
 
-INFO:multi_demo:Running as 'spawn' pool at 2020-11-16 16:26:47.219076
+INFO:multi_demo:Running as 'spawn' pool at 2020-11-16 17:19:40.908982
 INFO:multi_demo:____________________ pool process begin ____________________
-Importing 'multi_demo.py' at 2020-11-16 16:26:47.371197
-Importing 'multi_demo.py' at 2020-11-16 16:26:47.373720
-Initializing process 438280
-Initializing process 438281
+Importing 'multi_demo.py' at 2020-11-16 17:19:41.097592
+Importing 'multi_demo.py' at 2020-11-16 17:19:41.098022
+Initializing process 439393
+Initializing process 439394
 Index: 1
-PID: 438280
+process ID: 439393
 Global vars: dt, logging, get_context, os, time, Lock, Thread, enumerate, logger, CONSTANT, MUTABLE, LOCK, run_multi, init, hold_lock, run_task
-CONSTANT: 3.14 (with id 139758437832976)
-MUTABLE: {'mutated': False, 1: 438280}
+CONSTANT: 3.14 (with id 140312126736656)
+MUTABLE: {'mutated': False, 1: 439393}
 Number of running threads: 1
 LOCK is locked? False
 
 Index: 2
-PID: 438281
+process ID: 439394
 Global vars: dt, logging, get_context, os, time, Lock, Thread, enumerate, logger, CONSTANT, MUTABLE, LOCK, run_multi, init, hold_lock, run_task
-CONSTANT: 3.14 (with id 140531678189840)
-MUTABLE: {'mutated': False, 2: 438281}
+CONSTANT: 3.14 (with id 140298227288336)
+MUTABLE: {'mutated': False, 2: 439394}
 Number of running threads: 1
 LOCK is locked? False
 
 Index: 3
-PID: 438280
+process ID: 439393
 Global vars: dt, logging, get_context, os, time, Lock, Thread, enumerate, logger, CONSTANT, MUTABLE, LOCK, run_multi, init, hold_lock, run_task
-CONSTANT: 3.14 (with id 139758437832976)
-MUTABLE: {'mutated': False, 1: 438280, 3: 438280}
+CONSTANT: 3.14 (with id 140312126736656)
+MUTABLE: {'mutated': False, 1: 439393, 3: 439393}
 Number of running threads: 1
 LOCK is locked? False
 
 Index: 4
-PID: 438281
+process ID: 439394
 Global vars: dt, logging, get_context, os, time, Lock, Thread, enumerate, logger, CONSTANT, MUTABLE, LOCK, run_multi, init, hold_lock, run_task
-CONSTANT: 3.14 (with id 140531678189840)
-MUTABLE: {'mutated': False, 2: 438281, 4: 438281}
+CONSTANT: 3.14 (with id 140298227288336)
+MUTABLE: {'mutated': False, 2: 439394, 4: 439394}
 Number of running threads: 1
 LOCK is locked? False
 

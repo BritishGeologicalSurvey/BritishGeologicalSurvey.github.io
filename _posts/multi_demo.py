@@ -32,10 +32,10 @@ def init():
 def hold_lock(lock, hold_time=1):
     """Hold a lock item for "hold_time" seconds"""
     lock.acquire()
-    logging.info("*** Lock acquired in thread process ***")
+    logger.info("*** Lock acquired in thread process ***")
     time.sleep(hold_time)
     lock.release()
-    logging.info("*** Lock released in thread process ***")
+    logger.info("*** Lock released in thread process ***")
 
 
 def run_task(index):
@@ -44,7 +44,7 @@ def run_task(index):
     logger.info("Hello from run_task(%s) with root logger id %s",
                 index, id(logging.getLogger()))
     print(f"Index: {index}")
-    print(f"PID: {os.getpid()}")
+    print(f"process ID: {os.getpid()}")
 
     public_globals = [g for g in globals().keys() if not g.startswith('__')]
     print(f"Global vars: {', '.join(public_globals)}")
@@ -65,7 +65,7 @@ if __name__ == '__main__':
     # Configure root logger with handler to print messages from multi_demo
     # logger to std_err
     logging.basicConfig(level=logging.INFO)
-    logger.info("Original PID: %s", os.getpid())
+    logger.info("Original process ID: %s", os.getpid())
     logger.info("root logger id: %s", id(logging.getLogger()))
 
     # modify mutable global var
