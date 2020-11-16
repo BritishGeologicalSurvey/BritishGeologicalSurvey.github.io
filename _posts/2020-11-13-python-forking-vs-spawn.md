@@ -82,7 +82,7 @@ parent.
 
 Neither method copies running threads into the child processes.
 
-A comparison of the two methods can be summarised as follows:
+Similarities and differences between the two start methods are:
 
 | Action | fork | spawn |
 | ---- | ---- | ---- |
@@ -97,7 +97,7 @@ A comparison of the two methods can be summarised as follows:
 | Threads from parent process run in child processes | no | no |
 | Threads from parent process modify child variables | no | no |
 
-See appendix for script to demonstrate these.
+See appendix for script to illustrate these.
 
 ### Why my code was hanging
 
@@ -129,7 +129,7 @@ See the Ash Model Plotting code for examples of each: [ash_model_plotting/plotti
 ### Learn more
 
 Hopefully these notes have given you (or [future me](https://xkcd.com/1421/)) some insight into multiprocessing and a possible fix for processes that freeze.
-There is a bug report on Python.org that suggests making "spawn" the default start method.  [multiprocessing's default start method of fork()-without-exec() is broken](https://bugs.python.org/issue40379).
+There is a bug report on Python.org that suggests making "spawn" the default start method ([multiprocessing's default start method of fork()-without-exec() is broken](https://bugs.python.org/issue40379)).
 It may be worth checking back there to see if things change in future.
 
 Below is a script to demonstrate some differences between `fork` and `spawn`.
