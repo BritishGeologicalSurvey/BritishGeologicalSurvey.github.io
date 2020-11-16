@@ -148,6 +148,13 @@ processes work in each context.
 Running it for yourself and modifying outputs may help understanding of how
 things work.
 
+Notice especially what happens to the LOCK in each case.
+In the `fork` version, the lock is released after the child processes have
+begun so their version of it remains locked.
+In the `spawn` version, the thread that acquires the lock is never started as
+it is not called when the module is imported.
+
+
 ```python
 # multi_demo.py
 import datetime as dt
