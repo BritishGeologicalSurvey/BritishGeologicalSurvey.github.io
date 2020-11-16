@@ -3,6 +3,7 @@ import logging
 from multiprocessing import get_context
 import os
 import time
+from threading import Lock
 
 print(f"Importing 'multi_demo.py' at {dt.datetime.now()}")
 logger = logging.getLogger("multi_demo")
@@ -10,6 +11,7 @@ logger = logging.getLogger("multi_demo")
 # Define some module-level variables
 CONSTANT = 3.14
 MUTABLE = {"mutated": False}
+LOCK = Lock()
 
 
 def run_multi(context):
@@ -39,6 +41,11 @@ def run_task(index):
 
     MUTABLE[index] = os.getpid()
     print(f"MUTABLE: {MUTABLE}")
+
+    print(f"LOCK is locked? {LOCK.locked()}")
+    # Uncomment the following to cause "fork" process to hang
+    # LOCK.acquire()
+
     print()
 
 
@@ -52,6 +59,10 @@ if __name__ == '__main__':
     # modify mutable global var
     MUTABLE['mutated'] = True
     logger.info("MUTABLE before tasks: %s", MUTABLE)
+
+    # Acquiring the lock will cause any other process that tries to acquire it
+    # to hang until it is free
+    LOCK.acquire()
 
     # Run pool processes with different contexts
     for context in ('fork', 'spawn'):
