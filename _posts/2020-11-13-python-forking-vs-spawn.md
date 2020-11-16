@@ -80,6 +80,7 @@ the `plot_function` is called on the `args`.
 As with forking, the child processes are independent of each other and the
 parent.
 
+Neither method copies running threads into the child processes.
 
 The full output is below and can be summarised as follows:
 
@@ -91,9 +92,8 @@ The full output is below and can be summarised as follows:
 | Track variable state within processes | yes | yes |
 | Import module at start of each process | no | yes |
 | Variables have same id as in parent process | yes | no |
-| Include variables defined in name equals main block | yes | no |
-| Include changes made in name equals main block | yes | no |
-| Update parent process from child variable state | no | no |
+| Child process gets variables defined in name == main block | yes | no |
+| Parent process variables are updated from child process state | no | no |
 | Threads from parent process run in child processes | no | no |
 | Threads from parent process modify child variables | no | no |
 
@@ -113,27 +113,29 @@ Using _spawn_ creates of fresh instances of each resource so none are in a locke
 
 ### Other multiprocessing tricks
 
-The experiments here show that processes are independent and state is not
-shared between.
-In the Ash Model Plotting [plotting.py code](https://github.com/BritishGeologicalSurvey/ash-model-plotting/blob/6b2607ed17c07f88c5d5598ef717d72550e9abcf/ash_model_plotting/plotting.py#L121), however, it was necessary to update a dictionary with results of each process.
-State can be shared between processes using a [Manager()](https://docs.python.org/3/library/multiprocessing.html#sharing-state-between-processes) object.
+The experiments here show that processes are independent and state is not shared between.
 
-Also, things such as logging configuration that are normally defined in the `__name__ == '__main__'` block of a script are not passed to the spawned processes.
-You can handle this be defining an [initializer](https://docs.python.org/3/library/multiprocessing.html#module-multiprocessing.pool) function that is called at the
+Sometimes, however, it is necessary to update a dictionary with information from each process.
+In this case, state can be shared between processes using a [Manager()](https://docs.python.org/3/library/multiprocessing.html#sharing-state-between-processes) object.
+
+Furthermore, things such as logging configuration that are normally defined in the `__name__ == '__main__'` block of a script are not passed to the spawned processes.
+Configuring loggers or other global varaibles in the child prcesses can be done by defining an [initializer](https://docs.python.org/3/library/multiprocessing.html#module-multiprocessing.pool) function that is called at the
 beginning of each process.
+
+See the Ash Model Plotting code for examples of each: [ash_model_plotting/plotting.py](https://github.com/BritishGeologicalSurvey/ash-model-plotting/blob/6b2607ed17c07f88c5d5598ef717d72550e9abcf/ash_model_plotting/plotting.py#L121)
 
 
 ### Learn more
 
 Hopefully these notes have given you (or [future me](https://xkcd.com/1421/)) some insight into multiprocessing and a possible fix for processes that freeze.
 There is a bug report on Python.org that suggests making "spawn" the default start method.  [multiprocessing's default start method of fork()-without-exec() is broken](https://bugs.python.org/issue40379).
-It may be worth checking that to see if things change in future.
+It may be worth checking back there to see if things change in future.
 
-Below is a script to demonstrate some differences between `fork` and `spawn`
-and a copy of the output that it produces.
-Experimenting with it may help with understanding how they work.
+Below is a script to demonstrate some differences between `fork` and `spawn`.
+There is also a copy of the output that it produces.
+Experimenting with it may help deepen your understanding of multiprocessing.
 
-Happy parallel processing!
+Happy parallel computing!
 
 
 --------------------------
@@ -143,10 +145,8 @@ Happy parallel processing!
 The script below uses a `multiprocessing.Pool()` with both `fork` and `spawn`
 start methods to repeatedly call a function that prints information about
 current processes and variables.
-It demonstrates how these change and so gives insight into how the child
-processes work in each context.
-Running it for yourself and modifying outputs may help understanding of how
-things work.
+Comparing the two start methods gives insight into how the child
+processes are created in each context.
 
 Notice especially what happens to the LOCK in each case.
 In the `fork` version, the lock is released after the child processes have
