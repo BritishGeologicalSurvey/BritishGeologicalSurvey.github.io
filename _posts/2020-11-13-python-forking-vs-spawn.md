@@ -23,12 +23,12 @@ The British Geological Survey's [Ash Model Plotting](https://github.com/BritishG
 Properties are calculated on a grid of locations for many different times and elevations, resulting in hundreds of maps.
 Creating the maps is [CPU-bound](https://realpython.com/python-concurrency/#how-to-speed-up-a-cpu-bound-program) and each map is independent, so plotting with multiple processes is a logical way to speed it up.
 
-Python's [multiprocessing pool](https://docs.python.org/3/library/multiprocessing.html) makes this easy to set up.
-Using `pool.map(plot_function, args)` (or `pool.starmap(plot_function, tuples_of_args)` as I needed) will use multiple processes to call `plot_function` on the different `args` in parallel.
+Python's [multiprocessing pool](https://docs.python.org/3/library/multiprocessing.html) makes this easy.
+Using `pool.map(plot_function, args)` sets up multiple processes to call `plot_function` on the different `args` in parallel.
 
-It didn't take long to configure the code to use the pool for a simple script.
-Unfortunately, however, calling the function within the test suite caused _pytest_ to hang/freeze.
-Quitting with _\<ctrl-c\>_ said that it was stuck at `waiter.aquire()`.
+It didn't take long to configure a pool for a simple script.
+Unfortunately, however, calling the plot function within the test suite caused _pytest_ to hang/freeze.
+Quitting with _\<ctrl-c\>_ reported that the code was stuck at `waiter.aquire()`.
 Thus began a long search through Stack Overflow, bug reports and blog posts for
 a way to make it run.
 
@@ -57,31 +57,31 @@ with multiprocessing.get_context('spawn').Pool() as pool:
 
 I made the change, pytest ran to completion and all the tests turned green.
 I was very happy.
-I was now also very curious about `fork` and `spawn`.
+I was also curious about how `fork` and `spawn` work.
 
 
-### Fork vs spawn
+### What happens when you start a new process?
 
 Forking and spawning are two different [start
 methods](https://docs.python.org/3/library/multiprocessing.html#contexts-and-start-methods)
 for new processes.
-Fork is the default on Linux (and is not available on Windows), while Windows
-and MacOS use spawn by default.
+_Fork_ is the default on Linux (it isn't available on Windows), while Windows
+and MacOS use _spawn_ by default.
 
 When a process is `forked` the new process is created with all the same
 variables in the same state as they were in the parent.
-Things continue as they were and the pool loops over the `args`, allocating
+Each process continues from the forking point and the pool loops over the `args`, allocating
 them to the different child processes.
 The processes carry on down their own independent paths from the fork point.
 
-When a process is `spawned`, it gets a new Python instance.
-It imports the module and creates new versions of all the variables before
-calling the `plot_function`.
-These processes also continue independently from there on.
+When a process is `spawned`, it starts a new Python interpreter.
+The current module is reimported, creating new versions of all the variables, before
+the `plot_function` is called on the `args`.
+As with forking, the child processes are independent of each other and the
+parent.
 
-I wrote a script to explore the differences.
-You can see it and the output that it produces a the end of this post.
-The practical differences are summarised in this table.
+
+The full output is below and can be summarised as follows:
 
 | Action | fork | spawn |
 | ---- | ---- | ---- |
@@ -96,37 +96,55 @@ The practical differences are summarised in this table.
 | Update parent process from child variable state | no | no |
 
 
-### Why the code was hanging
+### Why my code was hanging
 
-As explained in the linked blog post, the problem with my test runner was due to threads in the parent process.
-These are not transferred to the children.
+The problem with my test suite was due to threads in the parent process.
+These are not transferred to the children (see [Why your multiprocessing Pool
+is stuck](https://pythonspeed.com/articles/python-multiprocessing/) for more
+details).
 Resources that have been locked by threads in the parent process remain locked when you _fork_ the process.
 However, the thread that holds the lock (and would eventually release the
 resource) is not transferred.
 Anything else that needs the resource is stuck waiting and the process hangs.
-Using to _spawn_ results in creation of fresh instances of the resources so none of them are in a locked state.
+Using _spawn_ creates of fresh instances of each resource so none are in a locked state.
 
 
-### Extra features of multiprocessing
+### Other multiprocessing tricks
 
-There were some other interesting aspects of multiprocessing.
-The experiments here show that processes are independent and modifications to
-mutable objects in one are not reflected in others.
-If you do need to share state between processes, you can use
-a [Manager()](https://docs.python.org/3/library/multiprocessing.html#sharing-state-between-processes)
-object.
-Also, things such as logging configuration that are normally defined in the
-`__name__ == '__main__'` block of a script are not passed to the spawned
-processes.
+The experiments here show that processes are independent and state is not
+shared between.
+In the Ash Model Plotting [plotting.py code](https://github.com/BritishGeologicalSurvey/ash-model-plotting/blob/6b2607ed17c07f88c5d5598ef717d72550e9abcf/ash_model_plotting/plotting.py#L121), however, it was necessary to update a dictionary with results of each process.
+State can be shared between processes using a [Manager()](https://docs.python.org/3/library/multiprocessing.html#sharing-state-between-processes) object.
+
+Also, things such as logging configuration that are normally defined in the `__name__ == '__main__'` block of a script are not passed to the spawned processes.
 You can handle this be defining an [initializer](https://docs.python.org/3/library/multiprocessing.html#module-multiprocessing.pool) function that is called at the
 beginning of each process.
-The final Ash Model Plotting
-[plotting.py](https://github.com/BritishGeologicalSurvey/ash-model-plotting/blob/6b2607ed17c07f88c5d5598ef717d72550e9abcf/ash_model_plotting/plotting.py#L121)
-code had to use both of these features.
 
-------
 
-### Script to show differences between fork and spawn
+### Learn more
+
+Hopefully these notes have given you (or [future me](https://xkcd.com/1421/)) some insight into multiprocessing and a possible fix for processes that freeze.
+There is a bug report on Python.org that suggests making "spawn" the default start method.  [multiprocessing's default start method of fork()-without-exec() is broken](https://bugs.python.org/issue40379).
+It may be worth checking that to see if things change in future.
+
+Below is a script to demonstrate some differences between `fork` and `spawn`
+and a copy of the output that it produces.
+Experimenting with it may help with understanding how they work.
+
+Happy parallel processing!
+
+
+--------------------------
+
+### Variables and processes with fork and spawn
+
+The script below uses a `multiprocessing.Pool()` with both `fork` and `spawn`
+start methods to repeatedly call a function that prints information about
+current processes and variables.
+It demonstrates how these change and so gives insight into how the child
+processes work in each context.
+Running it for yourself and modifying outputs may help understanding of how
+things work.
 
 ```python
 # fork_vs_spawn.py
@@ -202,6 +220,7 @@ if __name__ == '__main__':
 ```
 
 #### Script output
+
 
 ```
 Importing 'multi_demo.py' at 2020-11-11 22:33:52.142051
@@ -280,17 +299,4 @@ INFO:multi_demo:____________________ pool process end ____________________
 
 INFO:multi_demo:MUTABLE after tasks: {'mutated': True}
 ```
-
-
-## Further reading
-
-+ Bug report on Python.org that suggests making "spawn" the default.
-  [multiprocessing's default start method of fork()-without-exec() is
-broken](https://bugs.python.org/issue40379).
-+ Stack Overflow search with many results for ["matplotlib
-  multiprocessing"](https://stackoverflow.com/search?q=matplotlib+multiprocessing)
-
-Stack Overflow posts
-+ [Matplotlib with multiprocessing freeze
-  computer](https://stackoverflow.com/questions/31341127/matplotlib-with-multiprocessing-freeze-computer)
 
