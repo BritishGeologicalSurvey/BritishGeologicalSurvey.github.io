@@ -25,6 +25,8 @@ def run_multi(context):
 def init():
     """This function is called when new processes start."""
     print(f'Initializing process {os.getpid()}')
+    # Uncomment the following to see pool process log messages with spawn
+    # logging.basicConfig(level=logging.INFO)
 
 
 def run_task(index):
