@@ -82,21 +82,22 @@ parent.
 
 Neither method copies running threads into the child processes.
 
-The full output is below and can be summarised as follows:
+A comparison of the two methods can be summarised as follows:
 
 | Action | fork | spawn |
 | ---- | ---- | ---- |
 | Create new PID for processes | yes | yes |
 | Module-level variables and functions present | yes | yes |
-| Reuse processes for multiple pool args | yes | yes |
-| Track variable state within processes | yes | yes |
-| Import module at start of each process | no | yes |
+| Each child process calls plot_function on multiple pool args | yes | yes |
+| Child processes independently track variable state | yes | yes |
+| Import module at start of each child process | no | yes |
 | Variables have same id as in parent process | yes | no |
 | Child process gets variables defined in name == main block | yes | no |
 | Parent process variables are updated from child process state | no | no |
 | Threads from parent process run in child processes | no | no |
 | Threads from parent process modify child variables | no | no |
 
+See appendix for script to demonstrate these.
 
 ### Why my code was hanging
 
@@ -139,6 +140,8 @@ Happy parallel computing!
 
 
 --------------------------
+
+## Appendix
 
 ### Variables and processes with fork and spawn
 
