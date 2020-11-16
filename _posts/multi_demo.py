@@ -3,7 +3,7 @@ import logging
 from multiprocessing import get_context
 import os
 import time
-from threading import Lock
+from threading import Lock, Thread
 
 print(f"Importing 'multi_demo.py' at {dt.datetime.now()}")
 logger = logging.getLogger("multi_demo")
@@ -29,9 +29,18 @@ def init():
     # logging.basicConfig(level=logging.INFO)
 
 
+def hold_lock(lock, hold_time=1):
+    """Hold a lock item for "hold_time" seconds"""
+    lock.acquire()
+    logging.info("*** Lock acquired in thread process ***")
+    time.sleep(hold_time)
+    lock.release()
+    logging.info("*** Lock released in thread process ***")
+
+
 def run_task(index):
     """Print 'index' and state of different variables."""
-    time.sleep(2)
+    time.sleep(4)
     logger.info("Hello from run_task(%s) with root logger id %s",
                 index, id(logging.getLogger()))
     print(f"Index: {index}")
@@ -45,7 +54,7 @@ def run_task(index):
     print(f"MUTABLE: {MUTABLE}")
 
     print(f"LOCK is locked? {LOCK.locked()}")
-    # Uncomment the following to cause "fork" process to hang
+    # Uncomment the following to make "fork" process hang at waiter.acquire()
     # LOCK.acquire()
 
     print()
@@ -62,9 +71,10 @@ if __name__ == '__main__':
     MUTABLE['mutated'] = True
     logger.info("MUTABLE before tasks: %s", MUTABLE)
 
-    # Acquiring the lock will cause any other process that tries to acquire it
-    # to hang until it is free
-    LOCK.acquire()
+    # Start a thread to hold the lock.  This will unlock after the pool has
+    # started but while the process is still sleeping.
+    lock_holder_thread = Thread(target=hold_lock, args=(LOCK, 1))
+    lock_holder_thread.start()
 
     # Run pool processes with different contexts
     for context in ('fork', 'spawn'):
