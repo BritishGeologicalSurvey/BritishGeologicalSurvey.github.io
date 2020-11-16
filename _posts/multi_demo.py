@@ -3,7 +3,7 @@ import logging
 from multiprocessing import get_context
 import os
 import time
-from threading import Lock, Thread
+from threading import Lock, Thread, enumerate
 
 print(f"Importing 'multi_demo.py' at {dt.datetime.now()}")
 logger = logging.getLogger("multi_demo")
@@ -53,6 +53,7 @@ def run_task(index):
     MUTABLE[index] = os.getpid()
     print(f"MUTABLE: {MUTABLE}")
 
+    print(f"Number of running threads: {len(enumerate())}")
     print(f"LOCK is locked? {LOCK.locked()}")
     # Uncomment the following to make "fork" process hang at waiter.acquire()
     # LOCK.acquire()
@@ -75,6 +76,7 @@ if __name__ == '__main__':
     # started but while the process is still sleeping.
     lock_holder_thread = Thread(target=hold_lock, args=(LOCK, 1))
     lock_holder_thread.start()
+    logger.info("Number of running threads: %s", len(enumerate()))
 
     # Run pool processes with different contexts
     for context in ('fork', 'spawn'):
