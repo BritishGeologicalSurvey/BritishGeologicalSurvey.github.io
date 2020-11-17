@@ -169,8 +169,13 @@ import datetime as dt
 import logging
 from multiprocessing import get_context
 import os
+import sys
 import time
 from threading import Lock, Thread, enumerate
+
+if sys.platform in ('win32', 'msys', 'cygwin'):
+    print("Script works only on *NIX type operating systems.")
+    sys.exit(1)
 
 print(f"Importing 'multi_demo.py' at {dt.datetime.now()}")
 logger = logging.getLogger("multi_demo")
