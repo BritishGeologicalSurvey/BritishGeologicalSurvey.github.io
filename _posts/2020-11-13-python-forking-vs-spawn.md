@@ -68,15 +68,17 @@ for new processes.
 _Fork_ is the default on Linux (it isn't available on Windows), while Windows
 and MacOS use _spawn_ by default.
 
-When a process is `forked` the new process is created with all the same
+When a process is `forked` the child process inherits  all the same
 variables in the same state as they were in the parent.
-Each process continues from the forking point and the pool loops over the `args`, allocating
-them to the different child processes.
-The processes carry on down their own independent paths from the fork point.
+Each child process then continues independently from the forking point.
+The pool divides the args between the children and they work though them
+sequentially.
 
-When a process is `spawned`, it starts a new Python interpreter.
-The current module is reimported, creating new versions of all the variables, before
-the `plot_function` is called on the `args`.
+On the other hand, when a process is `spawned`, it begins by starting a new Python interpreter.
+The current module is reimported and new versions of all the variables are
+created.
+The `plot_function` is then called on each of the the `args` allocated to that
+child process.
 As with forking, the child processes are independent of each other and the
 parent.
 
@@ -97,24 +99,27 @@ Similarities and differences between the two start methods are:
 | Threads from parent process run in child processes | no | no |
 | Threads from parent process modify child variables | no | no |
 
-See appendix for script to illustrate these.
+See the appendix for a script that illustrates these differences.
 
 ### Why my code was hanging
 
-The problem with my test suite was due to threads in the parent process.
-These are not transferred to the children (see [Why your multiprocessing Pool
+The problem with my test suite was caused by
+[threading](https://realpython.com/intro-to-python-threading/), either within
+Matplotlib or Pytest.
+Threads are not transferred to child processes (see [Why your multiprocessing Pool
 is stuck](https://pythonspeed.com/articles/python-multiprocessing/) for more
 details).
 Resources that have been locked by threads in the parent process remain locked when you _fork_ the process.
 However, the thread that holds the lock (and would eventually release the
 resource) is not transferred.
-Anything else that needs the resource is stuck waiting and the process hangs.
+Anything else that needs the resource is stuck waiting and the process hangs at
+`waiter.acquire()`.
 Using _spawn_ creates of fresh instances of each resource so none are in a locked state.
 
 
 ### Other multiprocessing tricks
 
-The experiments here show that processes are independent and state is not shared between.
+Multiprocessing processes are independent and state is not shared between.
 
 Sometimes, however, it is necessary to update a dictionary with information from each process.
 In this case, state can be shared between processes using a [Manager()](https://docs.python.org/3/library/multiprocessing.html#sharing-state-between-processes) object.
