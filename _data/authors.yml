@@ -6,9 +6,6 @@ Rehan Kaleem:
     - label: "Website"
       icon: "fas fa-fw fa-link"
       url: "https://www.bgs.ac.uk"
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: "https://www.bgs.ac.uk/staff/sendMail.cfm?id=52011"
 
 Dr John A Stevenson:
   name: "Dr John A Stevenson"
@@ -17,7 +14,7 @@ Dr John A Stevenson:
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: "https://www.bgs.ac.uk/staff/sendMail.cfm?id=49570"
+      url: "https://www.bgs.ac.uk/contact-the-person/?employee=stevenson-john-2"
     - label: "Website"
       icon: "fas fa-fw fa-link"
       url: "https://github.com/volcan01010"
@@ -35,7 +32,7 @@ Paulius Tvaranavicius:
       url: "https://www.bgs.ac.uk"
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: "https://www.bgs.ac.uk/staff/sendMail.cfm?id=49389"
+      url: "https://www.bgs.ac.uk/contact-the-person/?employee=tvaranavicius-paulius"
 
 Mengyi Gong:
   name: "Mengyi Gong"
@@ -45,9 +42,6 @@ Mengyi Gong:
     - label: "Website"
       icon: "fas fa-fw fa-link"
       url: "https://www.bgs.ac.uk"
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: "https://www.bgs.ac.uk/staff/sendMail.cfm?id=51569"
 
 Chris Card:
   name: "Chris Card"
@@ -57,9 +51,6 @@ Chris Card:
     - label: "Website"
       icon: "fas fa-fw fa-link"
       url: "https://www.bgs.ac.uk"
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: "https://www.bgs.ac.uk/staff/sendMail.cfm?id=47970"
 
 Andy Bean:
   name: "Andrew Bean"
@@ -71,7 +62,7 @@ Andy Bean:
       url: "https://www.bgs.ac.uk"
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: "https://www.bgs.ac.uk/staff/sendMail.cfm?id=48149"
+      url: "https://www.bgs.ac.uk/contact-the-person/?employee=bean-andrew"
 
 Edd Lewis:
   name: "Edd Lewis"
@@ -83,7 +74,7 @@ Edd Lewis:
       url: "https://www.bgs.ac.uk"
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: "https://www.bgs.ac.uk/staff/sendmail.cfm?id=51349"
+      url: "https://www.bgs.ac.uk/contact-the-person/?employee=lewis-edward"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/Geologist_Edd"
@@ -93,3 +84,15 @@ Edd Lewis:
     - label: "Linkedin"
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/edward-lewis-geologist/"
+      
+Dr Chris Williams:
+  name: "Dr Chris Williams"
+  bio: "Geospatial analysis lead"
+  avatar: "/assets/images/BGS-Icon-Compact-Pos-RGB.svg"
+  links:
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://www.bgs.ac.uk"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "https://www.bgs.ac.uk/contact-the-person/?employee=williams-christopher"
