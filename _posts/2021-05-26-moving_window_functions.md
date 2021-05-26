@@ -10,7 +10,7 @@ tags:
   - Data Analysis
   - Data Processing
   - Geospatial
- ---
+---
 
 Applying functions using moving windows are a common feature of geospatial data analysis and often exist "under the hood" of GIS software. If you've ever calculated a slope or aspect grid from a raster elevation dataset, then the program you've used has made use of a moving window processing operation. This is particularly relevant for the processing of raster datasets.
 
