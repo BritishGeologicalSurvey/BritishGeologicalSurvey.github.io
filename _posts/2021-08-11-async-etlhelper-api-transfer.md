@@ -18,6 +18,7 @@ In some of our projects, we have begun using Python's
 the API uploads concurrently.
 As a result, we have seen speed increases of up to 10x compared to
 our previous method of posting data sequentially.
+
 This post compares the two methods and shows how simple the `asyncio` code can
 be.
 
