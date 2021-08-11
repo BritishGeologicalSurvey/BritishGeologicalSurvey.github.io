@@ -77,12 +77,7 @@ Further testing found that the AI is correct more often than not in making an as
 
 The PoC tool relies on manually inputting each image for evaluation and waiting for the results, however a production system would need to integrate into the existing verification process without manual intervention. A pipeline could look like this:
 
-graph TD
-    A[Use submits image] --> B(AI evaluates image)
-    B --> C{Image contents results % confidence}
-    C -->|> 90% Safe| D[Display Image]
-    C -->|30% - 90% Safe| E[Warn Reviewer]
-    C -->|< 30%| F[Hide from Reviewer]
+![](../../../assets/images/2021-08-11-autocaption/flow-chart.png)
 
 ## Conclusions
 
