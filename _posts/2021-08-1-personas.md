@@ -7,7 +7,7 @@ tags:
   - personas
   - archetypes
   - UX
-  - user-centered Design
+  - user-centered design
 ---
 
 Personas are representations of user groups whom we expect to use our products. They help to convey information about the users to the product team. Some products target just a single user group, but most will have more than one.
