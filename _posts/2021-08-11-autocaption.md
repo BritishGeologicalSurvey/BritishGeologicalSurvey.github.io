@@ -59,6 +59,7 @@ Steps taken create a PoC with BGS data:
 The result was a basic web application allowing a user to manually select an image to run through the Computer Vison API. During testing I was able to return positive results for a variety of images which had previously been submitted to one of our crowdsourcing applications. For example, an image submitted during a [myVolcano](https://www.bgs.ac.uk/technologies/apps/myvolcano/) educational workshop correctly identified the image below:
 
 **Image Input:**
+
 ![](../../../assets/images/2021-08-11-autocaption/edu-workshop.png)
 
 **Image Description:**
