@@ -35,7 +35,7 @@ To ensure that personas are effective and useful:
 * Reference them when creating [user journeys]
 * Create usability tests that are targetted at specific personas
 
-> If you are working with sensitive data or information consider creating **anti-personas** as well. Anti-personas are people who might try to misuse your product.
+> If you are working with sensitive data or information consider creating **anti-personas** as well. Anti-personas are groups of people who might try to misuse your product or service.
 
 ## Examples
 
