@@ -46,8 +46,10 @@ def copy_sensors(startdate, enddate):
                                           "enddate": enddate},
                               transform=transform_sensors):
             post_item(item)
+```
 
 
+```python
 def post_item(item):
     """Post a single item to API."""
     # Post data to API
@@ -76,8 +78,9 @@ def copy_sensors(startdate, enddate):
 
         for chunk in chunks:
             asyncio.run(post_chunk(chunk))
+```
 
-
+```python
 async def post_chunk(chunk):
     """Post multiple items to API asynchronously."""
     async with aiohttp.ClientSession() as session:
