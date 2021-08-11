@@ -13,17 +13,14 @@ $paragraph-indent: false !default; // true, false (default)
 $indent-var: 1.3em !default;
 
 /* system typefaces */
-$serif: 'PT Serif', Georgia, Times, serif !default;
+$serif: 'Aileron', Georgia, Times, serif !default;
 // $serif: 'Bree Serif', Georgia, Times, serif !default;
-$sans-serif: -apple-system, BlinkMacSystemFont, 'Poppins', 'Roboto',
-  // $sans-serif: -apple-system, BlinkMacSystemFont, 'Open Sans', 'Roboto',
-    'Segoe UI',
-  'Helvetica Neue', 'Lucida Grande', Arial, sans-serif !default;
+$sans-serif: -apple-system, BlinkMacSystemFont, 'Aileron', Arial, sans-serif !default;
 $monospace: Monaco, Consolas, 'Lucida Console', monospace !default;
 
 /* sans serif typefaces */
 $sans-serif-narrow: $sans-serif !default;
-$helvetica: Helvetica, 'Helvetica Neue', Arial, sans-serif !default;
+$helvetica: 'Aileron', Arial, sans-serif !default;
 
 /* serif typefaces */
 $georgia: Georgia, serif !default;
@@ -57,6 +54,7 @@ $light-gray: mix(#fff, $gray, 50%) !default;
 $lighter-gray: mix(#fff, $gray, 90%) !default;
 
 $background-color: #fff !default;
+$code-font-color: #002e40 !default;
 $code-background-color: #fafafa !default;
 $code-background-color-dark: $light-gray !default;
 $text-color: $dark-gray !default;
@@ -65,14 +63,14 @@ $border-color: $lighter-gray !default;
 $form-background-color: $lighter-gray !default;
 $footer-background-color: $lighter-gray !default;
 
-$primary-color: #3a3c3d !default;
-$success-color: #a9d52f !default;
-$warning-color: #c95513 !default;
-$danger-color: #921f30 !default;
-$info-color: #25abc6 !default;
+$primary-color: #002e40 !default;
+$success-color: #8cb052 !default;
+$warning-color: #f0a845 !default;
+$danger-color: #d48080 !default;
+$info-color: #7391bf !default;
 $focus-color: $primary-color !default;
 $active-color: mix(#fff, $primary-color, 80%) !default;
-$logo-color: #a0447f;
+$logo-color: #002e40;
 
 /* YIQ color contrast */
 $yiq-contrasted-dark-default: $dark-gray !default;

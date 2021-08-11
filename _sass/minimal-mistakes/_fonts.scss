@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'Aileron';
+  src: url('../fonts/Aileron-Bold.woff2') format('woff2'),
+    url('../fonts/Aileron-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aileron';
+  src: url('../fonts/Aileron-SemiBoldItalic.woff2') format('woff2'),
+    url('../fonts/Aileron-SemiBoldItalic.woff') format('woff');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aileron';
+  src: url('../fonts/Aileron-Light.woff2') format('woff2'),
+    url('../fonts/Aileron-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aileron';
+  src: url('../fonts/Aileron-Regular.woff2') format('woff2'),
+    url('../fonts/Aileron-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
