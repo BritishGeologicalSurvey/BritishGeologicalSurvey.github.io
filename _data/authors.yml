@@ -84,7 +84,7 @@ Edd Lewis:
     - label: "Linkedin"
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/edward-lewis-geologist/"
-      
+
 Dr Chris Williams:
   name: "Dr Chris Williams"
   bio: "Geospatial analysis lead"
@@ -96,3 +96,15 @@ Dr Chris Williams:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
       url: "https://www.bgs.ac.uk/contact-the-person/?employee=williams-christopher"
+
+Steve Richardson:
+  name: "Steve Richardson"
+  bio: "Geospatial applications developer"
+  avatar: "/assets/images/BGS-Icon-Compact-Pos-RGB.svg"
+  links:
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://www.bgs.ac.uk"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "https://www.bgs.ac.uk/contact-the-person/?employee=richardson-steven"
