@@ -33,8 +33,24 @@ to transfer data from an Oracle database to an ElasticSearch API.
 The script originally described posting items sequentially using the
 [Requests](https://docs.python-requests.org/en/master/) library and has now been [updated](https://github.com/BritishGeologicalSurvey/etlhelper/compare/13cd104..f7cfc0b) to use concurrent processing with the [aiohttp](https://docs.aiohttp.org/en/stable/) library.
 
+Only the most relevant parts of code are shown here - see the [ETLHelper
+documentation](https://realpython.com/introduction-to-python-generators/) for full details.
 
-### Sequential posting with Requests (old way)
+
+### Sequential posting with Requests
+
+ETLHelper provides the `iter_rows` function that returns
+a [generator](https://realpython.com/introduction-to-python-generators/) item
+that yields a new result from the database with each iteration.
+Results are fetched from the database only as required instead of loaded into
+memory (as with `get_rows`).
+This makes it suitable for transferring large quantities of data.
+
+In this case, the `iter_rows` call runs a SQL query (`SELECT_SENSORS`) against
+the database and applies a transform function (`transform_sensors`) to convert
+the result into a Python dictionary that can be easily converted to JSON.  The
+resulting item is posted to the API.
+
 
 ```python
 def copy_sensors(startdate, enddate):
@@ -48,6 +64,8 @@ def copy_sensors(startdate, enddate):
             post_item(item)
 ```
 
+The `post_item` function uses Requests to post the item.
+It also raises an exception if something goes wrong.
 
 ```python
 def post_item(item):
@@ -63,22 +81,40 @@ def post_item(item):
 	response.raise_for_status()
 ```
 
+This code is very simple, but it can be slow as the Python interpreter has to
+wait for a response from the API before it can proceed to the next item.
 
-### Concurrent posting with aiohttp (new way)
+
+### Concurrent posting with aiohttp
+
+In the asynchronous version, we use the `iter_chunks` to pull the data from the
+database.
+This returns a generator that yields lists of results (5000 at a time by
+default).
+`asyncio.run()` is used to call the the function that posts the results
+concurrently.
+This is required because `post_chunk` is an async function.
 
 ```python
 def copy_sensors(startdate, enddate):
     """Read sensors from Oracle and post to REST API."""
     with ORACLE_DB.connect('ORACLE_PASSWORD') as conn:
-        # chunks is a generator that yields lists of dictionaries
-        chunks = iter_chunks(SELECT_SENSORS, conn,
-                             parameters={"startdate": startdate,
-                                         "enddate": enddate},
-                             transform=transform_sensors)
-
-        for chunk in chunks:
+        # iterate over chunks of rows
+        for chunk in iter_chunks(SELECT_SENSORS, conn,
+                                 parameters={"startdate": startdate,
+                                             "enddate": enddate},
+                                 transform=transform_sensors)
             asyncio.run(post_chunk(chunk))
 ```
+
+Two functions are required for posting to the API - one to post a single item
+and another call the first concurrently for all of our items.
+
+`post_chunk` handles the concurrency.
+It builds a list of tasks, one for each item, then calls `asyncio.gather()` to execute them asynchronously (and collect
+the results if required).
+An `aiohttp.ClientSession` allows the same connection to the server to be reused for each item in the chunk.
+
 
 ```python
 async def post_chunk(chunk):
@@ -87,13 +123,21 @@ async def post_chunk(chunk):
         # Build list of tasks
         tasks = []
         for item in chunk:
-            tasks.append(post_one(item, session))
+            tasks.append(post_item(item, session))
 
         # Process tasks in parallel.  An exception in any will be raised.
         await asyncio.gather(*tasks)
+```
 
+The `post_item` function is similar to the Requests version.
+The main differences are the use of _await_ keywords and that `response.text`
+is an awaitable function here, where it is an attribute in Requests.
+Also, it is essential to log any error information before raising an
+exception if something goes wrong as it is not possible to access it via
+a debugger.
 
-async def post_one(item, session):
+```python
+async def post_item(item, session):
     """Post a single item to API using existing aiohttp Session."""
     # Post the item
     response = await session.post(BASE_URL + 'sensors/_doc', headers=HEADERS,
