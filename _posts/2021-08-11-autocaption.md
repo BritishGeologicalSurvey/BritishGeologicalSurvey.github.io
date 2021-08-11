@@ -2,14 +2,13 @@
 title:  "Using AI to triage citizen science submissions"
 author: Steve Richardson
 categories:
-  - data analytics
-  - geospatial analysis
+  - front end
+  - back end
 tags:
-  - Python
-  - R
-  - Data Analysis
-  - Data Processing
-  - Geospatial
+  - Angular
+  - Microsoft Azure
+  - AI
+  - Citizen Science
 ---
 
 The British Geological Survey has a [long history](https://www.bgs.ac.uk/geology-projects/citizen-science/) of utilising citizen science and crowdsourcing to gather information about a range of events and phenomena. The term *Citizen Science* is often used for projects where individuals or groups of volunteers, many without specific training, undertake research-related tasks such as observation, measurement, or computation. Through these networks scientists and researchers can often accomplish much greater results and reach a much wider audience that they would otherwise be able to.
@@ -46,7 +45,7 @@ Imagery, however, is a more complex computational problem to solve due to the ra
 * Provide a confidence value to indicate how sure the AI was about its assessment
 
 ## Microsoft demo of Computer Vision API
-![](../../assets/images/2021-08-11-autocaption/2021-08-11-12-13-59.png)
+![](../../assets/images/2021-08-11-autocaption/ms-example.png)
 
 The example above shows how the original image has been analysed by the Computer Vision API and its content is then available for review, alongside a percentage confidence in is accuracy. A plain-text description attempts to provide a human-readable description of the image, which is reasonably accurate.
 
@@ -60,7 +59,7 @@ Steps taken create a PoC with BGS data:
 The result was a basic web application allowing a user to manually select an image to run through the Computer Vison API. During testing I was able to return positive results for a variety of images which had previously been submitted to one of our crowdsourcing applications. For example, an image submitted during a [myVolcano](https://www.bgs.ac.uk/technologies/apps/myvolcano/) educational workshop correctly identified the image below:
 
 **Image Input:**
-![](../../assets/images/2021-08-11-autocaption/2021-08-11-13-17-54.png)
+![](../../assets/images/2021-08-11-autocaption/edu-workshop.png)
 
 **Image Description:**
 > Group of people sitting at a table
