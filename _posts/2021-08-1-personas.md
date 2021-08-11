@@ -23,7 +23,7 @@ Personas ideally should be created based on qualitative or quantitative research
 
 ## How to create and use personas
 
-Personas can be created individually or as a group effort. You can start by answering the following questions:
+Personas can be created individually or as a [group effort](https://miro.com/app/board/o9J_l2uIqjs=/). You can start by answering the following questions:
 
 1. Who are the primary users of our products? (e.g.: data scientist, policy maker, insurance provider, etc.)
 2. What are current behaviour patterns of each user group?
@@ -39,7 +39,7 @@ To ensure that personas are effective and useful:
 
 ## Examples
 
-Below you can find some persona examples created for Data Discoverability project. They show different types of geospatial data users and different ways they discover and use data. They helped us to present the research findings in more digestible form and to keep user needs and frustrations at the forefront  when creating recommendations for geospatial portal design.
+Below you can find some persona examples created for Data Discoverability project. They show different types of geospatial data users and different ways they discover and use data. These personas helped us to present the research findings in a more digestible form and to keep user needs and frustrations at the forefront when creating recommendations for geospatial portal designers and developers.
 
 <figure class="third">
     <a href="../../assets/images/2021-08-11-personas/persona-solution-innovator.png"><img src="../../assets/images/2021-08-11-personas/persona-solution-innovator.png"></a>
