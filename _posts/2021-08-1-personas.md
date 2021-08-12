@@ -12,7 +12,7 @@ tags:
 
 Personas are representations of user groups whom we expect to use our products. They help to convey information about the users to the product team. Some products target just a single user group, but most will have more than one.
 
-![Persona example](../../assets/images/2021-08-11-personas/persona-solution-innovator.png)
+![Persona example](../../assets/images/2021-08-11-personas/persona-example.png)
 
 ## Effective use of personas
 
@@ -50,7 +50,7 @@ Below you can find some persona examples created for Data Discoverability projec
 
 <figure class="half">
     <a href="../../assets/images/2021-08-11-personas/persona-strategic-lead.png"><img src="../../assets/images/2021-08-11-personas/persona-strategic-lead.png"></a>
-    <a href="../../assets/images/2021-08-11-personas/persona-investigator.png"><img src="../../assets/images/2021-08-11-personas/persona-investigator.png"></a>
+    <a href="../../assets/images/2021-08-11-personas/Persona-investigator.png"><img src="../../assets/images/2021-08-11-personas/Persona-investigator.png"></a>
     <figcaption>Persona examples</figcaption>
 </figure>
 
