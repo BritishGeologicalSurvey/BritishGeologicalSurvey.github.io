@@ -96,3 +96,18 @@ Dr Chris Williams:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
       url: "https://www.bgs.ac.uk/contact-the-person/?employee=williams-christopher"
+
+Colin Blackburn:
+  name: "Colin Blackburn"
+  bio: "Software developer"
+  avatar: "https://avatars.githubusercontent.com/u/1065145?s=400&v=4"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "https://www.bgs.ac.uk/contact-the-person/?employee=blackburn-colin"
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://www.bgs.ac.uk"
+    - label: "GitHub"
+      icon: "fas fa-fw fa-link"
+      url: "https://github.com/ximenesuk"
