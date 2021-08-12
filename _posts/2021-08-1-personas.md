@@ -12,6 +12,8 @@ tags:
 
 Personas are representations of user groups whom we expect to use our products. They help to convey information about the users to the product team. Some products target just a single user group, but most will have more than one.
 
+![Persona example](../../assets/images/2021-08-11-personas/persona-solution-innovator.png)
+
 ## Effective use of personas
 
 Personas ideally should be created based on qualitative or quantitative research. Personas can help you:
@@ -32,8 +34,8 @@ Personas can be created individually or as a [group effort](https://miro.com/app
 
 To ensure that personas are effective and useful:
 * Share them
-* Reference them when creating [user journeys]
-* Create usability tests that are targetted at specific personas
+* Reference them when creating [user journeys](http://digital-planning.glpages.ad.nerc.ac.uk/design-toolkit/docs/33-user-journey-templates/)
+* Create usability tests that are targeted at specific personas
 
 > If you are working with sensitive data or information consider creating **anti-personas** as well. Anti-personas are groups of people who might try to misuse your product or service.
 
@@ -41,10 +43,14 @@ To ensure that personas are effective and useful:
 
 Below you can find some persona examples created for Data Discoverability project. They show different types of geospatial data users and different ways they discover and use data. These personas helped us to present the research findings in a more digestible form and to keep user needs and frustrations at the forefront when creating recommendations for geospatial portal designers and developers.
 
-<figure class="third">
+<figure class="half">
     <a href="../../assets/images/2021-08-11-personas/persona-solution-innovator.png"><img src="../../assets/images/2021-08-11-personas/persona-solution-innovator.png"></a>
     <a href="../../assets/images/2021-08-11-personas/persona-spatial.png"><img src="../../assets/images/2021-08-11-personas/persona-spatial.png"></a>
+</figure>
+
+<figure class="half">
     <a href="../../assets/images/2021-08-11-personas/persona-strategic-lead.png"><img src="../../assets/images/2021-08-11-personas/persona-strategic-lead.png"></a>
+    <a href="../../assets/images/2021-08-11-personas/persona-investigator.png"><img src="../../assets/images/2021-08-11-personas/persona-investigator.png"></a>
     <figcaption>Persona examples</figcaption>
 </figure>
 
