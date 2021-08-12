@@ -12,7 +12,7 @@ The BGS runs a number of web services using technologies such as ColdFusion and 
 
 ### SADC and Palaeosaurus
 
-The first projects to use FastAPI were the Palaeosaurus and [SADC Groundwater Literature Archive](http://sadc-gla.org/SADC/) APIs. Here's how easy it is to create an end-point and JSON response:
+The first projects to use FastAPI were the Palaeosaurus and [SADC Groundwater Literature Archive](http://sadc-gla.org/SADC/) APIs. Here's how easy it is to create a single end-point and JSON response:
 
 ```python
 from enum import Enum
@@ -38,7 +38,8 @@ class ArchiveName(str, Enum):
     AGLA = "AGLA"
 
 archive_path = Path(
-    ..., title='Archive name',
+    ..., # Required parameter
+    title='Archive name',
     description='Archive name to run queries against',
     example='SADC')
 
@@ -74,11 +75,43 @@ app.include_router(country_by_code.router)
 # And that's it!
 ```
 
-As well as a working API that chacks the parameters - that enum and regex - FastAPI also generates Swagger docs and an openAPI schema.
+As well as a working API that checks the parameters - enum and regex up above - FastAPI also automatically generates Swagger docs and an openAPI schema using the FastAPI Path classes and Pydantic model classes.
 
 ![Image of Swagger docs](../../assets/images/2021-08-11-fast-apis/swagger.png)
 
-Need to add CORS? Just use the CORS middleware:
+Of course it can handle query parameters as well as path parameters:
+
+```python
+from fastapi import Query, Request
+
+collector_query = Query(
+    None, # Optional parameter
+    title='', description='', example='SURVEY?')
+
+locality_query = Query(
+    None, title='The Locality', description='', example='Bellcraig Burn')
+
+limit_query = Query(
+    default=1000, # Default value if none is given
+    title='Limit', description='The pagination limit')
+
+offset_query = Query(
+    default=0, title='Offset', description='The pagination offset')
+
+@router.get(
+    get_config().BASE_PATH + '/specimens',
+    response_model=SpecimenResponse)
+def get_specimens(
+    request: Request, collector: str = collector_query,
+    locality: str = locality_query, limit: int = limit_query,
+    offset: int = offset_query):
+
+    request_params = set(request.query_params.keys())
+    # ... validate the parameters and make the search
+    return response
+```
+
+Need to add CORS? Use the CORS middleware:
 
 ```python
 from fastapi import FastAPI
@@ -92,4 +125,76 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"])
+```
+
+Need to handle exceptions? Use the exception handler decorator:
+
+```python
+    @app.exception_handler(DatabaseError)
+    async def database_exception(request: Request, exc: DatabaseError):
+        return JSONResponse(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            content=jsonable_encoder(exc.response())
+        )
+```
+
+Need logging? Use the `http` middleware to intercept the call:
+
+```python
+    @app.middleware("http")
+    async def log_requests(request: Request, call_next):
+        logger.info(f"Called by {request.client.host}")
+        logger.debug(f"Request headers: {request.headers}")
+        start_time = time.time()
+        response = await call_next(request)
+        call_time = int((time.time() - start_time) * 1000)
+        logger.debug(f"Request status: {response.status_code}, time: {call_time} ms")
+        return response
+```
+
+Need log ins?
+
+```python
+from fastapi import Depends
+from fastapi.security import OAuth2PasswordRequestForm
+
+# Create a route to get access token using OAuth2 form
+@router.post('/token', response_model=Token)
+def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
+    authenticate_user(form_data.username, form_data.password)
+    token = create_access_token(form_data.username)
+    return {"access_token": token, "token_type": "bearer"}
+
+# Check whether current token is valid, return user is it is
+def get_current_user(token: str = Depends(oauth2_scheme)):
+    # ...
+    return user
+
+# This route Depends on get_current_user to check the token
+@router.get('/item/id/{item_id}', response_model=ItemResponse)
+def get_item_by_id(request: Request, item_id: str = item_id_path,
+                   current_user: User = Depends(get_current_user)):
+    # ...
+    return response
+```
+
+
+```python
+from fastapi import Body, Request
+
+@router.put('/mailing/update/{mailing_id}', response_model=MailingsResponse)
+def update_mailing_record(
+    request: Request, mailing: dict = Body(...),
+    mailing_id: int = mailing_id_path, apikey: str = apikey_query):
+
+    validate_body(mailing_id, mailing)
+    # Query database
+    try:
+        has_access(apikey=apikey, access='UPDATE')
+    except AccessError as e:
+        logging.error(e)
+        raise HTTPException(status_code=401, detail=e.detail)
+    # ...
+    return response
+
 ```
