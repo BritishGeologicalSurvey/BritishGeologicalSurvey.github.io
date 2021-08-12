@@ -8,7 +8,7 @@ tags:
   - Python
 ---
 
-The BGS runs a number of web services using technologies such as ColdFusion and PHP. These are becoming increasingly difficult to maintain or extend through lack of expertise, but also because these systems combine front-end and back-end functionality. When replacement or extension is needed it is generally better to develop separate APIs that can be used by loosely-coupled front-ends. To this end, the Python developers at BGS have tested a number of frameworks used to create APIs: `falcon`, `flask` and `hug`, before landing on FastAPI.
+The BGS runs a number of web services using technologies such as ColdFusion and PHP. These are becoming increasingly difficult to maintain or extend through lack of expertise, but also because these systems combine front-end and back-end functionality. When replacement or extension is needed it is generally better to develop separate APIs that can be used by loosely-coupled front-ends. To this end, the Python developers at BGS have tested a number of frameworks used to create APIs: `falcon`, `flask` and `hug`, before landing on [FastAPI](https://fastapi.tiangolo.com/).
 
 ### SADC and Palaeosaurus
 
@@ -38,14 +38,12 @@ class ArchiveName(str, Enum):
     AGLA = "AGLA"
 
 archive_path = Path(
-    ...,
-    title='Archive name',
+    ..., title='Archive name',
     description='Archive name to run queries against',
     example='SADC')
 
 code_path = Path(
-    ...,
-    title='Country code',
+    ..., title='Country code',
     description='The two-letter code for a country',
     regex='^[A-Z]{2}$',
     example='BW')
@@ -74,4 +72,24 @@ app = FastAPI(docs_url='/african-groundwater/docs',
 app.include_router(country_by_code.router)
 
 # And that's it!
+```
+
+As well as a working API that chacks the parameters - that enum and regex - FastAPI also generates Swagger docs and an openAPI schema.
+
+![Image of Swagger docs](../../assets/images/2021-08-11-fast-apis/swagger.png)
+
+Need to add CORS? Just use the CORS middleware:
+
+```python
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"])
 ```
