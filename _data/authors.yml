@@ -96,3 +96,15 @@ Dr Chris Williams:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
       url: "https://www.bgs.ac.uk/contact-the-person/?employee=williams-christopher"
+      
+Dr Phil Atkinson:
+  name: "Dr Phil Atkinson"
+  bio: "Software engineer"
+  avatar: "/assets/images/BGS-Icon-Compact-Pos-RGB.svg"
+  links:
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://www.bgs.ac.uk"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "https://www.bgs.ac.uk/contact-the-person/?employee=philip-atkinson"
