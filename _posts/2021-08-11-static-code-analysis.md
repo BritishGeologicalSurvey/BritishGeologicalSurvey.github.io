@@ -27,14 +27,14 @@ There is a comprehensive list of rules/issues that are maintained that are categ
 
 What is particularly good is that the issue descriptions often contain guidance on how to fix the issue and relevant links to entries on the various standards lists, including security lists such as _CWE_, _Sans-25_, and _OWASP Top 10_.
 
-![screenshot1](../assets/images/2021-08-11-static-code-analysis/issue_desc.PNG "security vulnerability issue description")
+![screenshot1](../../assets/images/2021-08-11-static-code-analysis/issue_desc.PNG "security vulnerability issue description")
 _Example issue description_
 
 #### Quality Gates
 SonarQube also has the concept of a _Quality Gate_. This defines the criteria that will be applied when carrying out a pass/fail test at the end of an analysis. Associating a _Quality Gate_ to a project gives the CI/CD pipeline an opportunity to fail if the desired quality level is not met.
 Its configuration can be based on various metrics. As well as categorising issues by type they are also assigned severity ratings (**Blocker**, **Critical**, **Major**, **Minor**, **Info**) and these can also be used to configure _Quality Gates_.
 
-![screenshot2](../assets/images/2021-08-11-static-code-analysis/quality_gate.PNG "example of a strict Quality Gate")
+![screenshot2](../../assets/images/2021-08-11-static-code-analysis/quality_gate.PNG "example of a strict Quality Gate")
 _Example Quality Gate configuration_
 
 #### IDE integration
