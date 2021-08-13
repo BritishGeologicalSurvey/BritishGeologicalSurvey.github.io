@@ -96,3 +96,16 @@ Dr Chris Williams:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
       url: "https://www.bgs.ac.uk/contact-the-person/?employee=williams-christopher"
+
+Steve Richardson:
+  name: "Steve Richardson"
+  bio: "Geospatial applications developer"
+  avatar: "https://avatars.githubusercontent.com/u/4210022?v=4"
+  links:
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://www.bgs.ac.uk"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "https://www.bgs.ac.uk/contact-the-person/?employee=richardson-steven"
+
