@@ -1,3 +1,14 @@
+---
+title: "Static Code Analysis with SonarQube"
+author: Dr Phil Atkinson
+categories:
+  - software development
+tags:
+  - SAST
+  - security
+  - SDLC
+---
+
 ## Static Code Analysis with SonarQube
 The use of _static code analysis tools_ can help developers identify code quality issues and security vulnerabilities early in the software development lifecycle, and so helps in the effort to *Shift-Left*. 
 
