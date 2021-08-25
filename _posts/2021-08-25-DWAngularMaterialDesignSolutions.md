@@ -1,11 +1,15 @@
 ---
 title: "Utilising the Angular Material Library to Provide Bespoke Design Solutions"
 author: Daniel Warren
-categories: 
-  - Front-End-Development
- tags:
+categories:
+  - front-end-development
+  - ux-design
+tags:
   - Angular
+  - UX
+  - GUI
 ---
+
 
 The [Angular Material Library](https://material.angular.io/) is a collection of Material Design components which integrates with [Angular](https://angular.io/), a typescript based, open-source web development framework. The UI elements that the library provides are:
  - Versatile: the same elements can be used on a desktop or mobile browser.
