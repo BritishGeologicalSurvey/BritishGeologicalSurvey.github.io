@@ -3,7 +3,7 @@ title: "Utilising the Angular Material Library to Provide Bespoke Design Solutio
 author: Daniel Warren
 categories: 
   - Front End Development
- Tags
+ tags:
   - Angular
 ---
 
