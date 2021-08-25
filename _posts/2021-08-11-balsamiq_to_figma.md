@@ -21,7 +21,7 @@ This post describes a proof of concept Figma plugin which was developed to aid t
 
 In the early stages of the system design, we have made extensive use of [Balsamiq](https://balsamiq.com/wireframes/) as a tool for producing low-fidelity wireframes to mock-up the user flow and navigation through the tool.  These wireframes are quick to produce and easy to test and iterate on user journeys without getting caught up on details of colour schemes, fonts, imagery etc.  Later design stages have used [Figma](https://www.figma.com/) to produce higher fidelity mock-ups ready for implementation by the front-end development team.
 
-![Low and higher fidelity wireframes using Balsamiq (left) and Figma (right)](../../assets/images/2021-08-11-balsamiq_to_figma/wireframes.png)
+![Low and higher fidelity wireframes using Balsamiq (left) and Figma (right)](../../../assets/images/2021-08-11-balsamiq_to_figma/wireframes.png)
 
 *Low and higher fidelity wireframes using Balsamiq (left) and Figma (right)* [Source: MAPS Project]
 
@@ -29,7 +29,7 @@ In the early stages of the system design, we have made extensive use of [Balsami
 
 In the early stages of the project, the majority of the [co-design](https://micronutrient.support/co-design/) and user testing was planned and conducted in person.  However the lockdowns and cessation of travel in 2020 meant remote methods had to be employed.  Alongside tools such as [Zoom](https://zoom.us/) and [Miro](https://miro.com/login/), we were fortunate to be able to utilise the dedicated user testing tools [Usability Hub](https://usabilityhub.com/) and [Useberry](https://www.useberry.com/) to test how users might flow and navigate through the system
 
-![Insights into user flows through the application from Useberry](../../assets/images/2021-08-11-balsamiq_to_figma/useberry.png)
+![Insights into user flows through the application from Useberry](../../../assets/images/2021-08-11-balsamiq_to_figma/useberry.png)
 
 *Insights into user flows through the application from [Useberry](https://www.useberry.com/) testing* [Source: MAPS Project]
 
@@ -55,7 +55,7 @@ The balsamiq2figma plugin performs the following steps:
 2. The plugin generates a figma frame for each mockup page, using the png screen output as its background
 3. The plugin creates rectangles overlaid on the mockup frame in the positions and sizes of the interactive Balsamiq elements using data from the .bmpr SQLite database.  These are filled in a semi-transparent pinkish fill to match the default Balsamiq output.
 
-![The Balsamiq2Figma plugin interface](../../assets/images/2021-08-11-balsamiq_to_figma/balsamiq2figma.png)
+![The Balsamiq2Figma plugin interface](../../../assets/images/2021-08-11-balsamiq_to_figma/balsamiq2figma.png)
 
 *The Balsamiq2Figma plugin interface* 
 
@@ -65,7 +65,7 @@ Unfortunately the Figma plugin (currently) does not support programatically crea
 
 Whilst this means that the linking of frames cannot be completely automated, the ability to check for the existence of a connection allowed for a 'wizard' mode to be created to make the manual creation of the links as quick and simple as possble.
 
-![The balsamiq2figma wiring wizard](../../assets/images/2021-08-11-balsamiq_to_figma/wiring.gif)
+![The balsamiq2figma wiring wizard](../../../assets/images/2021-08-11-balsamiq_to_figma/wiring.gif)
 
 *The balsamiq2figma wiring wizard* 
 
