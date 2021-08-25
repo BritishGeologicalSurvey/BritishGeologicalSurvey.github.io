@@ -100,7 +100,7 @@ Dr Chris Williams:
 Daniel Warren:
   name: "Daniel Warren"
   bio: "Geologist, Geoscience Software Developer"
-  avatar: "/assets/images/BGS-Icon-Compact-Pos-RGB.svg"
+  avatar: "https://www.bgs.ac.uk/wp-content/uploads/2020/03/Daniel-Warren.jpg"
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
