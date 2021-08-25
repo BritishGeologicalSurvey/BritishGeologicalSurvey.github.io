@@ -10,8 +10,6 @@ tags:
   - Design Tools
 ---
 
-# Importing Balsamiq wireframes into Figma, an experiment with the Figma plugin API
-
 ## Introduction
 The [Micronutrient Action Policy Support (MAPS)](https://micronutrient.support) project aims to produce a web-hosted decision support tool to allow users to estimate micronutrient deficiencies in Sub-Saharan African nations and explore pathways to improve nutrition.  BGS Digital are leading the design and software development aspects of this multi-institute project.
 
