@@ -16,7 +16,7 @@ The [Angular Material Library](https://material.angular.io/) is a collection of 
 
 Angular has become the go-to development framework within BGS Digital for application development, web development and PWA (progressive web app) development.
 
-![Demo-Mobile](/assets/opacitysolution.gif)
+![Demo-Mobile](https://github.com/DanielLyleWilliamWarren/BlogDay_AngularMaterial/raw/main/assets/opacitysolution.gif)
 
 *Figure 1: Side navigation bar with bespoke solution to adjusting layer opacity in a mobile layout, the BGS colour scheme has been applied to all elements.*
 
@@ -24,7 +24,7 @@ The above graphic shows a design solution implemented to address the requirement
 
 The Angular Material Library has allowed developers to work on multiple projects while utilising the same reusable UI components across multiple codebases.
 
- ![Demo-Notification](/assets/notifications.gif)
+ ![Demo-Notification](https://github.com/DanielLyleWilliamWarren/BlogDay_AngularMaterial/raw/main/assets/notifications.gif)
 
  *Figure 2: Example of the same UI notification component being used in different projects, where styling respective to each project is applied.* 
 
