@@ -9,7 +9,7 @@ window.cookieconsent.initialise({
       text: '#ffffff',
     },
   },
-  type: 'opt-out',
+  type: 'opt-in',
   content: {
     message:
       'This website uses cookies to improve your experience. We’ll assume you’re okay with this, but you can opt out if you wish. ',
