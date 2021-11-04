@@ -127,3 +127,12 @@ comments:
     label: 'comments'
 
 theme: jekyll-theme-minimal
+
+after_footer_scripts:
+  - /assets/js/cookie-consent.js
+
+analytics:
+  provider: "google"
+  google:
+    tracking_id: "UA-212008791-1"
+    anonymize_ip: false # default
