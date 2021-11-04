@@ -2,6 +2,7 @@
     function loadGAonConsent() {
       console.log('GA loaded');
       window._gaq = window._gaq || [];
+
     _gaq.push(['_setAccount', '{{ site.analytics.google.tracking_id }}']);
     {% if site.analytics.google.anonymize_ip == true %}
       _gaq.push(['_gat._anonymizeIp']);

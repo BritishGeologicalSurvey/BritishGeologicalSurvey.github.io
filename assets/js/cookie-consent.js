@@ -21,10 +21,12 @@ window.cookieconsent.initialise({
     var didConsent = this.hasConsented();
     if (type == 'opt-in' && didConsent) {
       // enable cookies
+      console.log('onInitialise 1');
       loadGAonConsent();
     }
     if (type == 'opt-out' && !didConsent) {
       // disable cookies
+      console.log('onInitialise 2');
     }
   },
   onStatusChange: function (status, chosenBefore) {
@@ -32,19 +34,23 @@ window.cookieconsent.initialise({
     var didConsent = this.hasConsented();
     if (type == 'opt-in' && didConsent) {
       // enable cookies
+      console.log('onStatusChange 1');
       loadGAonConsent();
     }
     if (type == 'opt-out' && !didConsent) {
       // disable cookies
+      console.log('onStatusChange 2');
     }
   },
   onRevokeChoice: function () {
     var type = this.options.type;
     if (type == 'opt-in') {
       // disable cookies
+      console.log('onRevokeChoice 1');
     }
     if (type == 'opt-out') {
       // enable cookies
+      console.log('onRevokeChoice 2');
       loadGAonConsent();
     }
   },
