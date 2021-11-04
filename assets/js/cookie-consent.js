@@ -9,6 +9,13 @@ window.cookieconsent.initialise({
       text: '#ffffff',
     },
   },
+  type: 'opt-out',
+  content: {
+    message:
+      'This website uses cookies to improve your experience. We’ll assume you’re okay with this, but you can opt out if you wish. ',
+    dismiss: 'Accept',
+    href: 'https://www.bgs.ac.uk/legal-and-policy/privacy/',
+  },
   onInitialise: function (status) {
     var type = this.options.type;
     var didConsent = this.hasConsented();
