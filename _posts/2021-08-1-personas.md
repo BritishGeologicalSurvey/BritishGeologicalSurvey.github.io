@@ -12,7 +12,7 @@ tags:
 
 Personas are representations of user groups whom we expect to use our products. They help to convey information about the users to the product team. Some products target just a single user group, but most will have more than one.
 
-<a href="../../assets/images/2021-08-11-personas/persona-example.png"><img src="../../assets/images/2021-08-11-personas/persona-example.png"></a>
+![Persona example](../../assets/images/2021-08-11-personas/persona-solution-innovator.png)
 
 ## Effective use of personas
 
@@ -34,7 +34,7 @@ Personas can be created individually or as a [group effort](https://miro.com/app
 
 To ensure that personas are effective and useful:
 * Share them
-* Reference them when creating [user journeys](http://digital-planning.glpages.ad.nerc.ac.uk/design-toolkit/docs/33-user-journey-templates/)
+* Reference them when creating [user journeys](https://www.gov.uk/service-manual/design/map-a-users-whole-problem)
 * Create usability tests that are targeted at specific personas
 
 > If you are working with sensitive data or information consider creating **anti-personas** as well. Anti-personas are groups of people who might try to misuse your product or service.
@@ -50,13 +50,13 @@ Below you can find some persona examples created for Data Discoverability projec
 
 <figure class="half">
     <a href="../../assets/images/2021-08-11-personas/persona-strategic-lead.png"><img src="../../assets/images/2021-08-11-personas/persona-strategic-lead.png"></a>
-    <a href="../../assets/images/2021-08-11-personas/Persona-investigator.png"><img src="../../assets/images/2021-08-11-personas/Persona-investigator.png"></a>
+    <a href="../../assets/images/2021-08-11-personas/persona-investigator.png"><img src="../../assets/images/2021-08-11-personas/persona-investigator.png"></a>
     <figcaption>Persona examples</figcaption>
 </figure>
 
 ## Resources
 
-<!-- More details about the personas and other UX methods can be found in [BGS Design Toolkit](http://digital-planning.glpages.ad.nerc.ac.uk/design-toolkit/docs/32-persona-templates/). -->
+More details about the personas and user needs can be found [here](https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs).
 
 To start creating your own personas, you can use one of these templates:
 
