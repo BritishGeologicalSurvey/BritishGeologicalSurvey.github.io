@@ -34,7 +34,7 @@ Personas can be created individually or as a [group effort](https://miro.com/app
 
 To ensure that personas are effective and useful:
 * Share them
-* Reference them when creating [user journeys](http://digital-planning.glpages.ad.nerc.ac.uk/design-toolkit/docs/33-user-journey-templates/)
+* Reference them when creating [user journeys](https://www.gov.uk/service-manual/design/map-a-users-whole-problem)
 * Create usability tests that are targeted at specific personas
 
 > If you are working with sensitive data or information consider creating **anti-personas** as well. Anti-personas are groups of people who might try to misuse your product or service.
@@ -56,7 +56,7 @@ Below you can find some persona examples created for Data Discoverability projec
 
 ## Resources
 
-More details about the personas and other UX methods can be found in [BGS Design Toolkit](http://digital-planning.glpages.ad.nerc.ac.uk/design-toolkit/docs/32-persona-templates/).
+More details about the personas and user needs can be found [here](https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs).
 
 To start creating your own personas, you can use one of the templates
 
