@@ -50,7 +50,7 @@ Below you can find some persona examples created for Data Discoverability projec
 
 <figure class="half">
     <a href="../../assets/images/2021-08-11-personas/persona-strategic-lead.png"><img src="../../assets/images/2021-08-11-personas/persona-strategic-lead.png"></a>
-    <a href="../../assets/images/2021-08-11-personas/persona-investigator.png"><img src="../../assets/images/2021-08-11-personas/persona-investigator.png"></a>
+    <a href="../../assets/images/2021-08-11-personas/persona-investigator.png"><img src="../../assets/images/2021-08-11-personas/Persona-investigator.png"></a>
     <figcaption>Persona examples</figcaption>
 </figure>
 
