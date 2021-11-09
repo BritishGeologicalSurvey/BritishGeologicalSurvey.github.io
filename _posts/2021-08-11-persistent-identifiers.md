@@ -5,6 +5,7 @@ categories:
   - Open Data
 tags:
   - Linked Data
+  - RDF
 ---
 
 # Exposing and resolving persistent identifiers on the web
