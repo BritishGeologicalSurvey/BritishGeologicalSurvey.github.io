@@ -58,8 +58,8 @@ Below you can find some persona examples created for Data Discoverability projec
 
 More details about the personas and user needs can be found [here](https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs).
 
-To start creating your own personas, you can use one of the templates
+To start creating your own personas, you can use one of these templates:
 
 * [Figma Persona template](https://www.figma.com/file/m9lYsQmQX16ugcSL47cpzl/Persona-template-and-examples?node-id=0%3A1\)
 * [Miro Persona template](https://miro.com/app/board/o9J_l2vzPNs=/)
-* [Persona workshop template](https://miro.com/app/board/o9J_l2uIqjs=/)
+* [Personas workshop template](https://miro.com/app/board/o9J_l2uIqjs=/)
