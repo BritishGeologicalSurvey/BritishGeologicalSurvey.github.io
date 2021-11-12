@@ -12,7 +12,7 @@ tags:
 
 Personas are representations of user groups whom we expect to use our products. They help to convey information about the users to the product team. Some products target just a single user group, but most will have more than one.
 
-![Persona example](../../assets/images/2021-08-11-personas/persona-solution-innovator.png)
+![Persona example](../../assets/images/2021-08-11-personas/teds-persona-4.png)
 
 ## Effective use of personas
 
@@ -41,16 +41,16 @@ To ensure that personas are effective and useful:
 
 ## Examples
 
-Below you can find some persona examples created for Data Discoverability project. They show different types of geospatial data users and different ways they discover and use data. These personas helped us to present the research findings in a more digestible form and to keep user needs and frustrations at the forefront when creating recommendations for geospatial portal designers and developers.
+Below you can find some persona examples showing different types of user groups which could benefit from environmental data and services. They show how familiar each groups is with geospatial data and what are their goals, priorities and frustrations. These personas helped us to present research findings in a more digestible form and to keep user needs and frustrations at the forefront when thinking about new environmental data products and services that could benefit them.
 
 <figure class="half">
-    <a href="../../assets/images/2021-08-11-personas/persona-solution-innovator.png"><img src="../../assets/images/2021-08-11-personas/persona-solution-innovator.png"></a>
-    <a href="../../assets/images/2021-08-11-personas/persona-spatial.png"><img src="../../assets/images/2021-08-11-personas/persona-spatial.png"></a>
+    <a href="../../assets/images/2021-08-11-personas/teds-persona-1.png"><img src="../../assets/images/2021-08-11-personas/teds-persona-1.png"></a>
+    <a href="../../assets/images/2021-08-11-personas/teds-persona-5.png"><img src="../../assets/images/2021-08-11-personas/teds-persona-5.png"></a>
 </figure>
 
 <figure class="half">
-    <a href="../../assets/images/2021-08-11-personas/persona-strategic-lead.png"><img src="../../assets/images/2021-08-11-personas/persona-strategic-lead.png"></a>
-    <a href="../../assets/images/2021-08-11-personas/persona-investigator.png"><img src="../../assets/images/2021-08-11-personas/Persona-investigator.png"></a>
+    <a href="../../assets/images/2021-08-11-personas/teds-persona-2.png"><img src="../../assets/images/2021-08-11-personas/teds-persona-2.png"></a>
+    <a href="../../assets/images/2021-08-11-personas/teds-persona-6.png"><img src="../../assets/images/2021-08-11-personas/teds-persona-6.png"></a>
     <figcaption>Persona examples</figcaption>
 </figure>
 
