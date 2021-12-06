@@ -10,12 +10,12 @@ tags:
   - etlhelper
 ---
 
-[ETLHelper](https://pypi.org/project/etlhelper/) is a Python library for reading from and writing to databases that is developed at BGS.
+[ETLHelper](https://pypi.org/project/etlhelper/) is a Python library developed at BGS for reading from and writing to databases.
 It makes it easy to run a SQL query and transform the results into JSON objects suitable for uploading to an HTTP API.
 
 In some of our projects, we have begun using Python's
 [asyncio](https://docs.python.org/3/library/asyncio.html) library to perform
-the API uploads concurrently.
+concurrent API uploads.
 As a result, we have seen speed increases of up to 10x compared to
 our previous method of posting data sequentially.
 
@@ -42,8 +42,8 @@ documentation](https://realpython.com/introduction-to-python-generators/) for fu
 ETLHelper provides the `iter_rows` function that returns
 a [generator](https://realpython.com/introduction-to-python-generators/) item
 that yields a new result from the database with each iteration.
-Results are fetched from the database only as required instead of loaded into
-memory (as with `get_rows`).
+Results are fetched from the database only as required instead of all being loaded into
+memory first.
 This makes it suitable for transferring large quantities of data.
 
 In this case, the `iter_rows` call runs a SQL query (`SELECT_SENSORS`) against
@@ -89,11 +89,12 @@ wait for a response from the API before it can proceed to the next item.
 
 In the asynchronous version, we use the `iter_chunks` to pull the data from the
 database.
-This returns a generator that yields lists of results (5000 at a time by
-default).
-`asyncio.run()` is used to call the the function that posts the results
-concurrently.
-This is required because `post_chunk` is an async function.
+This returns a generator that yields a list of results (5000 at a time by
+default) with each iteration.
+The `post_chunk` function posts the results in each chunk concurrently.
+Because `post_chunk` is an asynchronous function, it needs to be called by `asyncio.run()`.
+Otherwise, the `copy_sensors` function is very similar to before.
+
 
 ```python
 def copy_sensors(startdate, enddate):
@@ -107,14 +108,13 @@ def copy_sensors(startdate, enddate):
             asyncio.run(post_chunk(chunk))
 ```
 
-Two functions are required for posting to the API - one to post a single item
+Two functions are required for asynchronously posting to the API - one to post a single item
 and another call the first concurrently for all of our items.
 
 `post_chunk` handles the concurrency.
 It builds a list of tasks, one for each item, then calls `asyncio.gather()` to execute them asynchronously (and collect
 the results if required).
 An `aiohttp.ClientSession` allows the same connection to the server to be reused for each item in the chunk.
-
 
 ```python
 async def post_chunk(chunk):
@@ -131,10 +131,10 @@ async def post_chunk(chunk):
 
 The `post_item` function is similar to the Requests version.
 The main differences are the use of _await_ keywords and that `response.text`
-is an awaitable function here, where it is an attribute in Requests.
+is an awaitable function here, whereas it is an attribute in Requests.
 Also, it is essential to log any error information before raising an
-exception if something goes wrong as it is not possible to access it via
-a debugger.
+exception if something goes wrong.
+Otherwise, it is not possible to access all the state information for the [awaitable](https://docs.python.org/3/library/asyncio-task.html#awaitables) `response` via a debugger.
 
 ```python
 async def post_item(item, session):
@@ -156,7 +156,7 @@ async def post_item(item, session):
 
 The `asyncio` library is relatively new to Python (since Python 3.4) and has
 a reputation of being difficult to understand.
-Hopefully this blog post demonstrates how simple it can be and how well it
+Hopefully this blog post demonstrates how simple it can be to use and how well it
 integrates with ETLHelper's `iter_chunks` function.
 
 If you would like to take a deeper look at `asyncio`, I recommend reading
