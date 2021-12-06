@@ -20,6 +20,11 @@ remote_theme: "mmistakes/minimal-mistakes@4.17.2"
 include:
   - _pages
 
+analytics:
+  provider: "google"
+  google:
+    tracking_id: "UA-212008791-1"
+    anonymize_ip: true
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
@@ -63,10 +68,13 @@ author:
       url: 'https://instagram.com/britgeosurvey/'
     - label: 'Facebook'
       icon: 'fab fa-fw fa-facebook'
-      url: 'https://www.facebook.com/pages/British-Geological-Survey'
+      url: 'https://www.facebook.com/BritishGeologicalSurvey/'
     - label: 'Linkedin'
       icon: 'fab fa-fw fa-linkedin'
       url: 'https://www.linkedin.com/company/british-geological-survey'
+    - label: 'YouTube'
+      icon: 'fab fa-fw fa-youtube'
+      url: 'https://www.youtube.com/user/bgschannel'
 
 footer:
   links:
@@ -84,10 +92,13 @@ footer:
       url: 'https://instagram.com/britgeosurvey/'
     - label: 'Facebook'
       icon: 'fab fa-fw fa-facebook'
-      url: 'https://www.facebook.com/pages/British-Geological-Survey'
+      url: 'https://www.facebook.com/BritishGeologicalSurvey/'
     - label: 'Linkedin'
       icon: 'fab fa-fw fa-linkedin'
       url: 'https://www.linkedin.com/company/british-geological-survey'
+    - label: 'YouTube'
+      icon: 'fab fa-fw fa-youtube'
+      url: 'https://www.youtube.com/user/bgschannel'
 
 defaults:
   # _posts
@@ -127,3 +138,7 @@ comments:
     label: 'comments'
 
 theme: jekyll-theme-minimal
+
+after_footer_scripts:
+  - /assets/js/cookie-consent.js
+
