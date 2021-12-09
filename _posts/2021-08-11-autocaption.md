@@ -22,7 +22,7 @@ The British Geological Survey has a [long history](https://www.bgs.ac.uk/geology
 	<figcaption>BGS citizen science applications: mySoil, myHAZ-VCT and myVolcano. </figcaption>
 </figure>
 
-## Anonymous submissions Vs user accounts
+## Anonymous submissions vs user accounts
 
 When designing citizen science applications, the decision of whether to allow anonymous observations or to require an element of authentication is integral to the project aims, ambitions and purpose. Allowing anonymous submissions reduces the amount of time it takes to submit an observation, which respects the time of your users and minimises any barriers to entry.
 
@@ -30,13 +30,13 @@ However, anonymous submissions means that there are no checks on who is submitti
 
 ## How BGS manages anonymous submissions
 
-BGS has managed the risk of anonymous submissions by utilising the BGS Enquiries service who receive notifications of new submissions and are able to review their content (text and imagery) before being approved/published or rejected/hidden. This process enabled a real person to assess the quality of the content and make a conscious decision to approve or reject it.
+BGS has managed the risk of anonymous submissions by utilising the BGS Enquiries service who receive notifications of new submissions and are able to review their content (text and imagery) before being approved/published or rejected/hidden. This process enabled a real person to assess the quality of the content and make a conscious decision to approve or reject it. It also enables the filtering of images and content which is intentionally harmful or offensive.
 
-However, this process is inherently manual and relies on a member of the Enquiries team to be available and have the time to process and action each submission. A member of staff is also manually triaging observations which could include imagery and content which is intentionally harmful or offensive. Given the pressures on their time already, the number of submissions and how frequently each submissions needs to be actioned, the burden can become unsustainable.
+However, this process is inherently manual and relies on a member of the Enquiries team to be available and have the time to process and action each submission. Given the pressures on their time already the burden can become unsustainable.
 
 # Automating the process
 
-In order to optimise the existing process I investigated how submissions could be screened to remove harmful content before a human is required to look at it. Content like free text can be easily processed to detect offensive words (although the process is fallible, see the [Scunthorpe problem](https://en.wikipedia.org/wiki/Scunthorpe_problem)).
+In order to optimise the existing process I investigated how submissions could be screened to remove harmful content before a human is required to look at it. Content like free text can be easily processed to detect offensive words (although the process is fallible e.g resulting in false positives).
 
 Imagery, however, is a more complex computational problem to solve due to the range of material that can be submitted. In order to investigate a solution I utilised the [Microsoft Azure Computer Vision service](https://azure.microsoft.com/en-us/services/cognitive-services/computer-vision/#overview). This tool uses Artificial Intelligence (AI) on the Azure cloud computing system to analyse imagery and video to extract a variety of visual features from the image. For the purposes of my Proof of Concept (PoC) application I wanted to use Computer Vision to analyse imagery submitted through our crowdsourcing applications to:
 
@@ -47,11 +47,13 @@ Imagery, however, is a more complex computational problem to solve due to the ra
 ## Microsoft demo of Computer Vision API
 ![](../../../assets/images/2021-08-11-autocaption/ms-example.png)
 
-The example above shows how the original image has been analysed by the Computer Vision API and its content is then available for review, alongside a percentage confidence in is accuracy. A plain-text description attempts to provide a human-readable description of the image, which is reasonably accurate.
+*Image used from [Microsoft AI Demo website](https://aidemos.microsoft.com/computer-vision) &#169; Microsoft 2021*
+
+The example above shows how the original image has been analysed by the Computer Vision API and its content is then available for review, alongside a percentage confidence in its accuracy. A plain-text description attempts to provide a human-readable description of the image, which is reasonably accurate.
 
 ## Proof of Concept with BGS data
 
-Steps taken create a PoC with BGS data:
+Steps taken to create a PoC with BGS data:
 * Created a new Microsoft Azure account to access the API free trial
 * Created a blank [Angular application](https://angular.io/) to quickly develop a User Interface (UI) for the tool.
 * Repurposed [sample code](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts-sdk/image-analysis-client-library?pivots=programming-language-javascript&tabs=visual-studio) for communicating with the Computer Vision API
@@ -61,6 +63,8 @@ The result was a basic web application allowing a user to manually select an ima
 **Image Input:**
 
 ![](../../../assets/images/2021-08-11-autocaption/edu-workshop.png)
+
+*Image taken from BGS myVolcano workshop in St. Vincent and the Grenadines*
 
 **Image Description:**
 > Group of people sitting at a table
@@ -73,9 +77,9 @@ The result was a basic web application allowing a user to manually select an ima
 
 95%
 
-Further testing found that the AI is correct more often than not in making an assessment of the image contents, however, it did make occasional mistakes. More thorough testing is required to generate metrics on the accuracy of the AI assessment and quality of generated descriptions, as well as to assess how useful the enquiries team found the results.
+Further testing found that the AI is correct more often than not in making an assessment of the image contents, however, it did make occasional mistakes. More thorough testing is required to generate metrics on the accuracy of the AI assessment and quality of generated descriptions.
 
-The PoC tool relies on manually inputting each image for evaluation and waiting for the results, however a production system would need to integrate into the existing verification process without manual intervention. A pipeline could look like this:
+The PoC tool relies on manually inputting each image for evaluation and waiting for the results, however, a production system would need to integrate into the existing verification process carried out by the enquiries team. A pipeline could look like this:
 
 ![](../../../assets/images/2021-08-11-autocaption/flow-chart.png)
 
