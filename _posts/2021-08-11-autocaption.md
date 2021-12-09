@@ -11,7 +11,7 @@ tags:
   - Citizen Science
 ---
 
-The British Geological Survey has a [long history](https://www.bgs.ac.uk/geology-projects/citizen-science/) of utilising citizen science and crowdsourcing to gather information about a range of events and phenomena. The term *Citizen Science* is often used for projects where individuals or groups of volunteers, many without specific training, undertake research-related tasks such as observation, measurement, or computation. Through these networks scientists and researchers can often accomplish much greater results and reach a much wider audience that they would otherwise be able to.
+The British Geological Survey has a [long history](https://www.bgs.ac.uk/geology-projects/citizen-science/) of utilising citizen science and crowdsourcing to gather information about a range of events and phenomena. The term *Citizen Science* is often used for projects where individuals or groups of volunteers, many without specific training, undertake research-related tasks such as observation, measurement, or computation. Through these networks scientists and researchers can often accomplish much greater results and reach a much wider audience than they would otherwise be able to.
 
 ## BGS Citizen science projects
 
@@ -26,7 +26,7 @@ The British Geological Survey has a [long history](https://www.bgs.ac.uk/geology
 
 When designing citizen science applications, the decision of whether to allow anonymous observations or to require an element of authentication is integral to the project aims, ambitions and purpose. Allowing anonymous submissions reduces the amount of time it takes to submit an observation, which respects the time of your users and minimises any barriers to entry.
 
-However, anonymous submissions means that there are no checks on who is submitting and what content are submitting, as well as not being able to contact users again for follow-up questions. An open-door policy can maximise the volume of submissions but allows both high and low quality data to be sent. Depending on the research topic of the citizen science project this can be a help or hindrance, but in many cases the [benefits of maximising contribution rates](https://www.researchgate.net/publication/291356235_To_Sign_Up_or_not_to_Sign_Up_Maximizing_Citizen_Science_Contribution_Rates_through_Optional_Registration) outweighs some of the potential risks.
+However, anonymous submissions means that there are no checks on who is submitting, what content they are submitting and prevents being able to contact users again for follow-up questions. An open-door policy can maximise the volume of submissions but allows both high and low quality data to be sent. Depending on the research topic of the citizen science project this can be a help or hindrance, but in many cases the [benefits of maximising contribution rates](https://www.researchgate.net/publication/291356235_To_Sign_Up_or_not_to_Sign_Up_Maximizing_Citizen_Science_Contribution_Rates_through_Optional_Registration) outweighs some of the potential risks.
 
 ## How BGS manages anonymous submissions
 
