@@ -157,9 +157,9 @@ async def post_item(item, session):
 
 ## Conclusion
 
-The `asyncio` library is relatively new to Python (since Python 3.4) and has
+Asynchronous frameworks based on `asyncio` library are relatively new to Python (since Python 3.4) and have
 a reputation of being difficult to understand.
-Hopefully this blog post demonstrates how simple it can be to use and how well it
+Hopefully this blog post demonstrates how `aiohttp` can be used to make concurrent API requests and how well it
 integrates with ETLHelper's `iter_chunks` function.
 
 If you would like to take a deeper look at `asyncio`, I recommend reading
