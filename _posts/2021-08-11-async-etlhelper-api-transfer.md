@@ -40,7 +40,7 @@ documentation](https://realpython.com/introduction-to-python-generators/) for fu
 
 ETLHelper provides the `iter_rows` function that returns
 a [generator](https://realpython.com/introduction-to-python-generators/) item
-that yields a new result from the database with each iteration.
+that yields a single result from the database with each iteration.
 Results are fetched from the database only as required instead of all being loaded into
 memory first.
 This makes it suitable for transferring large quantities of data.
