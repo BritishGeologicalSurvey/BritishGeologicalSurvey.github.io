@@ -13,8 +13,7 @@ tags:
 [ETLHelper](https://pypi.org/project/etlhelper/) is a Python library developed at BGS for reading from and writing to databases.
 It makes it easy to run a SQL query and transform the results into JSON objects suitable for uploading to an HTTP API.
 
-In some of our projects, we have begun using Python's
-[asyncio](https://docs.python.org/3/library/asyncio.html) library to perform
+In some of our projects, we have begun to use Python's asynchronous capabilities to perform
 concurrent API uploads.
 As a result, we have seen speed increases of up to 10x compared to
 our previous method of posting data sequentially.
@@ -64,6 +63,7 @@ def copy_sensors(startdate, enddate):
             post_item(item)
 ```
 
+[Requests](https://docs.python-requests.org/en/latest/) is an HTTP library for Python that can be used to communicate with APIs.
 The `post_item` function uses Requests to post the item.
 It also raises an exception if something goes wrong.
 
@@ -85,9 +85,12 @@ This code is very simple, but it can be slow as the Python interpreter has to
 wait for a response from the API before it can proceed to the next item.
 
 
-### Concurrent posting with aiohttp
+### Concurrent posting with aiohttp and asyncio
 
-In the asynchronous version, we use the `iter_chunks` to pull the data from the
+The [aiohttp](https://docs.aiohttp.org/en/stable/) library is similar to Requests, but it is based on Python's [asyncio](https://docs.python.org/3/library/asyncio.html) library for asynchronous execution.
+This provides an efficient way to make multiple concurrent API calls.
+
+In the concurrent version, we use the `iter_chunks` to pull the data from the
 database.
 This returns a generator that yields a list of results (5000 at a time by
 default) with each iteration.
