@@ -8,6 +8,7 @@ og_image: "assets/images/GitHub-BGS-socialmedia.png"
 minimal_mistakes_skin: default
 search: true
 breadcrumbs: false
+show_date: true
 words_per_minute: 180
 markdown: kramdown
 highlighter: rouge
@@ -15,7 +16,7 @@ remote_theme: mmistakes/minimal-mistakes
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: 'Europe/London'
+timezone: "Europe/London"
 remote_theme: "mmistakes/minimal-mistakes@4.17.2"
 include:
   - _pages
