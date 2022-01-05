@@ -1,5 +1,5 @@
 ---
-title:  "Using Azure's Computer Vision to triage citizen science submissions"
+title:  "Using Microsoft Azure Computer Vision API to triage citizen science submissions"
 author: Steve Richardson
 categories:
   - front end
@@ -7,7 +7,6 @@ categories:
 tags:
   - Angular
   - Microsoft Azure
-  - AI
   - Citizen Science
 ---
 
