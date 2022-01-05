@@ -8,6 +8,7 @@ og_image: "assets/images/GitHub-BGS-socialmedia.png"
 minimal_mistakes_skin: default
 search: true
 breadcrumbs: false
+show_date: true
 words_per_minute: 180
 markdown: kramdown
 highlighter: rouge
