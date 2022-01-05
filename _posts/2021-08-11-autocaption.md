@@ -1,5 +1,5 @@
 ---
-title:  "Using AI to triage citizen science submissions"
+title:  "Using Azure's Computer Vision to triage citizen science submissions"
 author: Steve Richardson
 categories:
   - front end
@@ -38,16 +38,16 @@ However, this process is inherently manual and relies on a member of the Enquiri
 
 In order to optimise the existing process I investigated how submissions could be screened to remove harmful content before a human is required to look at it. Content like free text can be easily processed to detect offensive words (although the process is fallible e.g resulting in false positives).
 
-Imagery, however, is a more complex computational problem to solve due to the range of material that can be submitted. In order to investigate a solution I utilised the [Microsoft Azure Computer Vision service](https://azure.microsoft.com/en-us/services/cognitive-services/computer-vision/#overview). This tool uses Artificial Intelligence (AI) on the Azure cloud computing system to analyse imagery and video to extract a variety of visual features from the image. For the purposes of my Proof of Concept (PoC) application I wanted to use Computer Vision to analyse imagery submitted through our crowdsourcing applications to:
+Imagery, however, is a more complex computational problem to solve due to the range of material that can be submitted. In order to investigate a solution I utilised the [Microsoft Azure Computer Vision service](https://azure.microsoft.com/en-us/services/cognitive-services/computer-vision/#overview). This tool uses the Azure cloud computing system to analyse imagery and video to extract a variety of visual features from the image. For the purposes of my Proof of Concept (PoC) application I wanted to use Computer Vision to analyse imagery submitted through our crowdsourcing applications to:
 
 * Detect visual features in an image e.g. `table`, `person`, or `indoor`
 * Analyse the image and describe, in human-readable language, what it contains
-* Provide a confidence value to indicate how sure the AI was about its assessment
+* Provide a confidence value to indicate how sure Computer Vision was about its assessment
 
 ## Microsoft demo of Computer Vision API
 ![](../../../assets/images/2021-08-11-autocaption/ms-example.png)
 
-*Image used from [Microsoft AI Demo website](https://aidemos.microsoft.com/computer-vision) &#169; Microsoft 2021*
+*Image used from [Microsoft Azure's Computer Vision Demo website](https://aidemos.microsoft.com/computer-vision) &#169; Microsoft 2021*
 
 The example above shows how the original image has been analysed by the Computer Vision API and its content is then available for review, alongside a percentage confidence in its accuracy. A plain-text description attempts to provide a human-readable description of the image, which is reasonably accurate.
 
@@ -73,11 +73,11 @@ The result was a basic web application allowing a user to manually select an ima
 
 `person`, `indoor`, `table`, `sitting`, `people`, `group`, `laptop`
 
-**Confidence of AI assessment:**
+**Confidence of Azure's Computer Vision assessment:**
 
 95%
 
-Further testing found that the AI is correct more often than not in making an assessment of the image contents, however, it did make occasional mistakes. More thorough testing is required to generate metrics on the accuracy of the AI assessment and quality of generated descriptions.
+Further testing found that Computer Vision is correct more often than not in making an assessment of the image contents, however, it did make occasional mistakes. More thorough testing is required to generate metrics on the accuracy of the assessment and quality of generated descriptions.
 
 The PoC tool relies on manually inputting each image for evaluation and waiting for the results, however, a production system would need to integrate into the existing verification process carried out by the enquiries team. A pipeline could look like this:
 
@@ -85,7 +85,7 @@ The PoC tool relies on manually inputting each image for evaluation and waiting 
 
 ## Conclusions
 
-As a concept, using machine learning and AI to automate the imagery review process has real potential to protect staff from harmful material, increase response times and therefore increase the quality of crowdsourced data being utilised. The technology exists in various implementations so further work is required to evaluate each option against the available resources of time and budgets.
+As a concept, using Computer Vision to automate the imagery review process has real potential to protect staff from harmful material, increase response times and therefore increase the quality of crowdsourced data being utilised. The technology exists in various implementations so further work is required to evaluate each option against the available resources of time and budgets.
 
 ## Further reading
 
