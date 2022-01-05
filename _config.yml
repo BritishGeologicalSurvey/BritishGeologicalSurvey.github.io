@@ -16,7 +16,7 @@ remote_theme: mmistakes/minimal-mistakes
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: 'Europe/London'
+timezone: "Europe/London"
 remote_theme: "mmistakes/minimal-mistakes@4.17.2"
 include:
   - _pages
