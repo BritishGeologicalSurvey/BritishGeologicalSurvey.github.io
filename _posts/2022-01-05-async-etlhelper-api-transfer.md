@@ -30,10 +30,10 @@ of the ETLHelper documentation, which includes an [example ETL
 script](https://github.com/BritishGeologicalSurvey/etlhelper#database-to-api--nosql-copy-etl-script-template)
 to transfer data from an Oracle database to an ElasticSearch API.
 The script originally described posting items sequentially using the
-[Requests](https://docs.python-requests.org/en/master/) library and has now been [updated](https://github.com/BritishGeologicalSurvey/etlhelper/compare/13cd104..f7cfc0b) to use concurrent processing with the [aiohttp](https://docs.aiohttp.org/en/stable/) library.
+[Requests](https://docs.python-requests.org/en/master/) library but has been updated to use concurrent processing with the [aiohttp](https://docs.aiohttp.org/en/stable/) library.
 
 Only the most relevant parts of code are shown here - see the [ETLHelper
-documentation](https://realpython.com/introduction-to-python-generators/) for full details.
+example script](https://github.com/BritishGeologicalSurvey/etlhelper#database-to-api--nosql-copy-etl-script-template) for full details.
 
 
 ### Sequential posting with Requests
