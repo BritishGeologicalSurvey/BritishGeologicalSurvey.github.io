@@ -96,3 +96,21 @@ Dr Chris Williams:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
       url: "https://www.bgs.ac.uk/contact-the-person/?employee=williams-christopher"
+      
+Rachel Heaven:
+  name: "Rachel Heaven"
+  bio: "Geo-data-computer scientist"
+  avatar: "/assets/images/BGS-Icon-Compact-Pos-RGB.svg"
+  links:
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://www.bgs.ac.uk"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "https://www.bgs.ac.uk/contact-the-person/?employee=heaven-rachel-2"
+    - label: "Linkedin"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/rachel-h-64850231/"
+      
+      
+      

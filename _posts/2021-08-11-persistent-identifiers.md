@@ -5,6 +5,7 @@ categories:
   - Open Data
 tags:
   - Linked Data
+  - RDF
 ---
 
 ## What are persistent identifiers?
