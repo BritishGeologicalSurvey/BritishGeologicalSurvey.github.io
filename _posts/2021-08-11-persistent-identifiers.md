@@ -7,11 +7,9 @@ tags:
   - Linked Data
 ---
 
-# Exposing and resolving persistent identifiers on the web
-
 ## What are persistent identifiers?
 
-Within our internal corporate databases we have well managed persistent identifiers for most of our important data items, in the form of foreign key columns in relational databases. These are either auto-incrementing integers or a short text code.  They uniquely identify a record, can be used to reference it from other database tables are not allowed to be changed. The codes are guaranteed to be unique within that set of data, but may not be unique across BGS's other data resources and certainly not unique outside BGS.
+Within our internal corporate databases we have well managed persistent identifiers for most of our important data items, in the form of foreign key columns in relational databases. These are either auto-incrementing integers or a short text code.  They uniquely identify a record, can be used to reference it from other database tables and are not allowed to be changed. The codes are guaranteed to be unique within that set of data, but may not be unique across BGS's other data resources and certainly not unique outside BGS.
 
 We want to make our data publically available in the [Web of Data](https://www.w3.org/2013/data/) and as such each item should have a universally unique identifer on the web in the form of a persistent uri, which can similarly be used to uniquely identify a resource and reference it from anywhere in the web. You can read more about this in the [W3C Data on the Web Best Practices](https://www.w3.org/TR/dwbp/#DataIdentifiers) and the original concept from [Tim Berners Lee's 5 stars of Linked Data](https://www.w3.org/DesignIssues/LinkedData.html)
 
@@ -54,7 +52,14 @@ The linked data is exposed to the web using nginx and a Linked Data API written 
 ## How do we redirect to a user friendly web page or application?
 
 
-The API handles content negotiation for different RDF (resource description framework) formats and uses [rdflib](https://github.com/RDFLib/rdflib) for serialisation. 
+The API handles content negotiation for different RDF (resource description framework) formats and uses [rdflib](https://github.com/RDFLib/rdflib) for serialisation.  The representation type requested by the client can be indicated by file type extension in the url, with text/html as the default, thus: 
+
+ - `.html` or no extension will return text/html
+
+ - `.nt` will return n-triples
+
+ - etc for other machine readable formats .rdf, .ttl, .json , .xml
+ 
 If the content type of text/html is requested then the API checks for existence of a `foaf:homepage` predicate in the graph, and redirects to the url in the object of that triple if one is found. If a ``foaf:homepage`` predicate is not found then the API uses Jinja2 HTML templates to display all known triples for that concept within the http://data.bgs.ac.uk site.
 
 
@@ -66,14 +71,14 @@ If the content type of text/html is requested then the API checks for existence 
 
 You can see this redirect in action with the data catalogue entries:
 
-http://data.bgs.ac.uk/id/dataHolding/13606914.nt doesn't trigger the redirect and returns the minimal set of triples serialised in n-triples format for machine processing (see also .rdf, .ttl, .json , .xml).
+http://data.bgs.ac.uk/id/dataHolding/13606914.nt (note `.nt` extension) doesn't trigger the redirect and returns the minimal set of triples serialised in n-triples format for machine processing 
 
     <http://data.bgs.ac.uk/id/dataHolding/13606914> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rdfs.org/ns/void#Dataset> .
     <http://data.bgs.ac.uk/id/dataHolding/13606914> <http://www.w3.org/2004/02/skos/core#inScheme> <http://data.bgs.ac.uk/ref/DiscoveryMetadata> .
     <http://data.bgs.ac.uk/id/dataHolding/13606914> <http://xmlns.com/foaf/0.1/homepage> <http://metadata.bgs.ac.uk/geonetwork/srv/eng/catalog.search#/metadata/33bec698-1d9a-6dee-e054-002128a47908> .
 
 
-http://data.bgs.ac.uk/id/dataHolding/13606914 or http://data.bgs.ac.uk/id/dataHolding/13606914.html redirect to the appropriate geonetwork page under http://metadata.bgs.ac.uk/geonetwork that you see in the foaf triple above
+http://data.bgs.ac.uk/id/dataHolding/13606914 or http://data.bgs.ac.uk/id/dataHolding/13606914.html (using no extension or `.html`) redirect to the appropriate geonetwork page under http://metadata.bgs.ac.uk/geonetwork that you see in the foaf triple above
 
 ![Geonetwork landing page for dataset id 13606914](../../assets/images/2021-08-11-persistent-identifiers/geonetwork.png)
 
