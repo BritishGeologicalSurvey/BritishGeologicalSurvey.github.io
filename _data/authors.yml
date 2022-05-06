@@ -97,6 +97,17 @@ Dr Chris Williams:
       icon: "fas fa-fw fa-envelope-square"
       url: "https://www.bgs.ac.uk/contact-the-person/?employee=williams-christopher"
       
+Dr Phil Atkinson:
+  name: "Dr Phil Atkinson"
+  bio: "Software engineer"
+  avatar: "/assets/images/BGS-Icon-Compact-Pos-RGB.svg"
+  links:
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://www.bgs.ac.uk"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+
 Rachel Heaven:
   name: "Rachel Heaven"
   bio: "Geo-data-computer scientist"
@@ -111,6 +122,3 @@ Rachel Heaven:
     - label: "Linkedin"
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/rachel-h-64850231/"
-      
-      
-      
