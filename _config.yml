@@ -8,6 +8,7 @@ og_image: "assets/images/GitHub-BGS-socialmedia.png"
 minimal_mistakes_skin: default
 search: true
 breadcrumbs: false
+show_date: true
 words_per_minute: 180
 markdown: kramdown
 highlighter: rouge
@@ -15,7 +16,7 @@ remote_theme: mmistakes/minimal-mistakes
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: 'Europe/London'
+timezone: "Europe/London"
 remote_theme: "mmistakes/minimal-mistakes@4.17.2"
 include:
   - _pages
@@ -63,10 +64,13 @@ author:
       url: 'https://instagram.com/britgeosurvey/'
     - label: 'Facebook'
       icon: 'fab fa-fw fa-facebook'
-      url: 'https://www.facebook.com/pages/British-Geological-Survey'
+      url: 'https://www.facebook.com/BritishGeologicalSurvey/'
     - label: 'Linkedin'
       icon: 'fab fa-fw fa-linkedin'
       url: 'https://www.linkedin.com/company/british-geological-survey'
+    - label: 'YouTube'
+      icon: 'fab fa-fw fa-youtube'
+      url: 'https://www.youtube.com/user/bgschannel'
 
 footer:
   links:
@@ -84,10 +88,13 @@ footer:
       url: 'https://instagram.com/britgeosurvey/'
     - label: 'Facebook'
       icon: 'fab fa-fw fa-facebook'
-      url: 'https://www.facebook.com/pages/British-Geological-Survey'
+      url: 'https://www.facebook.com/BritishGeologicalSurvey/'
     - label: 'Linkedin'
       icon: 'fab fa-fw fa-linkedin'
       url: 'https://www.linkedin.com/company/british-geological-survey'
+    - label: 'YouTube'
+      icon: 'fab fa-fw fa-youtube'
+      url: 'https://www.youtube.com/user/bgschannel'
 
 defaults:
   # _posts
@@ -127,3 +134,4 @@ comments:
     label: 'comments'
 
 theme: jekyll-theme-minimal
+
