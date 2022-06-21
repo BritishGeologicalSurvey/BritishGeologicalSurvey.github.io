@@ -10,7 +10,7 @@ tags:
 ---
 
 ## Static Code Analysis with SonarQube
-The use of _static code analysis tools_ can help developers identify code quality issues and security vulnerabilities early in the software development lifecycle, and so helps in the effort to *Shift-Left*. 
+The use of _static code analysis tools_ can help developers identify code quality issues and security vulnerabilities early in the software development lifecycle, and so helps in the effort to *Shift-Left*.
 
 Whilst many IDEs (and IDE plugins) can carry out code linting, and even spot potential security issues, the ability to configure them is often restircted to local development environments and the analysis detached from the build process.
 
@@ -29,12 +29,12 @@ They serve as buckets for rules/issues that should be considered during analysis
 
 There is a comprehensive list of rules/issues that are maintained that are categorised as **bug**, **vulnerability**, **security hotspot**, or **code smell**. The descriptions for these categories in the table below are my interpretations.
 
-| Categroy | Description |
-|--|--|
-| Bug | General coding error |
-| Vulnerability  | Security-specific bug |
+| Categroy         | Description                                                                                                                                             |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Bug              | General coding error                                                                                                                                    |
+| Vulnerability    | Security-specific bug                                                                                                                                   |
 | Security hotspot | Parts of the code identified as having the potential to be insecure but SonarQube is unable to determine whether it constitutes a genuine vulnerability |
-| Code smell | Unconventional, possibly confusing style of coding |
+| Code smell       | Unconventional, possibly confusing style of coding                                                                                                      |
 
 What is particularly good is that the issue descriptions often contain guidance on how to fix the issue and relevant links to entries on the various standards lists, including security lists such as _CWE_, _Sans-25_, and _OWASP Top 10_.
 
@@ -57,4 +57,5 @@ Recently, in the tech media, there has been an increased focus on vulnerabilitie
 Whilst this may be the case, the ease with which _Static Analysis Security Testing (SAST)_ and code quality testing can now be applied to your code base means there is little reason not to use automated static code analysis to gain some security benefit.
 
 And it is probably even more important for open source projects (especially those used as library dependencies) as any security vulnerabilities within them, if not identified prior to release, could be identifiable to others using automated SAST tools.
+
 
