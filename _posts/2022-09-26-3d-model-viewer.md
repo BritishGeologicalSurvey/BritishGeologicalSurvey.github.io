@@ -16,16 +16,16 @@ BGS's 3D geological model viewer provides on-demand generation of images of synt
 
 ## Background
 
-Since modern computer systems allowed it, BGS geologists have captured their understanding of the subsurface in (3D representations)[https://www.bgs.ac.uk/geology-projects/geology-3d/] of the different rocks deposited in layers over deep geological time, and the folds, faults and intrusions that have modified those layers. Desktop software packages allow experts full interaction with the 3D model, but until recently they were difficult to share to non-expert users within a web browser.
+Since modern computer systems allowed it, BGS geologists have captured their understanding of the subsurface in [3D representations](https://www.bgs.ac.uk/geology-projects/geology-3d/) of the different rocks deposited in layers over deep geological time, and the folds, faults and intrusions that have modified those layers. Desktop software packages allow experts full interaction with the 3D model, but until recently they were difficult to share to non-expert users within a web browser.
 BGS developed a bespoke solution to this - the 3d geological model viewer - as a companion to development of the BGS Groundhog model building software.
 
-The 3d model viewer software was released in 2012, and originally branded "Groundhog Web". It was used within the recently retired (BGS Geology of Britain viewer)[https://www.bgs.ac.uk/map-viewers/geology-of-britain-viewer/] to display small demonstrator and public-interest models of classic geology areas such as Isle of Wight and Ingleborough. In 2014 a pay-per-view version was released to provide access to the new large high resolution London and Thames Valley model and a few other models in other parts of the UK.
+The 3d model viewer software was released in 2012, and originally branded "Groundhog Web". It was used within the recently retired [BGS Geology of Britain viewer](https://www.bgs.ac.uk/map-viewers/geology-of-britain-viewer/) to display small demonstrator and public-interest models of classic geology areas such as Isle of Wight and Ingleborough. In 2014 a pay-per-view version was released to provide access to the new large high resolution London and Thames Valley model and a few other models in other parts of the UK.
 
-In 2021 the decision was taken to remove the paywall and provide free access to the models for London, Glasgow and Cardiff - the largest cities in England, Scotland and Wales and the latter also being sites related to our (UKGEOS geothermal energy research)[https://ukgeos.ac.uk/]. The models are now accessed from a new the Urban Interactive Models data layer in our comprehensive data index the (GeoIndex map viewer)[https://www.bgs.ac.uk/map-viewers/geoindex-onshore/].
+In 2021 the decision was taken to remove the paywall and provide free access to the models for London, Glasgow and Cardiff - the largest cities in England, Scotland and Wales and the latter also being sites related to our [UKGEOS geothermal energy research](https://ukgeos.ac.uk/). The models are now accessed from a new "Urban Interactive Models" data layer in our comprehensive spatial data viewer, [GeoIndex](https://www.bgs.ac.uk/map-viewers/geoindex-onshore/).
 
 ## Model development 
 
-The geological models were generally developed in (GSI3D)[https://en.wikipedia.org/wiki/GSI3D] or latterly (BGS Groundhog)[https://www.bgs.ac.uk/technologies/software/groundhog/] desktop software, and exported from there as a series of 2D regular ASCII grids representing the base of each rock layer. A grid representing the ground surface (DTM, Digital Terrain Model) is also required for the 3D model viewer.
+The geological models were generally developed in [GSI3D](https://en.wikipedia.org/wiki/GSI3D) or latterly [BGS Groundhog](https://www.bgs.ac.uk/technologies/software/groundhog/) desktop software, and exported from there as a series of 2D regular ASCII grids representing the base of each rock layer. A grid representing the ground surface (DTM, Digital Terrain Model) is also required for the 3D model viewer.
 
 
 ## Model data preparation
@@ -53,13 +53,13 @@ Fault lineations to be drawn on the images are supplied as triangle mesh files i
 
 For each model, the modellers compile the metadata for the model (model name, description, visibility) and for each of the geological layers (name, litho- or chrono-stratigraphic code attributed to that layer, drawing colour, layer order, binary grid file name).
 
-The colours used for each layer are the standard colours used in BGS digital geological mapping e.g. (BGS Geology 50k colours)[https://www.bgs.ac.uk/download/bgs-geology-50k-digmapgb-50-colours-look-up-table/].  
+The colours used for each layer are the standard colours used in BGS digital geological mapping e.g. [BGS Geology 50k colours](https://www.bgs.ac.uk/download/bgs-geology-50k-digmapgb-50-colours-look-up-table/).  
 
 The metadata is provided in an excel spreadsheet, validated and then stored in a relational database.
 
 ## Front end user interface
 
-Requests to the web service are assembled using widgets in the BGS GeoIndex viewer where a certain amount of validation of requests is performed, and restrictions on the length of sections and size of horizontal slices in order to avoid processing timeouts.
+Requests to the web service are assembled using widgets in the BGS GeoIndex viewer where a certain amount of validation of requests is performed, and restrictions on the length of sections and size of horizontal slices in order to limit back-end processing load.
 
 ## Back-end image generation
 
@@ -68,10 +68,12 @@ For sufficient response times for larger models, we found that the grid files ne
 
 As noted above, elevation values in the binary grids are stored as decimeter integers. On extraction from the binary grid the z value must be divided by 10 to get the elevation value at that grid node in metres.
 
-We use the Java AWT library to draw the images. The images for boreholes and vertical sections are built up based on the layer order – the interval between the deepest layer and the DTM is drawn first and filled in with the appropriate colour, and then the next deepest layer is drawn on top etc.
+We use the Java Abstract Window Toolkit (AWT) library to draw the images. The images for boreholes and vertical sections are built up based on the layer order – the interval between the deepest layer and the DTM is drawn first and filled in with the appropriate colour, and then the next deepest layer is drawn on top etc.
 The horizontal slice is drawn cell by cell based on which layer grid has been intersected at each x,y point in the grid, interpolating z values linearly between original grid nodes as required to align with the requested sample size.
 
 An algorithm was implemented to choose optimal intervals for depth or distance axes tick marks whilst also taking the pixel size of the graphics font into account.
+
+The source code is not currently made public.
 
 ### Pdf template
 
@@ -124,7 +126,7 @@ In some early outputs we presented the section images alongside the snippet from
 
 #### Depth vs elevation confusion
 
-As software engineers we had to take great care understanding and naming the variables used for depth and elevation variables for the requests made in the user interface and web service – is the value measured positive up (elevation) or positive down (depth), which datum are they measured against (ground level or (Ordnance Datum)[https://epsg.io/5101-datum]).
+As software engineers we had to take great care understanding and naming the variables used for depth and elevation variables for the requests made in the user interface and web service – is the value measured positive up (elevation) or positive down (depth), which datum are they measured against (ground level or [Ordnance Datum](https://epsg.io/5101-datum).
 
 
 ## Next steps 
@@ -142,8 +144,8 @@ As software engineers we had to take great care understanding and naming the var
 
  - The model metadata database is currently in our corporate relational database, but the data is static and lightweight so we could simplify the code by using a local JSON files instead.
 
- - For horizontal slice requests, the GeoIndex user interface needs to first query the web service to get the maximum model depth at the chosen location so it can constrain or validate the user's request. This processing delay can cause the interface to report an error, and this feature is currently marked as beta status. See !(screenshot) [images/hslice-warning.PNG]
+ - For horizontal slice requests, the GeoIndex user interface needs to first query the web service to get the maximum model depth at the chosen location so it can constrain or validate the user's request. This processing delay can cause the interface to report an error, and this feature is currently marked as beta status. See ![screenshot](images/hslice-warning.PNG)
 
- - The web service could be re-engineered to use url query variables rather than path variables to help extensibility, and we could document the webservice using (OpenAPI specification)[https://swagger.io/specification/]. For the time being we are not intending to serve out the raw x,y,z model data that the images are built from, only the resulting images.
+ - The web service could be re-engineered to use url query variables rather than path variables to help extensibility, and we could document the webservice using [OpenAPI specification](https://swagger.io/specification/). For the time being we are not intending to serve out the raw x,y,z model data that the images are built from, only the resulting images.
 
 
