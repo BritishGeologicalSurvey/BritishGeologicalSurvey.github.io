@@ -136,7 +136,7 @@ In some early outputs we presented the section images alongside the snippet from
 
 #### Depth vs elevation confusion
 
-We had to take great care understanding and naming the variables used for depth and elevation in the user interface and web service, to make sure it was clear if the value was measured positive up (elevation) or positive down (depth), and which datum it is measured against (ground level or [Ordnance Datum](https://epsg.io/5101-datum).
+We had to take great care understanding and naming the variables used for depth and elevation in the user interface and web service, to make sure it was clear if the value was measured positive up (elevation) or positive down (depth), and which datum it is measured against (ground level or [Ordnance Datum](https://epsg.io/5101-datum)).
 
 
 ## Next steps 
