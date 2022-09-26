@@ -105,11 +105,11 @@ There are 3 types of model view that can be requested, and 3 types of representa
 
 | | Borehole | Vertical Section | Horizontal Slice |
 | --- | --- | --- | --- |
-| PNG image - minimal marginalia | `/geo3dModelViewer/drawBorehole/` | | |
-| JSP webpage - containing png image plus marginalia, links and form controls to edit the request | | `/geo3dModelViewer/displaySection/` | |
-| PDF document - containing png image plus marginalia  | | | `/geo3dModelViewer/downloadHorizontalSlice/` |
+| PNG image - minimal marginalia | `/drawBorehole/` |`/drawSection/` | `/drawHorizontalSlice/`|
+| JSP webpage - containing png image plus marginalia, links and form controls to edit the request | `/displayBorehole/` | `/displaySection/` | `/displayHorizontalSlice/`|
+| PDF document - containing png image plus marginalia  | `/downloadBorehole/`|`/downloadSection/` | `/downloadHorizontalSlice/` |
 
-Complete web service requests to the Java application are constructed using path parameters to indicate the model identifier, the surface x,y coordinate for the borehole point or section/slice vertices, the depth for a horizontal slice, vertical exaggeration, colour opacity etc. 
+Complete web service requests are constructed using path parameters to indicate the model identifier, the surface x,y coordinate for the borehole point or section/slice vertices, the depth for a horizontal slice, vertical exaggeration, colour opacity etc. 
 
 
 e.g. https://webservices.bgs.ac.uk/geo3dModelViewer/drawBorehole/modelId/190/x/496564/y/176686/vExag/null/
@@ -129,7 +129,7 @@ The different modelling packages have different behaviour regarding how the expo
 
 #### Colour matching
 
-In some early outputs we presented the section images alongside the snippet from the BGS digital geological map. The 2D map colours were displayed with transparency over a topographic basemap, hence lightening the tone. To match this tone in the drawn sections we initially added a transparency value, but because of the way that the graphics are built up by over-laying this resulted in some peculiar effects. This was resolved by adding a percentage of opaque white colour to the RGB colours specified in the layer metadata.
+In some early outputs we presented the section images alongside the snippet from the BGS digital geological map. The 2D map colours were displayed with transparency over a topographic basemap, hence lightening the tone. To match this tone in the drawn sections we initially added a transparency value, but because of the way that the graphics are built up in overlapping layers this was not successful. The problem was resolved by adding a percentage of opaque white colour to the RGB colours specified in the layer metadata.
 
 ```
             // transparency doesn't work with these overlapping polygons, so mimic the
@@ -160,6 +160,6 @@ We had to take great care understanding and naming the variables used for depth 
 
  - For horizontal slice requests, the GeoIndex user interface needs to first query the web service to get the maximum model depth at the chosen location so it can constrain or validate the user's request. This processing delay can cause the interface to report an error, and this feature is currently marked as beta status. See ![screenshot](../../assets/images/2022-09-26-3d-model-viewer/hslice-warning.PNG)
 
- - The web service could be re-engineered to use url query variables rather than path variables to help extensibility, and we could document the webservice using [OpenAPI specification](https://swagger.io/specification/). For the time being we are not intending to serve out the raw x,y,z model data that the images are built from, only the resulting images.
+ - The web service could be re-engineered to use url query variables rather than path variables to help extensibility, and we could document the webservice using [OpenAPI specification](https://swagger.io/specification/). For the time being we are not intending to serve out the raw x,y,z model data, only the built images.
 
 
