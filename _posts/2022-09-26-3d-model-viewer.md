@@ -13,27 +13,28 @@ tags:
 
 BGS's 3D geological model viewer provides on-demand generation of images of synthetic borehole log, vertical section and horizontal slices as outputs from selected 3d geological models. These are made available through a web service which is accessed via GeoIndex user interface.
 
+![Example synthetic vertical section image webpage](../../assets/images/2022-09-26-3d-geo-model-viewer/vsection.PNG)
 
 ## Background
 
-Since modern computer systems allowed it, BGS geologists have captured their understanding of the subsurface in [3D representations](https://www.bgs.ac.uk/geology-projects/geology-3d/) of the different rocks deposited in layers over deep geological time, and the folds, faults and intrusions that have modified those layers. Desktop software packages allow experts full interaction with the 3D model, but until recently they were difficult to share to non-expert users within a web browser.
-BGS developed a bespoke solution to this - the 3d geological model viewer - as a companion to development of the BGS Groundhog model building software.
+Since modern computer systems allowed it, BGS geologists have captured their understanding of the subsurface in [digital 3D representations](https://www.bgs.ac.uk/geology-projects/geology-3d/). Desktop software packages allow experts full interaction with the 3D model, but until recently they were difficult to share to non-expert users within a web browser.
+BGS developed an early solution to this - the 3d geological model viewer - as a companion to development of the BGS Groundhog model building software.
 
-The 3d model viewer software was released in 2012, and originally branded "Groundhog Web". It was used within the recently retired [BGS Geology of Britain viewer](https://www.bgs.ac.uk/map-viewers/geology-of-britain-viewer/) to display small demonstrator and public-interest models of classic geology areas such as Isle of Wight and Ingleborough. In 2014 a pay-per-view version was released to provide access to the new large high resolution London and Thames Valley model and a few other models in other parts of the UK.
+The 3d model viewer software was released in 2012, and originally branded "Groundhog Web". It was used within the recently retired [BGS Geology of Britain viewer](https://www.bgs.ac.uk/map-viewers/geology-of-britain-viewer/) to display small demonstrator and public-interest models of classic geology areas such as Isle of Wight and Ingleborough. In 2014 a pay-per-view version was released to provide access to the high resolution London and Thames Valley model and a few other models in other parts of the UK.
 
 In 2021 the decision was taken to remove the paywall and provide free access to the models for London, Glasgow and Cardiff - the largest cities in England, Scotland and Wales and the latter also being sites related to our [UKGEOS geothermal energy research](https://ukgeos.ac.uk/). The models are now accessed from a new "Urban Interactive Models" data layer in our comprehensive spatial data viewer, [GeoIndex](https://www.bgs.ac.uk/map-viewers/geoindex-onshore/).
 
 ## Model development 
 
-The geological models were generally developed in [GSI3D](https://en.wikipedia.org/wiki/GSI3D) or latterly [BGS Groundhog](https://www.bgs.ac.uk/technologies/software/groundhog/) desktop software, and exported from there as a series of 2D regular ASCII grids representing the base of each rock layer. A grid representing the ground surface (DTM, Digital Terrain Model) is also required for the 3D model viewer.
+The geological models were generally developed in [GSI3D](https://en.wikipedia.org/wiki/GSI3D) or latterly [BGS Groundhog](https://www.bgs.ac.uk/technologies/software/groundhog/) desktop software, and exported from there as a series of 2D regular ASCII grids representing the base of each rock layer. A grid representing the ground surface - the Digital Terrain Model (DTM) - is also provided.
 
 
 ## Model data preparation
 
-From each exported ASCII grid, an in-house java executable generates an optimized binary grid format (`.bgrid`). 
+From each exported ASCII grid and DTM, an in-house java executable generates an optimized binary grid format (`.bgrid`). 
 The format is a simple binary representation of an ASCII grid string; a 24 byte header that sets out the grid origin and x,y (horizontal location) cell spacings, followed by a list of the z values representing the elevation of the base of the rock layer. The z values in metres in the ASCII grid are multiplied by 10 and rounded to an integer, thus are stored as 2 byte short values as integer decimetres rather than floating point metres. This means we can retain +/- 0.1 metre precision but halving file size and speeding up grid data extraction.
 
-Fault lineations to be drawn on the images are supplied as triangle mesh files in a bespoke xml format.  The use of triangle mesh enables a more precise representation of the fault plane than the regular grid of the model layer allows, so on close inspection on the images the fault line may not exactly match the layer boundaries.  Currently we are only using fault plane data for sub-vertical faults on the high resolution London and Thames Valley model.
+Fault lineations to be drawn on the images are supplied as triangle mesh files in a bespoke xml format.  The use of triangle mesh enables a more precise representation of the fault plane than the regular grid of the model layer allows, so on close inspection on the images the fault line may not exactly match the layer boundaries.  Currently we are only using fault plane data for near-vertical faults on the high resolution London and Thames Valley model.
 
 ```
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -59,9 +60,11 @@ The metadata is provided in an excel spreadsheet, validated and then stored in a
 
 ## Front end user interface
 
-Requests to the web service are assembled using widgets in the BGS GeoIndex viewer where a certain amount of validation of requests is performed, and restrictions on the length of sections and size of horizontal slices in order to limit back-end processing load.
+Requests to the web service are assembled using widgets in the BGS [GeoIndex](https://www.bgs.ac.uk/map-viewers/geoindex-onshore/) viewer where a certain amount of validation of requests is performed, and restrictions on the length of sections and size of horizontal slices in order to limit back-end processing load.
 
 ## Back-end image generation
+
+![Example synthetic borehole log image ](../../assets/images/2022-09-26-3d-geo-model-viewer/borehole.png)
 
 The synthetic boreholes and section images are built and delivered by a Java Spring MVC application, which accesses the model and layer metadata and the binary grid files stored in an accessible file system. 
 For sufficient response times for larger models, we found that the grid files needed to be hosted on the same server as the Java application rather than accessing across a network.
@@ -105,11 +108,11 @@ For each model view there are 3 types of representation that can be requested:
  - `/download****/` type requests return pdf containing png image plus marginalia
 
 
-e.g. `https://webservices.bgs.ac.uk/geo3dModelViewer/drawBorehole/modelId/190/x/496564/y/176686/vExag/null/`
+e.g. https://webservices.bgs.ac.uk/geo3dModelViewer/drawBorehole/modelId/190/x/496564/y/176686/vExag/null/
 
-e.g. `https://webservices.bgs.ac.uk/geo3dModelViewer/displaySection/modelId/190/points/492331,176805&497001,176726/vExag/null/`
+e.g. https://webservices.bgs.ac.uk/geo3dModelViewer/displaySection/modelId/190/points/492331,176805&497001,176726/vExag/null/
 
-e.g. `https://webservices.bgs.ac.uk/geo3dModelViewer/displaySection/modelId/190/points/492331,176805&497001,176726/vExag/null/`
+e.g. https://webservices.bgs.ac.uk/geo3dModelViewer/displaySection/modelId/190/points/492331,176805&497001,176726/vExag/null/
 
 Other endpoints are provided to help the user interface constrain the range of values e.g. to return the maximum depth of a model at a given x,y location.
 
@@ -122,11 +125,18 @@ The different modelling packages have different behaviour regarding how the expo
 
 #### Colour matching
 
-In some early outputs we presented the section images alongside the snippet from the BGS digital geological map. The 2D map colours were displayed with transparency over a topographic basemap, hence lightening the tone. To match this tone in the drawn sections we initially added a transparency value, but because of the way that the colours are over-drawn this resulted in some peculiar effects. This was resolved by adding a percentage of opaque white colour to the RGB colours specified in the layer metadata.
+In some early outputs we presented the section images alongside the snippet from the BGS digital geological map. The 2D map colours were displayed with transparency over a topographic basemap, hence lightening the tone. To match this tone in the drawn sections we initially added a transparency value, but because of the way that the graphics are built up by over-laying this resulted in some peculiar effects. This was resolved by adding a percentage of opaque white colour to the RGB colours specified in the layer metadata.
+
+```
+            // transparency doesn't work with these overlapping polygons, so mimic the
+            // transparency by blending with white 
+            Color transparencyMimicColour = addFractionOfColour(getLayerColour(intervals.get(i)), Color.WHITE, transparency);
+            g2d.setPaint(transparencyMimicColour);
+```
 
 #### Depth vs elevation confusion
 
-As software engineers we had to take great care understanding and naming the variables used for depth and elevation variables for the requests made in the user interface and web service – is the value measured positive up (elevation) or positive down (depth), which datum are they measured against (ground level or [Ordnance Datum](https://epsg.io/5101-datum).
+We had to take great care understanding and naming the variables used for depth and elevation in the user interface and web service, to make sure it was clear if the value was measured positive up (elevation) or positive down (depth), and which datum it is measured against (ground level or [Ordnance Datum](https://epsg.io/5101-datum).
 
 
 ## Next steps 
@@ -144,7 +154,7 @@ As software engineers we had to take great care understanding and naming the var
 
  - The model metadata database is currently in our corporate relational database, but the data is static and lightweight so we could simplify the code by using a local JSON files instead.
 
- - For horizontal slice requests, the GeoIndex user interface needs to first query the web service to get the maximum model depth at the chosen location so it can constrain or validate the user's request. This processing delay can cause the interface to report an error, and this feature is currently marked as beta status. See ![screenshot](images/hslice-warning.PNG)
+ - For horizontal slice requests, the GeoIndex user interface needs to first query the web service to get the maximum model depth at the chosen location so it can constrain or validate the user's request. This processing delay can cause the interface to report an error, and this feature is currently marked as beta status. See ![screenshot](../../assets/images/2022-09-26-3d-geo-model-viewer/hslice-warning.PNG)
 
  - The web service could be re-engineered to use url query variables rather than path variables to help extensibility, and we could document the webservice using [OpenAPI specification](https://swagger.io/specification/). For the time being we are not intending to serve out the raw x,y,z model data that the images are built from, only the resulting images.
 
