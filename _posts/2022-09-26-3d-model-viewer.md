@@ -80,7 +80,7 @@ Requests to the web service are assembled using widgets in the BGS [GeoIndex](ht
 The synthetic boreholes and section images are built and delivered by a Java Spring MVC application, which accesses the model and layer metadata and the binary grid files stored in an accessible file system. 
 For sufficient response times for larger models, we found that the grid files needed to be hosted on the same server as the Java application rather than accessing across a network.
 
-As noted above, elevation values in the binary grids are stored as decimeter integers. On extraction from the binary grid the z value must be divided by 10 to get the elevation value at that grid node in metres.
+As noted above, elevation values in the binary grids are stored as decimetre integers. On extraction from the binary grid the z value must be divided by 10 to get the elevation value at that grid node in metres.
 
 We use the Java Abstract Window Toolkit (AWT) library to draw the images. The images for boreholes and vertical sections are built up based on the layer order – the interval between the deepest layer and the DTM is drawn first and filled in with the appropriate colour, and then the next deepest layer is drawn on top etc.
 The horizontal slice is drawn cell by cell based on which layer grid has been intersected at each x,y point in the grid, interpolating z values linearly between original grid nodes as required to align with the requested sample size.
