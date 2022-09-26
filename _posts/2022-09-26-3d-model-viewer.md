@@ -35,7 +35,7 @@ The format is a simple binary representation of an ASCII grid string; a 24 byte 
 
 Fault lineations to be drawn on the images are supplied as triangle mesh files in a bespoke xml format.  The use of triangle mesh enables a more precise representation of the fault plane than the regular grid of the model layer allows, so on close inspection on the images the fault line may not exactly match the layer boundaries.  Currently we are only using fault plane data for sub-vertical faults on the high resolution London and Thames Valley model.
 
-``
+```
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <GeologicalObjects>
 <triangle_mesh name="f1">
@@ -47,7 +47,7 @@ Fault lineations to be drawn on the images are supplied as triangle mesh files i
 </triangles>
 </triangle_mesh>
 </GeologicalObjects>
-``
+```
 
 ## Model metadata
 
