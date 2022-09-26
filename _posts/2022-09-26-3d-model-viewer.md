@@ -13,7 +13,7 @@ tags:
 
 BGS's 3D geological model viewer provides on-demand generation of images of synthetic borehole log, vertical section and horizontal slices as outputs from selected 3d geological models. These are made available through a web service which is accessed via GeoIndex user interface.
 
-![Example synthetic vertical section image webpage](../../assets/images/2022-09-26-3d-geo-model-viewer/vsection.PNG)
+![Example synthetic vertical section image webpage](../../assets/images/2022-09-26-3d-model-viewer/vsection.PNG)
 
 ## Background
 
@@ -64,7 +64,7 @@ Requests to the web service are assembled using widgets in the BGS [GeoIndex](ht
 
 ## Back-end image generation
 
-![Example synthetic borehole log image ](../../assets/images/2022-09-26-3d-geo-model-viewer/borehole.png)
+![Example synthetic borehole log image ](../../assets/images/2022-09-26-3d-model-viewer/borehole.png)
 
 The synthetic boreholes and section images are built and delivered by a Java Spring MVC application, which accesses the model and layer metadata and the binary grid files stored in an accessible file system. 
 For sufficient response times for larger models, we found that the grid files needed to be hosted on the same server as the Java application rather than accessing across a network.
@@ -89,30 +89,23 @@ Java Server Pages (JSP) are used to deliver the images within in a web page and 
 
 ### Web service requests
 
-Web service requests to the Java application are constructed using path parameters to indicate the model identifier, the surface x,y coordinate for the borehole point or section/slice vertices, the depth for a horizontal slice, vertical exaggeration, colour opacity etc. 
 
-There are 3 types of model view that can be requested:
+There are 3 types of model view that can be requested, and 3 types of representation, resulting in 9 root web service requests:
 
- - `/****Borehole/` type requests return synthetic borehole logs
+| | Borehole | Vertical Section | Horizontal Slice |
+| --- | --- | --- | --- |
+| PNG image - minimal marginalia | `/geo3dModelViewer/drawBorehole/` | | |
+| JSP webpage - containing png image plus marginalia, links and form controls to edit the request | | `/geo3dModelViewer/displaySection/` | |
+| PDF document - containing png image plus marginalia  | | | `/geo3dModelViewer/downloadHorizontalSlice/` |
 
- - `/****Section/` type requests return vertical sections
-
- - `/****HorizontalSlice/` type requests return horizontal slices 
-
-For each model view there are 3 types of representation that can be requested:
-
- - `/draw****/` type requests return png image with minimal marginalia
-
- - `/display****/` type requests return JSP containing png image plus marginalia, links and form controls to edit the request
-
- - `/download****/` type requests return pdf containing png image plus marginalia
+Complete web service requests to the Java application are constructed using path parameters to indicate the model identifier, the surface x,y coordinate for the borehole point or section/slice vertices, the depth for a horizontal slice, vertical exaggeration, colour opacity etc. 
 
 
 e.g. https://webservices.bgs.ac.uk/geo3dModelViewer/drawBorehole/modelId/190/x/496564/y/176686/vExag/null/
 
 e.g. https://webservices.bgs.ac.uk/geo3dModelViewer/displaySection/modelId/190/points/492331,176805&497001,176726/vExag/null/
 
-e.g. https://webservices.bgs.ac.uk/geo3dModelViewer/displaySection/modelId/190/points/492331,176805&497001,176726/vExag/null/
+e.g. https://webservices.bgs.ac.uk/geo3dModelViewer/downloadSection/modelId/190/points/492331,176805&497001,176726/vExag/null/
 
 Other endpoints are provided to help the user interface constrain the range of values e.g. to return the maximum depth of a model at a given x,y location.
 
@@ -154,7 +147,7 @@ We had to take great care understanding and naming the variables used for depth 
 
  - The model metadata database is currently in our corporate relational database, but the data is static and lightweight so we could simplify the code by using a local JSON files instead.
 
- - For horizontal slice requests, the GeoIndex user interface needs to first query the web service to get the maximum model depth at the chosen location so it can constrain or validate the user's request. This processing delay can cause the interface to report an error, and this feature is currently marked as beta status. See ![screenshot](../../assets/images/2022-09-26-3d-geo-model-viewer/hslice-warning.PNG)
+ - For horizontal slice requests, the GeoIndex user interface needs to first query the web service to get the maximum model depth at the chosen location so it can constrain or validate the user's request. This processing delay can cause the interface to report an error, and this feature is currently marked as beta status. See ![screenshot](../../assets/images/2022-09-26-3d-model-viewer/hslice-warning.PNG)
 
  - The web service could be re-engineered to use url query variables rather than path variables to help extensibility, and we could document the webservice using [OpenAPI specification](https://swagger.io/specification/). For the time being we are not intending to serve out the raw x,y,z model data that the images are built from, only the resulting images.
 
