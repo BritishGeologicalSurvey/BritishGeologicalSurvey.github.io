@@ -41,9 +41,9 @@ Fault lineations to be drawn on the images are supplied as triangle mesh files i
 <GeologicalObjects>
 <triangle_mesh name="f1">
 <vertices>
-<mesh_vertex x="520003.0703125" y="164828.00390625" z="-659.0909423828125"/>
-<mesh_vertex x="520003.12890625" y="164827.9375" z="-772.727294921875"/>
-<mesh_vertex x="520003.14453125" y="164827.921875" z="-545.45458984375"/>
+<mesh_vertex x="520003" y="164828" z="-659"/>
+<mesh_vertex x="520003" y="164828" z="-773"/>
+<mesh_vertex x="520003" y="164828" z="-545"/>
 <triangle v1="625" v2="638" v3="640"/>
 </triangles>
 </triangle_mesh>
