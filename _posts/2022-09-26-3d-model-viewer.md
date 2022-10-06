@@ -7,20 +7,20 @@ tags:
   - Java
   - jsp
   - pdfbox
-  - 3d-geology
+  - 3D-geology
   - 2DGraphics
 ---
 
-BGS's 3D geological model viewer provides on-demand generation of images of synthetic borehole log, vertical section and horizontal slices as outputs from selected 3d geological models. These are made available through a web service which is accessed via our [GeoIndex](https://www.bgs.ac.uk/map-viewers/geoindex-onshore/) user interface.
+BGS's 3D geological model viewer provides on-demand generation of images of synthetic borehole log, vertical section and horizontal slices as outputs from selected 3D geological models. These are made available through a web service which is accessed via our [GeoIndex](https://www.bgs.ac.uk/map-viewers/geoindex-onshore/) user interface.
 
 ![Example synthetic vertical section image webpage](../../assets/images/2022-09-26-3d-model-viewer/vsection.PNG)
 
 ## Background
 
 Since modern computer systems allowed it, BGS geologists have captured their understanding of the subsurface in [digital 3D representations](https://www.bgs.ac.uk/geology-projects/geology-3d/). Desktop software packages allow experts full interaction with the 3D model, but until recently they were difficult to share to non-expert users within a web browser.
-BGS developed an early solution to this - the 3d geological model viewer - as a companion to development of the BGS Groundhog model building software.
+BGS developed an early solution to this - the 3D geological model viewer - as a companion to development of the BGS Groundhog model building software.
 
-The 3d model viewer software was released in 2012, and originally branded "Groundhog Web". It was used within the recently retired [BGS Geology of Britain viewer](https://www.bgs.ac.uk/map-viewers/geology-of-britain-viewer/) to display small demonstrator and public-interest models of classic geology areas such as Isle of Wight and Ingleborough. In 2014 a pay-per-view version was released to provide access to the high resolution London and Thames Valley model amongst others.
+The 3D model viewer software was released in 2012, and originally branded "Groundhog Web". It was used within the recently retired [BGS Geology of Britain viewer](https://www.bgs.ac.uk/map-viewers/geology-of-britain-viewer/) to display small demonstrator and public-interest models of classic geology areas such as Isle of Wight and Ingleborough. In 2014 a pay-per-view version was released to provide access to the high resolution London and Thames Valley model amongst others.
 
 In 2021 the decision was taken to remove the paywall and provide free access to the models for London, Glasgow and Cardiff - the largest cities in England, Scotland and Wales and the latter also being sites related to our [UKGEOS geothermal energy research](https://ukgeos.ac.uk/). The models are now accessed from a new "Urban Interactive Models" data layer in our comprehensive spatial data viewer, [GeoIndex](https://www.bgs.ac.uk/map-viewers/geoindex-onshore/).
 
@@ -95,7 +95,7 @@ To support presentation quality pdf downloads, pdf templates are created for eac
 
 ### Interactive web page
 
-Java Server Pages (JSP) are used to deliver the images within in a web page and forms that can interactively edit certain parameters such as vertical exaggeration, slice depth and image resolution.
+Java Server Pages (JSP) are used to deliver the images within a web page along with forms that can interactively edit certain parameters such as vertical exaggeration, slice depth and image resolution.
 
 
 ### Web service requests
