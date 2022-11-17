@@ -3,7 +3,6 @@ title: 'Migrating from NPM to PNPM'
 author: Janusz Lavrnja-Czapski
 categories:
   - Development
-  - Continuous Integration
 tags:
   - javascript
   - node
@@ -71,13 +70,13 @@ Although this should be avoided wherever possible, since it goes against the des
 
 When you first run `pnpm install` you will see a progress graphic in the terminal like the one in the image below:
 
-![PNPM clean install](../../assets/images/2022-11-17-migrate-npm/pnpm-clean.PNG)
+![PNPM clean install](assets/images/2022-11-17-migrate-npm/pnpm-clean.PNG)
 
 Not that the 'reused' count stays at 0 on the first install. This is because we haven't yet created a cache that PNPM can reference.
 
 Once all the dependencies have been installed, if you run `pnpm install` again or add a new package `pnpm add some-new-package -w`, you will see that the 'reused' counter is now going up.
 
-![PNPM cached install](../../assets/images/2022-11-17-migrate-npm/pnpm-cached.PNG)
+![PNPM cached install](assets/images/2022-11-17-migrate-npm/pnpm-cached.PNG)
 
 This caching speeds up the installation process quite drastically, as it avoids re-downloading packages that have already been fetched. Packages are also downloaded concurrently instead of one-by-one.
 
@@ -162,10 +161,10 @@ The [docs](https://pnpm.io/motivation) for PNPM are very helpful & quite detaile
 
 **CI pipeline using existing NPM setup**
 
-![Benchmark slow](../../assets/images/2022-11-17-migrate-npm/benchmark-slow.PNG)
+![Benchmark slow](assets/images/2022-11-17-migrate-npm/benchmark-slow.PNG)
 
 **CI pipeline using PNPM**
 
-![Benchmark fast](../../assets/images/2022-11-17-migrate-npm/benchmark-fast.PNG)
+![Benchmark fast](assets/images/2022-11-17-migrate-npm/benchmark-fast.PNG)
 
 ⚡
