@@ -162,10 +162,10 @@ The [docs](https://pnpm.io/motivation) for PNPM are very helpful & quite detaile
 
 **CI pipeline using existing NPM setup**
 
-![image info](https://github.com/jlczapski/BritishGeologicalSurvey.github.io/blob/master/assets/images/2022-11-17-migrate-npm/benchmark-slow.PNG)
+![Benchmar slow](https://raw.githubusercontent.com/jlczapski/BritishGeologicalSurvey.github.io/master/assets/images/2022-11-17-migrate-npm/benchmark-slow.PNG)
 
 **CI pipeline using PNPM**
 
-![image info](https://github.com/jlczapski/BritishGeologicalSurvey.github.io/blob/master/assets/images/2022-11-17-migrate-npm/benchmark-fast.PNG)
+![Benchmark fast](https://raw.githubusercontent.com/jlczapski/BritishGeologicalSurvey.github.io/master/assets/images/2022-11-17-migrate-npm/benchmark-fast.PNG)
 
 ⚡
