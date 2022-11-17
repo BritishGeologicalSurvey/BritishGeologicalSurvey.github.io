@@ -11,8 +11,6 @@ tags:
   - performance
 ---
 
-## Introduction
-
 PNPM has been touted as a more performant & reliable replacement for NPM, aiming to reduce slow build times and eliminate issues with dependency mismatches.
 I primarily investigated PNPM as a way of speeding up the completion times for CI pipelines, as well as having a better package manager to use during development cycles.
 
