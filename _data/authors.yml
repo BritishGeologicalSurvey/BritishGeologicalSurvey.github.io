@@ -122,3 +122,19 @@ Rachel Heaven:
     - label: "Linkedin"
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/rachel-h-64850231/"
+      
+      
+Janusz Lavrnja-Czapski:
+  name: "Janusz Lavrnja-Czapski"
+  bio: "Geoscience software developer"
+  avatar: "https://avatars.githubusercontent.com/u/16479189?v=4"
+  links:
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://www.bgs.ac.uk"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:janlav@bgs.ac.uk"
+    - label: "Linkedin"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/janusz-czapski/"
