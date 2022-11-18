@@ -76,7 +76,7 @@ Note that the 'reused' count stays at 0 on the first install. This is because we
 
 Once all the dependencies have been installed, if you run `pnpm install` again or add a new package `pnpm add some-new-package -w`, you will see that the 'reused' counter is now going up.
 
-![PNPM cached install](assets/images/2022-11-17-migrate-npm/pnpm-cached.PNG)
+![PNPM cached install](../../assets/images/2022-11-17-migrate-npm/pnpm-cached.PNG)
 
 This caching speeds up the installation process quite drastically, as it avoids re-downloading packages that have already been fetched. Packages are also downloaded concurrently instead of one-by-one.
 
@@ -161,10 +161,10 @@ The [docs](https://pnpm.io/motivation) for PNPM are very helpful & quite detaile
 
 **CI pipeline using existing NPM setup**
 
-![Benchmark slow](assets/images/2022-11-17-migrate-npm/benchmark-slow.PNG)
+![Benchmark slow](../../assets/images/2022-11-17-migrate-npm/benchmark-slow.PNG)
 
 **CI pipeline using PNPM**
 
-![Benchmark fast](assets/images/2022-11-17-migrate-npm/benchmark-fast.PNG)
+![Benchmark fast](../../assets/images/2022-11-17-migrate-npm/benchmark-fast.PNG)
 
 ⚡
