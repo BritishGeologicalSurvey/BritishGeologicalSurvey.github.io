@@ -10,7 +10,7 @@ tags:
   - performance
 ---
 
-PNPM has been touted as a more performant & reliable replacement for NPM, aiming to reduce slow build times and eliminate issues with dependency mismatches.
+PNPM has been touted as a more performant and reliable replacement for NPM, aiming to reduce slow build times and eliminate issues with dependency mismatches.
 I primarily investigated PNPM as a way of speeding up the completion times for CI pipelines, as well as having a better package manager to use during development cycles.
 
 ## Preface
@@ -70,9 +70,9 @@ Although this should be avoided wherever possible, since it goes against the des
 
 When you first run `pnpm install` you will see a progress graphic in the terminal like the one in the image below:
 
-![PNPM clean install](assets/images/2022-11-17-migrate-npm/pnpm-clean.PNG)
+![PNPM cache clean](../../assets/images/2022-11-17-migrate-npm/pnpm-clean.PNG)
 
-Not that the 'reused' count stays at 0 on the first install. This is because we haven't yet created a cache that PNPM can reference.
+Note that the 'reused' count stays at 0 on the first install. This is because we haven't yet created a cache that PNPM can reference.
 
 Once all the dependencies have been installed, if you run `pnpm install` again or add a new package `pnpm add some-new-package -w`, you will see that the 'reused' counter is now going up.
 
@@ -84,7 +84,7 @@ _“In pnpm, packages are always reused if they are already installed for anothe
 
 ## PNPM and CI pipelines
 
-My main aim when first investigating PNPM as a replacement package manager was to speed up the times of my CI pipeline, which would often sit for 10 or 15 mins, even for a project that wasn't particularly complex & had no e2e tests to run..
+My main aim when first investigating PNPM as a replacement package manager was to speed up the times of my CI pipeline, which would often sit for 10 or 15 mins, even for a project that wasn't particularly complex and had no e2e tests to run.
 
 With that in mind, here is an example `.gitlab-ci.yml` file with a simple deploy script to Gitlab pages that shows how I made use of PNPM.
 
@@ -93,7 +93,7 @@ image: node:16.14.0
 before_script:
   - curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@7
   - npm config set store-path /root/.pnpm-store/v3
-  - npm config set registry https://nexus-internal.bgs.ac.uk/repository/npm-all/
+  - npm config set registry <nexus url>
 pages:
   stage: deploy
   interruptible: true
@@ -116,7 +116,7 @@ pages:
 
 You can see that in the `before_script` stage we make a CURL request to download PNPM. Then we set the store path to the location of our new PNPM cache store.
 
-**This path may differ for your project. I found the correct path for mine by adding `pnpm store path` to my previous CI script, running the pipeline and then copy/pasting the path it gave me**
+**This path may differ for your project. I found the correct path for mine by adding `pnpm store path` to my previous CI script, running the pipeline and then copy/pasting the path it gave me.**
 
 After this, we ensure that the registry is using Nexus to install packages.
 
