@@ -13,19 +13,19 @@ tags:
 
 ## What are triplestores?
 
-Triplestores are a kind of graph database, as their data structure can be represented using graphs.
+Triplestores are a type of graph database, as their data structure can be represented using graphs.
 The data in them does not have to conform to typical hierarchical database relationships.
 Instead, they can have relationship links which cross over and go back and forth, just like a graph.
 This allows us to represent more complex data structures, such as lithology classifications,
 where the relationships are intertwined like a spider's web.
 
 In a triplestore, everything is represented using URIs (Uniform Resource Identifier).
-The nodes on the graph are URIs, the attribute names of a feature are URIs, and the attribute values are URIs.
-This what creates the relationships, as everything is linked.
+The nodes on the graph, the attribute names, and the attribute values are all URIs.
+This is what creates the relationships, as everything is linked.
 For this to work, data is stored in `triples`. In a triple, we have:
-- Subject (The row in a typical database, referring to one feature)
-- Predicate (The column in a typical database, referring to one attribute name)
-- Object (The value found at the given row/column, the attribute value)
+- Subject: the row in a typical database, referring to one feature
+- Predicate: the column in a typical database, referring to one attribute name
+- Object: the value found at the given row/column, the attribute value
 
 Let's apply this concept to a lithology example. If we want to represent Rhyolite's lithology classification
 as an Igneous Rock in a triple, we could do the following:
@@ -33,19 +33,19 @@ as an Igneous Rock in a triple, we could do the following:
 - Predicate: URI to Lithology classification
 - Object: URI to Igneous Rock
 
-The value from this data structure comes from the fact that in this example, we could go to see the predicates
+The value from this data structure comes from the fact that in this example, we could find the predicates
 (attributes) of Igneous Rock using its own URI, and then continue to another node after that.
 This also means that data which would usually be stored in different tables, can be stored within
-a single triple store, as every subject has its own URI providing it's definition.
+a single triple store, as every subject has its own URI providing its definition.
 
 The nature of `triples` also means that when you iterate over the `triples` in a
-triplestore, you are getting back a single predicate object for a single subject (a single
-column value for a single row) at a time. You do not get all of the predicates (attributes) for
+triplestore, you get a single predicate object for a single subject (a single
+attribute value for a single row) at a time. You do not get all of the predicates (attributes) for
 a subject (row) at once. Therefore, you will likely want to parse the data into a different structure
 to suit your requirements, depending on what you wish to do with the data.
 
-It is important to note that because predicates are also defined using a URI,
-we can use pre-defined predicates from online triplestores, also called a `namespace`.
+It is important to note that because predicates (attributes) are defined using a URI,
+we can use pre-defined predicates (attributes) from online `namespaces`.
 In the example below, we will see many attributes from the online `skos` namespace,
 such as `skos:definition` which is essentially a description,
 and `skos:narrower` which is a list of child nodes.
@@ -77,7 +77,7 @@ graph = Graph()
 graph.parse(uri, format="ttl")
 ```
 
-Now in this example, we are only going to be reading the `skos` namespace predicates.
+Now in this example, we are only going to be reading the `skos` namespace predicates (attributes).
 Therefore, we need to get the URI for the `skos` namespace,
 so we can use it to filter the `triples`.
 
@@ -91,18 +91,18 @@ skos_namespace = [
 ][0]
 ```
 
-Next, we are only going to be looking for `lithology` subjects from the triplestore, so we will define
-a URI to further filter the `triples` we want.
+Next, we are only going to be looking for `lithology` subjects from the triplestore.
+Therefore, we will define a URI to further filter the `triples`.
 
 ```python
 # Subject prefix
 lithology_prefix = "http://resource.geosciml.org/classifier/cgi/lithology/"
 ```
 
-We are now ready to start iterating over the `triples` within the graph, and we can add the data to
-a Python dictionary. Remember, when we iterate over the graph, we get a single predicate object for a
-single subject. Therefore, we need to build up all of the predicates for all of the subjects, so that
-we can store the objects.
+We are now ready to start iterating over the `triples` within the graph. We will add this data to
+a Python dictionary. Remember, when we iterate over the graph, we get a single predicate object
+(attribute value) for a single subject (row). Therefore, we need to ensure we have the correct
+structure to store all of the objects (values) for each predicate (attribute) of each subject (row).
 
 ```python
 graph_dict = {}
@@ -182,7 +182,7 @@ pprint(graph_dict["rhyolite"])
                rdflib.term.Literal('silarIyU:lIt', lang='km')]}
 ```
 
-If we want to see its parents, we can see the object behind the predicate `broader`.
+If we want to see its parents, we can access the object (value) behind the predicate (attribute) `broader`.
 
 ```python
 broader_uris = graph_dict["rhyolite"]["broader"]
@@ -198,7 +198,7 @@ pprint(parents)
 ```
 
 Finally, in this format of linked data, recursive functions are incredibly useful to traverse a graph
-from one node to another, or in the case of `triples`, from one subject to another. Here, we will
+from one node to another. Or, in the case of `triples`, from one subject (row) to another. Here, we will
 use recursion to find the list of all parent lithology classifications above `Rhyolite`.
 
 ```python
