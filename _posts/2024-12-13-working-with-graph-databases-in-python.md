@@ -16,20 +16,20 @@ tags:
 The logic behind a [Graph Database](https://en.wikipedia.org/wiki/Graph_database),
 comes from graph theory in mathematics, where a network of nodes representing data are connected using edges.
 This makes a graph database more flexible than a typical hierarchical database,
-as new nodes can be added connected to any existing node, often without constraints.
-This lack of constraints can be convientent, but it does mean that a user will need
+as new nodes can be added and connected to any existing node, often without constraints.
+This lack of constraints can be convenient, but it does mean that a user will need
 additional context regarding the existing nodes before adding new ones, as the existing
 data is unpredictable.
-These constraints can be added using additional tools if required.
+Constraints can be added to a graph database using additional tools if required.
 For example, when using
 a [Resource Description Framework (RDF)](https://en.wikipedia.org/wiki/Resource_Description_Framework)
 graph, you can add constraints
 using [Shapes Constraint Language (SHACL)](https://en.wikipedia.org/wiki/SHACL).
 
 In a graph database, everything is represented using URIs (Uniform Resource Identifier) or literals.
-These URIs are what allows us to create new connections between nodes in the graph,
+The URIs are what allows us to create new connections between nodes in the graph,
 and even connections between multiple graphs.
-For this to work, data is stored in `triples`. In a triple, we have:
+For this to work, data is stored in `triples`. In a triple, we have 3 pieces of information:
 - Subject: the row in a typical database, referring to one feature (URI)
 - Predicate: the column in a typical database, referring to one attribute name (URI)
 - Object: the value found at the given row/column, the attribute value (URI or literal)
@@ -63,7 +63,7 @@ You can find more information about the `skos` data model [here](https://www.w3.
 
 ## Why are we working with graph databases?
 
-We started with hundreds of lithology classifcations which were going to be used in a
+We started with hundreds of lithology classifications which were going to be used in a
 new Field Data Capture system, where users could input spatial lithology data.
 We wanted to plot coloured points onto a map within the system,
 so that a user could see all of their spatial lithology data visually, as this would allow them
@@ -93,8 +93,8 @@ pip install rdflib
 ```
 
 The file we are going to parse is a Turtle file (.ttl), which is a format for storing
-graph databases. You can find the file in this example on GitHub [here](https://raw.githubusercontent.com/CGI-IUGS/cgi-vocabs/9dfe161affbe91de4c25622a9c2cfab5aa65c642/vocabularies/geosciml/simplelithology.ttl).
-This graph database contains information about lithology classifications.
+graph databases. This files comes from the CGI Geoscience Vocabularies dataset, which you can find on GitHub
+[here](https://raw.githubusercontent.com/CGI-IUGS/cgi-vocabs/9dfe161affbe91de4c25622a9c2cfab5aa65c642/vocabularies/geosciml/simplelithology.ttl).
 
 Firstly, we have to create an empty graph using `rdflib`, and then use it to parse the given `ttl` file.
 
@@ -113,7 +113,7 @@ and we are only going to be looking for their `skos:prefLabel` and `skos:broader
 Therefore, we will define some URIs which we will use to filter our data.
 
 ```python
-lithology__subject_prefix = "http://resource.geosciml.org/classifier/cgi/lithology/"
+lithology_subject_prefix = "http://resource.geosciml.org/classifier/cgi/lithology/"
 skos_pref_label_uri = rdflib.term.URIRef("http://www.w3.org/2004/02/skos/core#prefLabel")
 skos_broader_uri = rdflib.term.URIRef("http://www.w3.org/2004/02/skos/core#broader")
 ```
@@ -144,7 +144,7 @@ for subject, predicate, object_ in graph:
         # Add the new object to the dictionary
         graph_dict[subject][predicate].append(object_)
 
-print(f"Found {len(graph_dict)} lithologies in triplestore!")
+print(f"Found {len(graph_dict)} lithologies in the graph database!")
 ```
 
 ```
@@ -204,7 +204,7 @@ broader_uris = graph_dict[rhyolite_uri][skos_broader_uri]
 parents = []
 for parent_uri in broader_uris:
     parent_labels = graph_dict[parent_uri][skos_pref_label_uri]
-    # Get just the English label for the parent
+    # Get just the English label for each parent
     english_label = [label.toPython() for label in parent_labels if label.language == "en"][0]
     parents.append(english_label)
 
@@ -222,34 +222,34 @@ use recursion to find the list of all parent lithology classifications above `Rh
 ```python
 def find_lithology_parents(
     graph_dict,
-    target_lithology,
-    parents = set(),
+    target_lithology_uri,
+    parent_labels = set(),
 ):
     """
-    Find all of the parent lithology classifications above the given target_lithology.
-    A set of all parents is returned.
+    Find all of the parent lithology classifications above the given target_lithology_uri.
+    A set of all parent labels is returned.
     We use a set because this ensures only unique values are stored within it.
 
-    The argument 'parents' can be ignored when calling this function,
+    The argument 'parent_labels' can be ignored when calling this function,
     as it is used to start an empty set which is populated as the recursion iterates.
     """
-    # If the target_lithology has parents
-    if skos_broader_uri in graph_dict[target_lithology]:
+    # If the target lithology has parents
+    if skos_broader_uri in graph_dict[target_lithology_uri]:
 
-        for parent_uri in graph_dict[target_lithology][skos_broader_uri]:
+        for parent_uri in graph_dict[target_lithology_uri][skos_broader_uri]:
             # Get the current parent English label
             current_parent_labels = graph_dict[parent_uri][skos_pref_label_uri]
             english_label = [label.toPython() for label in current_parent_labels if label.language == "en"][0]
 
             # Add the current parent to the set of all parents
-            parents.add(english_label)
+            parent_labels.add(english_label)
 
             # Find the parents of the parent
-            parent_parents = find_lithology_parents(graph_dict, parent_uri, parents)
+            parent_parents = find_lithology_parents(graph_dict, parent_uri, parent_labels)
             # Add the parents of the parent to the set of all parents
-            parents = parents.union(parent_parents)
+            parent_labels = parent_labels.union(parent_parents)
 
-    return parents
+    return parent_labels
 
 
 rhyolite_parents = find_lithology_parents(graph_dict, rhyolite_uri)
@@ -270,9 +270,9 @@ pprint(rhyolite_parents)
 ## Alternative Solutions
 
 It is worth noting that there are other ways of parsing data within a graph database.
-A common method includes [`SPARQL`](https://www.w3.org/TR/sparql11-overview/),
-which allows you to build graph database queries resmebling
-[`SQL`](https://learn.microsoft.com/en-us/sql/t-sql/queries/select-transact-sql?view=sql-server-ver16).
+A common method includes [`SPARQL`](https://en.wikipedia.org/wiki/SPARQL),
+which allows you to build graph database queries resembling
+[`SQL`](https://en.wikipedia.org/wiki/SQL).
 You can even use `rdflib` to run `SPARQL` queries in Python.
 More information on this from the `rdflib` documentation can be found
 [here](https://rdflib.readthedocs.io/en/7.1.1/intro_to_sparql.html).
