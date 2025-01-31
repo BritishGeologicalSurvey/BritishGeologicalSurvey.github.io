@@ -13,7 +13,7 @@ tags:
 ### The problem
 Developers using WSL as their established environment have no issue switching between Node versions using `nvm`, whereas this operation requires admin rights for Windows users running outside of WSL.
 
-Obtaining admin rights can be a bit of a slow process and is much too slow for something as simple as switching Node versions. Could Volta provide a cross-platform solution that is more straightforward to manage comapared to `nvm`?
+Obtaining admin rights can be a bit of a slow process and is much too slow for something as simple as switching Node versions. Could Volta provide a cross-platform solution that is more straightforward to manage compared to `nvm`?
 
 ### Why switch?
 
