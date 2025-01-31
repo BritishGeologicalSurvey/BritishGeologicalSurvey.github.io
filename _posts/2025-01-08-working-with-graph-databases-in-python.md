@@ -31,7 +31,7 @@ pip install rdflib
 ```
 
 The file we are going to parse is a Turtle file (.ttl), which is a format for storing
-graph databases. This files comes from the CGI Geoscience Vocabularies dataset, which you can find on GitHub
+triples. This files comes from the CGI Simple Lithology dataset, which you can find on GitHub
 [here](https://raw.githubusercontent.com/CGI-IUGS/cgi-vocabs/9dfe161affbe91de4c25622a9c2cfab5aa65c642/vocabularies/geosciml/simplelithology.ttl).
 
 Firstly, we have to create an empty graph using `rdflib`, and then use it to parse the given `ttl` file.
@@ -207,9 +207,9 @@ pprint(rhyolite_parents)
 
 ## Alternative Solutions
 
-It is worth noting that there are other ways of parsing data within a graph database.
+It is worth noting that there are other ways of extracting data from a triplestore.
 A common method includes [`SPARQL`](https://en.wikipedia.org/wiki/SPARQL),
-which allows you to build graph database queries resembling
+which allows you to build queries on an RDF graph database resembling
 [`SQL`](https://en.wikipedia.org/wiki/SQL).
 You can even use `rdflib` to run `SPARQL` queries in Python.
 More information on this from the `rdflib` documentation can be found
