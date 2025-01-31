@@ -12,7 +12,7 @@ tags:
 
 ### The problem:
 
-In the context of the VENTURA VDR, we have recently received the go-ahead to create an open-source version of the project, which will be hosted on GitHub and open to future collaboration from the wider scientific/development community. This has prompted us to consider how we can get the codebase into a state where it is well-documented, organized, and ready for contributions.
+In the context of the [VENTURA Virtual Decision Room](https://www.bgs.ac.uk/news/bgs-collaborates-on-new-1-million-epsrc-funded-digital-research-project-to-help-make-urban-growth-more-sustainable/), we have recently received the go-ahead to create an open-source version of the project, which will be hosted on GitHub and open to future collaboration from the wider scientific/development community. This has prompted us to consider how we can get the codebase into a state where it is well-documented, organized, and ready for contributions.
 
 Across other BGS projects where we work with Leaflet/ESRI web maps, we have found ourselves in a situation where the component that initializes the map ends up containing large amounts of functionality and quickly becomes bloated. Since the web map is generated via library code, the approach to building applications centered around the map differs architecturally from a standard component-based application, as we can’t utilize HTML templates for display logic. This leads to the creation of elements and interaction with them being implemented with TypeScript/JavaScript methods.
 
