@@ -11,8 +11,8 @@ tags:
   - linked-data
 ---
 
-BGS produces a number of linked datasets which are stored as graph databases.
-One of these datasets includes valuable lithology classifications.
+BGS produces a number of linked datasets which are stored as RDF graph databases.
+These include valuable lithology classification schemes - the [BGS Rock Classification Scheme](https://www.bgs.ac.uk/technologies/bgs-rock-classification-scheme/), and a simpler international equivalent the [CGI Simple Lithology](http://resource.geosciml.org/classifier/cgi/lithology) vocabulary which BGS helped develop.
 We needed to parse some of this online RDF data
 as we wanted to use the classifications in our new field data capture tool.
 In particular, we wanted to traverse parent-child hierarchies,
