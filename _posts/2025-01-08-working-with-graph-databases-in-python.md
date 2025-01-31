@@ -11,81 +11,19 @@ tags:
   - linked-data
 ---
 
-## What are Graph Databases?
-
-The logic behind a [Graph Database](https://en.wikipedia.org/wiki/Graph_database),
-comes from graph theory in mathematics, where a network of nodes representing data are connected using edges.
-This makes a graph database more flexible than a typical hierarchical database,
-as new nodes can be added and connected to any existing node, often without constraints.
-This lack of constraints can be convenient, but it does mean that a user will need
-additional context regarding the existing nodes before adding new ones, as the existing
-data is unpredictable.
-Constraints can be added to a graph database using additional tools if required.
-For example, when using
-a [Resource Description Framework (RDF)](https://en.wikipedia.org/wiki/Resource_Description_Framework)
-graph, you can add constraints
-using [Shapes Constraint Language (SHACL)](https://en.wikipedia.org/wiki/SHACL).
-
-In a graph database, everything is represented using URIs (Uniform Resource Identifier) or literals.
-The URIs are what allows us to create new connections between nodes in the graph,
-and even connections between multiple graphs.
-For this to work, data is stored in `triples`. In a triple, we have 3 pieces of information:
-- Subject: the row in a typical database, referring to one feature (URI)
-- Predicate: the column in a typical database, referring to one attribute name (URI)
-- Object: the value found at the given row/column, the attribute value (URI or literal)
-
-The predicate URI should also be a subject itself, containing more triples that describe its definition.
-This means that all of the context behind the data is described within the graph database,
-an advantage which cannot be done in a relational database.
-
-Let's apply this concept to a lithology example. If we want to represent Rhyolite's lithology classification
-as an Igneous Rock in a triple, we could do the following:
-- Subject: URI to Rhyolite
-- Predicate: URI to Parent Definition
-- Object: URI to Igneous Rock
-
-The value from this data structure comes from the fact that in this example, we could find the predicates
-of Igneous Rock using its own URI, and then continue to another subject after that.
-
-The nature of `triples` also means that when you iterate over the `triples` in a
-graph database, you get a single predicate object for a single subject at a time.
-You do not get all of the predicates for a subject at once.
-Therefore, you will likely want to parse the data into a different structure
-to suit your requirements, depending on what you wish to do with the data.
-
-It is important to note that because predicates are defined using a URI,
-we can use pre-defined predicates from online `namespaces`.
-In the example below, we will see many attributes from the online `skos` namespace,
-such as `skos:prefLabel` which is essentially a human readable name,
-and `skos:broader` which is a parent node.
-
-You can find more information about the `skos` data model [here](https://www.w3.org/2009/08/skos-reference/skos.html).
-
-## Why are we working with graph databases?
-
-We started with hundreds of lithology classifications which were going to be used in a
-new Field Data Capture system, where users could input spatial lithology data.
-We wanted to plot coloured points onto a map within the system,
-so that a user could see all of their spatial lithology data visually, as this would allow them
-to quickly make sense of their data.
-However, applying hundreds of different colours to points on a map would make it very hard
-to see differences between the colours, as they would be very similar.
-Therefore, we wanted to select 50~ high level classifications,
-so that every lithology could be attributed to one of these.
-Finally, these 50~ classifications could be colour coded using colours which are more clearly different.
-
-To do this, we decided to use the data from a graph database provided by the
-[IUGS Commission for the Management and Application of Geoscience Information](https://cgi-iugs.org/),
-called [CGI Geoscience Vocabularies](https://cgi.vocabs.ga.gov.au/).
-This dataset contains information regarding lithology classifications and their relationships.
-By parsing this data, we can produce a list of all parent lithology classifications,
-for any given lithology classification.
-In turn, this would help us identify our 50~ high level classifications.
+BGS produces a number of linked datasets which are stored as graph databases.
+One of these datasets includes valuable lithology classifications.
+We needed to parse some of this online RDF data
+as we wanted to use the classifications in our new field data capture tool.
+In particular, we wanted to traverse parent-child hierarchies,
+so that we could use these to simplify colour attribution on a map of lithologies.
+We chose to do this work in Python, as the tool was being developed as a Python
+plugin for QGIS.
 
 ## How to parse a graph database in Python
 
-Now that we have an overview of graph databases, we will parse one using Python!
-To do this, we are going to use the library [`rdflib`](https://rdflib.readthedocs.io/en/stable/).
+To parse a graph database using Python, we are going to use the library
+[`rdflib`](https://rdflib.readthedocs.io/en/stable/).
 You can install this library using [`pip`](https://pip.pypa.io/en/stable/).
 
 ```
@@ -119,7 +57,7 @@ skos_broader_uri = rdflib.term.URIRef("http://www.w3.org/2004/02/skos/core#broad
 ```
 
 We are now ready to start iterating over the `triples` within the graph. We will add this data to
-a Python dictionary. Remember, when we iterate over the graph, we get a single predicate object
+a Python dictionary. When we iterate over the graph, we get a single predicate object
 for a single subject. Therefore, we need to ensure we have the correct
 structure to store all of the objects for each predicate of each subject.
 
