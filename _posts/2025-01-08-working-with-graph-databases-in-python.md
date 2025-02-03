@@ -11,12 +11,12 @@ tags:
   - linked-data
 ---
 
-BGS produces a number of linked datasets which are stored as RDF graph databases.
-These include valuable lithology classification schemes - the [BGS Rock Classification Scheme](https://www.bgs.ac.uk/technologies/bgs-rock-classification-scheme/), and a simpler international equivalent the [CGI Simple Lithology](http://resource.geosciml.org/classifier/cgi/lithology) vocabulary which BGS helped develop.
-We needed to parse some of this online RDF data
-as we wanted to use the classifications in our new field data capture tool.
-In particular, we wanted to traverse parent-child hierarchies,
-so that we could use these to simplify colour attribution on a map of lithologies.
+In BGS, we work with a number of linked datasets which are stored as RDF graph databases.
+These include our own comprehensive lithology classification, the [BGS Rock Classification Scheme](https://www.bgs.ac.uk/technologies/bgs-rock-classification-scheme/), and a simpler international equivalent the [CGI Simple Lithology](http://resource.geosciml.org/classifier/cgi/lithology) vocabulary which BGS helped develop.
+
+This blog post demonstrates how we use Python to parse such RDF data.
+In this example we traverse parent-child hierarchies within the CGI Simple Lithology scheme to identify all the groups to which a particular lithology belongs.
+We use this information to simplify colour attribution of lithologies when plotted on a map in our new field data capture tool.
 We chose to do this work in Python, as the tool was being developed as a Python
 plugin for QGIS.
 
@@ -154,8 +154,8 @@ pprint(parents)
 ```
 
 Finally, in this format of linked data, recursive functions are incredibly useful to traverse a graph
-from one node to another. Or, in the case of `triples`, from one subject to another. Here, we will
-use recursion to find the list of all parent lithology classifications above `Rhyolite`.
+from one node to another. Or, in the case of `triples`, from one subject to another.
+Here, we will build the code above into a recursive function to find the list of all parent lithology classifications above `Rhyolite`.
 
 ```python
 def find_lithology_parents(
@@ -205,12 +205,12 @@ pprint(rhyolite_parents)
  'rock'}
 ```
 
+Knowing all possible parents of `Rhyolite` shows us where it fits in different categorisation schemes, e.g. based on grain size (`fine_grained_igneous_rock`) or composition (`acidic_igneous_rock`), and we can choose the most appropriate for a given application.
+
+
 ## Alternative Solutions
 
-It is worth noting that there are other ways of extracting data from a triplestore.
-A common method includes [`SPARQL`](https://en.wikipedia.org/wiki/SPARQL),
-which allows you to build queries on an RDF graph database resembling
-[`SQL`](https://en.wikipedia.org/wiki/SQL).
+It is worth noting that there are other ways of extracting data from a triplestore, such as [`SPARQL`](https://en.wikipedia.org/wiki/SPARQL), which allows you to build queries on an RDF graph database resembling [`SQL`](https://en.wikipedia.org/wiki/SQL).
 You can even use `rdflib` to run `SPARQL` queries in Python.
 More information on this from the `rdflib` documentation can be found
 [here](https://rdflib.readthedocs.io/en/7.1.1/intro_to_sparql.html).
